@@ -32,82 +32,82 @@ import org.logicware.jpi.PrologTerm;
 
 class ZPrologMain {
 
-    // default input stream
-    private static final InputStreamReader reader = new InputStreamReader(System.in);
+	// default input stream
+	private static final InputStreamReader reader = new InputStreamReader(System.in);
 
-    // buffered reader for read from standard input stream
-    private static final BufferedReader stdin = new BufferedReader(reader);
+	// buffered reader for read from standard input stream
+	private static final BufferedReader stdin = new BufferedReader(reader);
 
-    // standard output stream
-    private static final PrintStream stdout = System.out;
+	// standard output stream
+	private static final PrintStream stdout = System.out;
 
-    private static final PrologProvider provider = new ZPrologProvider();
+	private static final PrologProvider provider = new ZPrologProvider();
 
-    public static void main(String args[]) {
+	public static void main(String args[]) {
 
-	String stringQuery;
-	PrologEngine engine = provider.newEngine();
+		String stringQuery;
+		PrologEngine engine = provider.newEngine();
 
-	stdout.println();
-	// stdout.print(engine.getName());
-	stdout.print(" v");
-	stdout.println(engine.getVersion());
-	// stdout.println(engine.getCopyright());
-	// stdout.println(engine.getPoweredBy());
-	stdout.println();
+		stdout.println();
+		// stdout.print(engine.getName());
+		stdout.print(" v");
+		stdout.println(engine.getVersion());
+		// stdout.println(engine.getCopyright());
+		// stdout.println(engine.getPoweredBy());
+		stdout.println();
 
-	try {
+		try {
 
-	    if (args.length > 0) {
-		engine.consult(args[0]);
-	    }
-
-	    stdout.print("?- ");
-	    stdout.flush();
-	    stringQuery = stdin.readLine();
-
-	    while (true) {
-
-		if (!stringQuery.equals("")) {
-		    stdout.println();
-		    PrologQuery query = engine.query(stringQuery);
-		    if (query.hasSolution()) {
-			Map<String, PrologTerm> s = query.oneVariablesSolution();
-			for (String key : s.keySet()) {
-			    stdout.println(key + " = " + s.get(key));
+			if (args.length > 0) {
+				engine.consult(args[0]);
 			}
-			stdout.println("Yes.");
-		    } else {
-			stdout.println("No.");
-		    }
 
-		    stdout.println();
-		    // stdout.println("Stack Size: " + query.stack.size());
-		    // stdout.println("Backtracks: " + query.getBacktracks());
-		    // stdout.println("Inferences: " + query.getInferences());
-		    // stdout.println("Unifications: " +
-		    // query.getUnifications());
-		    // stdout.println("Query time: " + query.getCputime() + "
-		    // seconds.");
-		    // stdout.println(" LIPS: " + query.getInferences() /
-		    // query.getCputime());
-		    stdout.println();
+			stdout.print("?- ");
+			stdout.flush();
+			stringQuery = stdin.readLine();
 
-		} else {
-		    stdout.println("Emty query");
-		    stdout.println();
+			while (true) {
+
+				if (!stringQuery.equals("")) {
+					stdout.println();
+					PrologQuery query = engine.query(stringQuery);
+					if (query.hasSolution()) {
+						Map<String, PrologTerm> s = query.oneVariablesSolution();
+						for (String key : s.keySet()) {
+							stdout.println(key + " = " + s.get(key));
+						}
+						stdout.println("Yes.");
+					} else {
+						stdout.println("No.");
+					}
+
+					stdout.println();
+					// stdout.println("Stack Size: " + query.stack.size());
+					// stdout.println("Backtracks: " + query.getBacktracks());
+					// stdout.println("Inferences: " + query.getInferences());
+					// stdout.println("Unifications: " +
+					// query.getUnifications());
+					// stdout.println("Query time: " + query.getCputime() + "
+					// seconds.");
+					// stdout.println(" LIPS: " + query.getInferences() /
+					// query.getCputime());
+					stdout.println();
+
+				} else {
+					stdout.println("Emty query");
+					stdout.println();
+				}
+
+				stdout.print("?- ");
+				stdout.flush();
+				stringQuery = stdin.readLine();
+
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
-		stdout.print("?- ");
-		stdout.flush();
-		stringQuery = stdin.readLine();
-
-	    }
-
-	} catch (IOException e) {
-	    e.printStackTrace();
 	}
-
-    }
 
 }

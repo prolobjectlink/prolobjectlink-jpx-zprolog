@@ -27,20 +27,20 @@ import org.logicware.jpi.zprolog.ZPrologProvider;
 
 public final class JPIZPrologContainerFactory extends JPIContainerFactory {
 
-    public JPIZPrologContainerFactory() {
-	this(new Properties());
-    }
+	public JPIZPrologContainerFactory() {
+		this(new Properties());
+	}
 
-    public JPIZPrologContainerFactory(Properties properties) {
-	super(properties, new ZPrologProvider());
-    }
+	public JPIZPrologContainerFactory(Properties properties) {
+		super(properties, new ZPrologProvider());
+	}
 
-    public JPIZPrologContainerFactory(Properties properties, PrologProvider provider) {
-	super(properties, provider);
-    }
+	public JPIZPrologContainerFactory(Properties properties, PrologProvider provider) {
+		super(properties, provider);
+	}
 
-    public ContainerFactory createContainerFactory() {
-	return this;
-    }
+	public ContainerFactory createContainerFactory() {
+		return this;
+	}
 
 }

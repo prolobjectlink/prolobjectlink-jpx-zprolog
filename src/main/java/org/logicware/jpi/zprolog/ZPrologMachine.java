@@ -28,51 +28,51 @@ import org.logicware.jpi.PrologTerm;
 
 abstract class ZPrologMachine extends JavaEngine {
 
-    // prolog flags container
-    private final Map<String, ZPrologFlag> flags;
+	// prolog flags container
+	private final Map<String, ZPrologFlag> flags;
 
-    protected ZPrologMachine(PrologProvider provider) {
-	super(provider);
+	protected ZPrologMachine(PrologProvider provider) {
+		super(provider);
 
-	flags = new HashMap<String, ZPrologFlag>();
+		flags = new HashMap<String, ZPrologFlag>();
 
-	// defaults flag
-	flags.put("debug", ZPrologFlag.DEBUG_FLAG);
-	flags.put("unknown", ZPrologFlag.UNKNOWN_FLAG);
-	flags.put("bounded", ZPrologFlag.BOUNDED_FLAG);
-	flags.put("max_arity", ZPrologFlag.MAX_ARITY_FLAG);
-	flags.put("max_integer", ZPrologFlag.MAX_INTEGER_FLAG);
-	flags.put("min_integer", ZPrologFlag.MIN_INTEGER_FLAG);
-	flags.put("double_quotes", ZPrologFlag.DOUBLE_QUOTES_FLAG);
-	flags.put("char_conversion", ZPrologFlag.CHAR_CONVERSION_FLAG);
-	flags.put("integer_rounding_function", ZPrologFlag.INTEGER_ROUNDING_FUNCTION_FLAG);
+		// defaults flag
+		flags.put("debug", ZPrologFlag.DEBUG_FLAG);
+		flags.put("unknown", ZPrologFlag.UNKNOWN_FLAG);
+		flags.put("bounded", ZPrologFlag.BOUNDED_FLAG);
+		flags.put("max_arity", ZPrologFlag.MAX_ARITY_FLAG);
+		flags.put("max_integer", ZPrologFlag.MAX_INTEGER_FLAG);
+		flags.put("min_integer", ZPrologFlag.MIN_INTEGER_FLAG);
+		flags.put("double_quotes", ZPrologFlag.DOUBLE_QUOTES_FLAG);
+		flags.put("char_conversion", ZPrologFlag.CHAR_CONVERSION_FLAG);
+		flags.put("integer_rounding_function", ZPrologFlag.INTEGER_ROUNDING_FUNCTION_FLAG);
 
-    }
-
-    protected final Map<String, ZPrologFlag> getFlags() {
-	return flags;
-    }
-
-    protected final boolean setFlag(String name, PrologTerm value) {
-	ZPrologFlag flag = flags.get(name);
-	if (flag.isChangeable()) {
-	    flag.setValue(value);
-	    flags.put(name, flag);
-	    return true;
 	}
-	return false;
-    }
 
-    protected final PrologTerm currentFlag(String name, PrologTerm value) {
-	return flags.get(name).getValue();
-    }
+	protected final Map<String, ZPrologFlag> getFlags() {
+		return flags;
+	}
 
-    protected final void defineFlag(String name, PrologTerm value, PrologTerm defaultValue, boolean changeable) {
-	flags.put(name, new ZPrologFlag(name, value, defaultValue, changeable));
-    }
+	protected final boolean setFlag(String name, PrologTerm value) {
+		ZPrologFlag flag = flags.get(name);
+		if (flag.isChangeable()) {
+			flag.setValue(value);
+			flags.put(name, flag);
+			return true;
+		}
+		return false;
+	}
 
-    protected final boolean isChangeable(String name) {
-	return flags.get(name).isChangeable();
-    }
+	protected final PrologTerm currentFlag(String name, PrologTerm value) {
+		return flags.get(name).getValue();
+	}
+
+	protected final void defineFlag(String name, PrologTerm value, PrologTerm defaultValue, boolean changeable) {
+		flags.put(name, new ZPrologFlag(name, value, defaultValue, changeable));
+	}
+
+	protected final boolean isChangeable(String name) {
+		return flags.get(name).isChangeable();
+	}
 
 }

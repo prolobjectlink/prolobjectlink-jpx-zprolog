@@ -37,60 +37,60 @@ package org.logicware.jpi.zprolog;
  */
 final class ZPrologChoicePoint {
 
-    private final ZPrologGoal current_goal;
-    private final ZPrologGoal next_goal;
+	private final ZPrologGoal current_goal;
+	private final ZPrologGoal next_goal;
 
-    ZPrologChoicePoint(ZPrologGoal current_goal) {
-	this(current_goal, null);
-    }
+	ZPrologChoicePoint(ZPrologGoal current_goal) {
+		this(current_goal, null);
+	}
 
-    ZPrologChoicePoint(ZPrologGoal current_goal, ZPrologGoal next_goal) {
-	this.current_goal = current_goal;
-	this.next_goal = next_goal;
-    }
+	ZPrologChoicePoint(ZPrologGoal current_goal, ZPrologGoal next_goal) {
+		this.current_goal = current_goal;
+		this.next_goal = next_goal;
+	}
 
-    public ZPrologGoal get_current_goal() {
-	return current_goal;
-    }
+	public ZPrologGoal get_current_goal() {
+		return current_goal;
+	}
 
-    public ZPrologGoal get_next_goal() {
-	return next_goal;
-    }
+	public ZPrologGoal get_next_goal() {
+		return next_goal;
+	}
 
-    @Override
-    public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((current_goal == null) ? 0 : current_goal.hashCode());
-	result = prime * result + ((next_goal == null) ? 0 : next_goal.hashCode());
-	return result;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((current_goal == null) ? 0 : current_goal.hashCode());
+		result = prime * result + ((next_goal == null) ? 0 : next_goal.hashCode());
+		return result;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-	if (this == obj)
-	    return true;
-	if (obj == null)
-	    return false;
-	if (getClass() != obj.getClass())
-	    return false;
-	ZPrologChoicePoint other = (ZPrologChoicePoint) obj;
-	if (current_goal == null) {
-	    if (other.current_goal != null)
-		return false;
-	} else if (!current_goal.equals(other.current_goal))
-	    return false;
-	if (next_goal == null) {
-	    if (other.next_goal != null)
-		return false;
-	} else if (!next_goal.equals(other.next_goal))
-	    return false;
-	return true;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ZPrologChoicePoint other = (ZPrologChoicePoint) obj;
+		if (current_goal == null) {
+			if (other.current_goal != null)
+				return false;
+		} else if (!current_goal.equals(other.current_goal))
+			return false;
+		if (next_goal == null) {
+			if (other.next_goal != null)
+				return false;
+		} else if (!next_goal.equals(other.next_goal))
+			return false;
+		return true;
+	}
 
-    @Override
-    public String toString() {
-	return "ZPrologChoicePoint [current_goal=" + current_goal + ", next_goal=" + next_goal + "]";
-    }
+	@Override
+	public String toString() {
+		return "ZPrologChoicePoint [current_goal=" + current_goal + ", next_goal=" + next_goal + "]";
+	}
 
 }

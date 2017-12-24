@@ -29,24 +29,22 @@ import org.logicware.jpi.zprolog.ZPrologProvider;
 
 public final class JPIZPrologDocuments extends JPIDocuments {
 
-    static final Documents instance = new JPIZPrologDocuments();
+	static final Documents instance = new JPIZPrologDocuments();
 
-    protected JPIZPrologDocuments() {
-	super(new Properties(), new ZPrologProvider());
-    }
+	protected JPIZPrologDocuments() {
+		super(new Properties(), new ZPrologProvider());
+	}
 
-    @Override
-    public Documents getInstance() {
-	return instance;
-    }
+	public Documents getInstance() {
+		return instance;
+	}
 
-    public Cache createCache() {
-	return new JPICache(getProvider());
-    }
+	public Cache createCache() {
+		return new JPICache(getProvider());
+	}
 
-    @Override
-    public ContainerFactory createContainerFactory() {
-	return new JPIZPrologContainerFactory(getProperties(), getProvider());
-    }
+	public ContainerFactory createContainerFactory() {
+		return new JPIZPrologContainerFactory(getProperties(), getProvider());
+	}
 
 }

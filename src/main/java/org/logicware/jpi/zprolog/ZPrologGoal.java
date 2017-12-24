@@ -30,116 +30,116 @@ import org.logicware.jpi.PrologTerm;
 
 final class ZPrologGoal extends ZPrologClause implements PrologGoal {
 
-    PrologGoal nextGoal;
-    PrologClauses clauses;
-    Iterator<PrologClause> i;
+	PrologGoal nextGoal;
+	PrologClauses clauses;
+	Iterator<PrologClause> i;
 
-    ZPrologGoal(PrologTerm goal) {
-	super(goal);
-    }
-
-    ZPrologGoal(PrologTerm[] terms) {
-	super(terms);
-    }
-
-    /** @deprecated used only for test */
-    ZPrologGoal(PrologTerm term, PrologClauses clauses) {
-	super(term);
-	this.clauses = clauses;
-	this.i = clauses.listIterator();
-    }
-
-    /** @deprecated used only for test */
-    ZPrologGoal(PrologTerm[] terms, PrologClauses clauses) {
-	super(terms);
-	this.clauses = clauses;
-	this.i = clauses.listIterator();
-    }
-
-    public ZPrologGoal resolve(PrologProgram program, Map<String, PrologClauses> builtins) {
-	return resolve(program, builtins, null);
-    }
-
-    /**
-     * Link the current goal with a clause recovery in the program database or
-     * runtime built-in.
-     * 
-     * @param program
-     *            program for lookup clause that match with the current goal
-     * @param builtins
-     *            prolog built-ins for lookup clause that match with the current
-     *            goal
-     * @return the current goal linked with the matched clause
-     * @since 1.0
-     */
-    public ZPrologGoal resolve(PrologProgram program, Map<String, PrologClauses> builtins, PrologGoal next) {
-	nextGoal = next;
-	String key = getIndicator();
-	if ((clauses = program.get(key)) == null) {
-	    clauses = builtins.get(key);
+	ZPrologGoal(PrologTerm goal) {
+		super(goal);
 	}
-	if (clauses != null) {
-	    i = clauses.iterator();
+
+	ZPrologGoal(PrologTerm[] terms) {
+		super(terms);
 	}
-	return this;
-    }
 
-    public ZPrologGoal replace(PrologClause clause, ZPrologTerm[] variables, int stackMark) {
-	return new ZPrologGoal(((ZPrologTerm) clause.getBody()).refresh(variables));
-    }
+	/** @deprecated used only for test */
+	ZPrologGoal(PrologTerm term, PrologClauses clauses) {
+		super(term);
+		this.clauses = clauses;
+		this.i = clauses.listIterator();
+	}
 
-    public Iterator<PrologClause> iterator() {
-	return i;
-    }
+	/** @deprecated used only for test */
+	ZPrologGoal(PrologTerm[] terms, PrologClauses clauses) {
+		super(terms);
+		this.clauses = clauses;
+		this.i = clauses.listIterator();
+	}
 
-    @Override
-    public int hashCode() {
-	final int prime = 31;
-	int result = super.hashCode();
-	result = prime * result + ((clauses == null) ? 0 : clauses.hashCode());
-	return result;
-    }
+	public ZPrologGoal resolve(PrologProgram program, Map<String, PrologClauses> builtins) {
+		return resolve(program, builtins, null);
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-	if (this == obj)
-	    return true;
-	if (!super.equals(obj))
-	    return false;
-	if (getClass() != obj.getClass())
-	    return false;
-	ZPrologGoal other = (ZPrologGoal) obj;
-	if (clauses == null) {
-	    if (other.clauses != null)
-		return false;
-	} else if (!clauses.equals(other.clauses))
-	    return false;
-	return true;
-    }
+	/**
+	 * Link the current goal with a clause recovery in the program database or
+	 * runtime built-in.
+	 * 
+	 * @param program
+	 *            program for lookup clause that match with the current goal
+	 * @param builtins
+	 *            prolog built-ins for lookup clause that match with the current
+	 *            goal
+	 * @return the current goal linked with the matched clause
+	 * @since 1.0
+	 */
+	public ZPrologGoal resolve(PrologProgram program, Map<String, PrologClauses> builtins, PrologGoal next) {
+		nextGoal = next;
+		String key = getIndicator();
+		if ((clauses = program.get(key)) == null) {
+			clauses = builtins.get(key);
+		}
+		if (clauses != null) {
+			i = clauses.iterator();
+		}
+		return this;
+	}
 
-    @Override
-    public String toString() {
-	return "" + term + ".";
-    }
+	public ZPrologGoal replace(PrologClause clause, ZPrologTerm[] variables, int stackMark) {
+		return new ZPrologGoal(((ZPrologTerm) clause.getBody()).refresh(variables));
+	}
 
-    public boolean hasNextGoal() {
-	return nextGoal != null;
-    }
+	public Iterator<PrologClause> iterator() {
+		return i;
+	}
 
-    public PrologClause nextGoal() {
-	return nextGoal;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((clauses == null) ? 0 : clauses.hashCode());
+		return result;
+	}
 
-    public boolean hasNextClause() {
-	return i.hasNext();
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ZPrologGoal other = (ZPrologGoal) obj;
+		if (clauses == null) {
+			if (other.clauses != null)
+				return false;
+		} else if (!clauses.equals(other.clauses))
+			return false;
+		return true;
+	}
 
-    public PrologClause nextClause() {
-	return i.next();
-    }
+	@Override
+	public String toString() {
+		return "" + term + ".";
+	}
 
-    public void removeClause() {
-	i.remove();
-    }
+	public boolean hasNextGoal() {
+		return nextGoal != null;
+	}
+
+	public PrologClause nextGoal() {
+		return nextGoal;
+	}
+
+	public boolean hasNextClause() {
+		return i.hasNext();
+	}
+
+	public PrologClause nextClause() {
+		return i.next();
+	}
+
+	public void removeClause() {
+		i.remove();
+	}
 
 }

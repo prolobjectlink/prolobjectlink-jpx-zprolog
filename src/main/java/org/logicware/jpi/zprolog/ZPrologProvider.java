@@ -24,7 +24,6 @@ import org.logicware.jpi.PrologAtom;
 import org.logicware.jpi.PrologConverter;
 import org.logicware.jpi.PrologDouble;
 import org.logicware.jpi.PrologEngine;
-import org.logicware.jpi.PrologExpression;
 import org.logicware.jpi.PrologFloat;
 import org.logicware.jpi.PrologInteger;
 import org.logicware.jpi.PrologList;
@@ -36,129 +35,129 @@ import org.logicware.jpi.PrologVariable;
 
 public final class ZPrologProvider extends AbstractProvider implements PrologProvider {
 
-    static int vIndexer = 0;
+	static int vIndexer = 0;
 
-    public ZPrologProvider() {
-	super(new ZPrologConverter());
-    }
-
-    public ZPrologProvider(PrologConverter<ZPrologTerm> converter) {
-	super(converter);
-    }
-
-    public boolean isCompliant() {
-	return false;
-    }
-
-    public boolean preserveQuotes() {
-	return true;
-    }
-
-    public PrologTerm prologNil() {
-	return ZPrologTerm.NIL_TERM;
-    }
-
-    public PrologTerm prologCut() {
-	return ZPrologTerm.CUT_TERM;
-    }
-
-    public PrologTerm prologFail() {
-	return ZPrologTerm.FAIL_TERM;
-    }
-
-    public PrologTerm prologTrue() {
-	return ZPrologTerm.TRUE_TERM;
-    }
-
-    public PrologTerm prologFalse() {
-	return ZPrologTerm.FALSE_TERM;
-    }
-
-    public PrologTerm prologEmpty() {
-	return ZPrologTerm.EMPTY_TERM;
-    }
-
-    public PrologEngine newEngine() {
-	return new ZPrologEngine(this);
-    }
-
-    public PrologAtom newAtom(String functor) {
-	return new ZPrologTerm(this, functor);
-    }
-
-    public PrologFloat newFloat(Number value) {
-	return new ZPrologTerm(this, value.floatValue());
-    }
-
-    public PrologDouble newDouble(Number value) {
-	return new ZPrologTerm(this, value.doubleValue());
-    }
-
-    public PrologInteger newInteger(Number value) {
-	return new ZPrologTerm(this, value.intValue());
-    }
-
-    public PrologLong newLong(Number value) {
-	return new ZPrologTerm(this, value.longValue());
-    }
-
-    @Deprecated
-    public PrologVariable newVariable() {
-	return newVariable(ZPrologTerm.ANONYMOUS);
-    }
-
-    @Deprecated
-    public PrologVariable newVariable(String name) {
-	return new ZPrologTerm(this, name, vIndexer++);
-    }
-
-    public PrologVariable newVariable(int position) {
-	return newVariable(ZPrologTerm.ANONYMOUS, position);
-    }
-
-    public PrologVariable newVariable(String name, int position) {
-	return new ZPrologTerm(this, name, position);
-    }
-
-    public PrologList newList() {
-	return new ZPrologTerm(ZPrologToken.TOKEN_EMPTY, ZPrologTerm.EMPTY_TYPE, this, ZPrologBuiltin.EMPTY_FUNCTOR);
-    }
-
-    public PrologList newList(PrologTerm[] arguments) {
-	if (arguments.length > 0) {
-	    return new ZPrologTerm(this, arguments);
+	public ZPrologProvider() {
+		super(new ZPrologConverter());
 	}
-	return new ZPrologTerm(ZPrologToken.TOKEN_EMPTY, ZPrologTerm.EMPTY_TYPE, this, ZPrologBuiltin.EMPTY_FUNCTOR);
-    }
 
-    public PrologList newList(PrologTerm head, PrologTerm tail) {
-	return new ZPrologTerm(this, head, tail);
-    }
+	public ZPrologProvider(PrologConverter<ZPrologTerm> converter) {
+		super(converter);
+	}
 
-    public PrologList newList(PrologTerm[] arguments, PrologTerm tail) {
-	// TODO what happen if arguments length is zero ???
-	return new ZPrologTerm(this, arguments, tail);
-    }
+	public boolean isCompliant() {
+		return false;
+	}
 
-    public PrologStructure newStructure(String functor, PrologTerm... arguments) {
-	return new ZPrologTerm(this, functor, arguments);
-    }
+	public boolean preserveQuotes() {
+		return true;
+	}
 
-    public PrologExpression newExpression(PrologTerm left, String operator, PrologTerm right) {
-	return new ZPrologTerm(this, left, operator, right);
-    }
+	public PrologTerm prologNil() {
+		return ZPrologTerm.NIL_TERM;
+	}
 
-    public PrologTerm parsePrologTerm(String term) {
-	return new ZPrologParser(this).parseTerm(term);
-    }
+	public PrologTerm prologCut() {
+		return ZPrologTerm.CUT_TERM;
+	}
 
-    public PrologTerm[] parsePrologTerms(String stringTerms) {
-	return new ZPrologParser(this).parseTerms(stringTerms);
-    }
+	public PrologTerm prologFail() {
+		return ZPrologTerm.FAIL_TERM;
+	}
 
-    @Override
-    public String toString() {
-	return "ZPrologProvider [converter=" + converter + "]";
-    }
+	public PrologTerm prologTrue() {
+		return ZPrologTerm.TRUE_TERM;
+	}
+
+	public PrologTerm prologFalse() {
+		return ZPrologTerm.FALSE_TERM;
+	}
+
+	public PrologTerm prologEmpty() {
+		return ZPrologTerm.EMPTY_TERM;
+	}
+
+	public PrologEngine newEngine() {
+		return new ZPrologEngine(this);
+	}
+
+	public PrologAtom newAtom(String functor) {
+		return new ZPrologTerm(this, functor);
+	}
+
+	public PrologFloat newFloat(Number value) {
+		return new ZPrologTerm(this, value.floatValue());
+	}
+
+	public PrologDouble newDouble(Number value) {
+		return new ZPrologTerm(this, value.doubleValue());
+	}
+
+	public PrologInteger newInteger(Number value) {
+		return new ZPrologTerm(this, value.intValue());
+	}
+
+	public PrologLong newLong(Number value) {
+		return new ZPrologTerm(this, value.longValue());
+	}
+
+	@Deprecated
+	public PrologVariable newVariable() {
+		return newVariable(ZPrologTerm.ANONYMOUS);
+	}
+
+	@Deprecated
+	public PrologVariable newVariable(String name) {
+		return new ZPrologTerm(this, name, vIndexer++);
+	}
+
+	public PrologVariable newVariable(int position) {
+		return newVariable(ZPrologTerm.ANONYMOUS, position);
+	}
+
+	public PrologVariable newVariable(String name, int position) {
+		return new ZPrologTerm(this, name, position);
+	}
+
+	public PrologList newList() {
+		return new ZPrologTerm(ZPrologToken.TOKEN_EMPTY, ZPrologTerm.EMPTY_TYPE, this, ZPrologBuiltin.EMPTY_FUNCTOR);
+	}
+
+	public PrologList newList(PrologTerm[] arguments) {
+		if (arguments.length > 0) {
+			return new ZPrologTerm(this, arguments);
+		}
+		return new ZPrologTerm(ZPrologToken.TOKEN_EMPTY, ZPrologTerm.EMPTY_TYPE, this, ZPrologBuiltin.EMPTY_FUNCTOR);
+	}
+
+	public PrologList newList(PrologTerm head, PrologTerm tail) {
+		return new ZPrologTerm(this, head, tail);
+	}
+
+	public PrologList newList(PrologTerm[] arguments, PrologTerm tail) {
+		// TODO what happen if arguments length is zero ???
+		return new ZPrologTerm(this, arguments, tail);
+	}
+
+	public PrologStructure newStructure(String functor, PrologTerm... arguments) {
+		return new ZPrologTerm(this, functor, arguments);
+	}
+
+	public PrologTerm newExpression(PrologTerm left, String operator, PrologTerm right) {
+		return new ZPrologTerm(this, left, operator, right);
+	}
+
+	public PrologTerm parsePrologTerm(String term) {
+		return new ZPrologParser(this).parseTerm(term);
+	}
+
+	public PrologTerm[] parsePrologTerms(String stringTerms) {
+		return new ZPrologParser(this).parseTerms(stringTerms);
+	}
+
+	@Override
+	public String toString() {
+		return "ZPrologProvider [converter=" + converter + "]";
+	}
 
 }

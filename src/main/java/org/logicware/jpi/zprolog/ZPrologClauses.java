@@ -29,134 +29,134 @@ import org.logicware.jpi.PrologClauses;
 
 public final class ZPrologClauses extends AbstractClauses implements PrologClauses {
 
-    private static final long serialVersionUID = 672192977298906786L;
+	private static final long serialVersionUID = 672192977298906786L;
 
-    private final String indicator;
+	private final String indicator;
 
-    ZPrologClauses(String indicator) {
-	this.indicator = indicator;
-    }
-
-    ZPrologClauses(String indicator, PrologClause e) {
-	this(indicator);
-	add(e);
-    }
-
-    ZPrologClauses(String indicator, Collection<? extends PrologClause> clauses) {
-	this(indicator);
-	addAll(clauses);
-    }
-
-    @Override
-    public boolean add(PrologClause e) {
-	if (!contains(e)) {
-	    return super.add(e);
+	ZPrologClauses(String indicator) {
+		this.indicator = indicator;
 	}
-	return false;
-    }
 
-    public void markDynamic() {
-	Iterator<PrologClause> i = iterator();
-	while (i.hasNext()) {
-	    PrologClause clause = i.next();
-	    if (clause instanceof AbstractClause) {
-		((AbstractClause) clause).markDynamic();
-	    }
+	ZPrologClauses(String indicator, PrologClause e) {
+		this(indicator);
+		add(e);
 	}
-    }
 
-    public void unmarkDynamic() {
-	Iterator<PrologClause> i = iterator();
-	while (i.hasNext()) {
-	    PrologClause clause = i.next();
-	    if (clause instanceof AbstractClause) {
-		((AbstractClause) clause).unmarkDynamic();
-	    }
+	ZPrologClauses(String indicator, Collection<? extends PrologClause> clauses) {
+		this(indicator);
+		addAll(clauses);
 	}
-    }
 
-    public boolean isDynamic() {
-	Iterator<PrologClause> i = iterator();
-	while (i.hasNext()) {
-	    if (!i.next().isDynamic()) {
+	@Override
+	public boolean add(PrologClause e) {
+		if (!contains(e)) {
+			return super.add(e);
+		}
 		return false;
-	    }
 	}
-	return true;
-    }
 
-    public void markMultifile() {
-	Iterator<PrologClause> i = iterator();
-	while (i.hasNext()) {
-	    PrologClause clause = i.next();
-	    if (clause instanceof AbstractClause) {
-		((AbstractClause) clause).markMultifile();
-	    }
+	public void markDynamic() {
+		Iterator<PrologClause> i = iterator();
+		while (i.hasNext()) {
+			PrologClause clause = i.next();
+			if (clause instanceof AbstractClause) {
+				((AbstractClause) clause).markDynamic();
+			}
+		}
 	}
-    }
 
-    public void unmarkMultifile() {
-	Iterator<PrologClause> i = iterator();
-	while (i.hasNext()) {
-	    PrologClause clause = i.next();
-	    if (clause instanceof AbstractClause) {
-		((AbstractClause) clause).unmarkMultifile();
-	    }
+	public void unmarkDynamic() {
+		Iterator<PrologClause> i = iterator();
+		while (i.hasNext()) {
+			PrologClause clause = i.next();
+			if (clause instanceof AbstractClause) {
+				((AbstractClause) clause).unmarkDynamic();
+			}
+		}
 	}
-    }
 
-    public boolean isMultifile() {
-	Iterator<PrologClause> i = iterator();
-	while (i.hasNext()) {
-	    if (!i.next().isMultifile()) {
-		return false;
-	    }
+	public boolean isDynamic() {
+		Iterator<PrologClause> i = iterator();
+		while (i.hasNext()) {
+			if (!i.next().isDynamic()) {
+				return false;
+			}
+		}
+		return true;
 	}
-	return true;
-    }
 
-    public void markDiscontiguous() {
-	Iterator<PrologClause> i = iterator();
-	while (i.hasNext()) {
-	    PrologClause clause = i.next();
-	    if (clause instanceof AbstractClause) {
-		((AbstractClause) clause).markDiscontiguous();
-	    }
+	public void markMultifile() {
+		Iterator<PrologClause> i = iterator();
+		while (i.hasNext()) {
+			PrologClause clause = i.next();
+			if (clause instanceof AbstractClause) {
+				((AbstractClause) clause).markMultifile();
+			}
+		}
 	}
-    }
 
-    public void unmarkDiscontiguous() {
-	Iterator<PrologClause> i = iterator();
-	while (i.hasNext()) {
-	    PrologClause clause = i.next();
-	    if (clause instanceof AbstractClause) {
-		((AbstractClause) clause).unmarkDiscontiguous();
-	    }
+	public void unmarkMultifile() {
+		Iterator<PrologClause> i = iterator();
+		while (i.hasNext()) {
+			PrologClause clause = i.next();
+			if (clause instanceof AbstractClause) {
+				((AbstractClause) clause).unmarkMultifile();
+			}
+		}
 	}
-    }
 
-    public boolean isDiscontiguous() {
-	Iterator<PrologClause> i = iterator();
-	while (i.hasNext()) {
-	    if (!i.next().isDiscontiguous()) {
-		return false;
-	    }
+	public boolean isMultifile() {
+		Iterator<PrologClause> i = iterator();
+		while (i.hasNext()) {
+			if (!i.next().isMultifile()) {
+				return false;
+			}
+		}
+		return true;
 	}
-	return true;
-    }
 
-    public String getIndicator() {
-	return indicator;
-    }
-
-    @Override
-    public String toString() {
-	String clause = "";
-	Iterator<PrologClause> i = iterator();
-	while (i.hasNext()) {
-	    clause += i.next() + "\n";
+	public void markDiscontiguous() {
+		Iterator<PrologClause> i = iterator();
+		while (i.hasNext()) {
+			PrologClause clause = i.next();
+			if (clause instanceof AbstractClause) {
+				((AbstractClause) clause).markDiscontiguous();
+			}
+		}
 	}
-	return clause;
-    }
+
+	public void unmarkDiscontiguous() {
+		Iterator<PrologClause> i = iterator();
+		while (i.hasNext()) {
+			PrologClause clause = i.next();
+			if (clause instanceof AbstractClause) {
+				((AbstractClause) clause).unmarkDiscontiguous();
+			}
+		}
+	}
+
+	public boolean isDiscontiguous() {
+		Iterator<PrologClause> i = iterator();
+		while (i.hasNext()) {
+			if (!i.next().isDiscontiguous()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public String getIndicator() {
+		return indicator;
+	}
+
+	@Override
+	public String toString() {
+		String clause = "";
+		Iterator<PrologClause> i = iterator();
+		while (i.hasNext()) {
+			clause += i.next() + "\n";
+		}
+		return clause;
+	}
 
 }

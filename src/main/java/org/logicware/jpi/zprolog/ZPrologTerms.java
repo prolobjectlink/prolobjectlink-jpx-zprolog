@@ -23,82 +23,82 @@ import org.logicware.jpi.PrologTerm;
 
 class ZPrologTerms {
 
-    /** current prolog term */
-    PrologTerm term;
+	/** current prolog term */
+	PrologTerm term;
 
-    /** next prolog terms */
-    ZPrologTerms next;
+	/** next prolog terms */
+	ZPrologTerms next;
 
-    ZPrologTerms() {
-    }
-
-    ZPrologTerms(PrologTerm head) {
-	this.term = head;
-    }
-
-    ZPrologTerms(PrologTerm term, ZPrologTerms next) {
-	this.term = term;
-	this.next = next;
-    }
-
-    public String toString() {
-	String string = "";
-	if (term != null) {
-	    string += term;
-	    ZPrologTerms termsPtr = next;
-	    while (termsPtr != null) {
-		string += ", " + termsPtr.term;
-		termsPtr = termsPtr.next;
-	    }
+	ZPrologTerms() {
 	}
-	return string;
-    }
 
-    @Override
-    public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((next == null) ? 0 : next.hashCode());
-	result = prime * result + ((term == null) ? 0 : term.hashCode());
-	return result;
-    }
+	ZPrologTerms(PrologTerm head) {
+		this.term = head;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-	if (this == obj)
-	    return true;
-	if (obj == null)
-	    return false;
-	if (getClass() != obj.getClass())
-	    return false;
-	ZPrologTerms other = (ZPrologTerms) obj;
-	if (next == null) {
-	    if (other.next != null)
-		return false;
-	} else if (!next.equals(other.next))
-	    return false;
-	if (term == null) {
-	    if (other.term != null)
-		return false;
-	} else if (!term.equals(other.term))
-	    return false;
-	return true;
-    }
+	ZPrologTerms(PrologTerm term, ZPrologTerms next) {
+		this.term = term;
+		this.next = next;
+	}
 
-    public final PrologTerm getHead() {
-	return term;
-    }
+	public String toString() {
+		String string = "";
+		if (term != null) {
+			string += term;
+			ZPrologTerms termsPtr = next;
+			while (termsPtr != null) {
+				string += ", " + termsPtr.term;
+				termsPtr = termsPtr.next;
+			}
+		}
+		return string;
+	}
 
-    public final String getFunctor() {
-	return term.getFunctor();
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((next == null) ? 0 : next.hashCode());
+		result = prime * result + ((term == null) ? 0 : term.hashCode());
+		return result;
+	}
 
-    public final int getArity() {
-	return term.getArity();
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ZPrologTerms other = (ZPrologTerms) obj;
+		if (next == null) {
+			if (other.next != null)
+				return false;
+		} else if (!next.equals(other.next))
+			return false;
+		if (term == null) {
+			if (other.term != null)
+				return false;
+		} else if (!term.equals(other.term))
+			return false;
+		return true;
+	}
 
-    public final String getIndicator() {
-	return term.getIndicator();
-    }
+	public final PrologTerm getHead() {
+		return term;
+	}
+
+	public final String getFunctor() {
+		return term.getFunctor();
+	}
+
+	public final int getArity() {
+		return term.getArity();
+	}
+
+	public final String getIndicator() {
+		return term.getIndicator();
+	}
 
 }

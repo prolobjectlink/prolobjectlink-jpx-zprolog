@@ -23,77 +23,77 @@ import java.util.Stack;
 
 final class ZPrologStack {
 
-    private int maxVarNumber;
-    private Stack<Object> stack;
+	private int maxVarNumber;
+	private Stack<Object> stack;
 
-    @Override
-    public String toString() {
-	String string = "";
-	if (stack != null) {
-	    for (int i = stack.size() - 1; i >= 0; i--) {
-		string += stack.get(i) + "\n";
-	    }
+	@Override
+	public String toString() {
+		String string = "";
+		if (stack != null) {
+			for (int i = stack.size() - 1; i >= 0; i--) {
+				string += stack.get(i) + "\n";
+			}
+		}
+		return string;
 	}
-	return string;
-    }
 
-    ZPrologStack() {
-	maxVarNumber = 0;
-	stack = new Stack<Object>();
-    }
-
-    Object pop() {
-	Object object = stack.pop();
-	if (object instanceof ZPrologTerm) {
-	    ZPrologTerm variable = (ZPrologTerm) object;
-	    if (!variable.isAnonymous()) {
-		maxVarNumber--;
-	    }
+	ZPrologStack() {
+		maxVarNumber = 0;
+		stack = new Stack<Object>();
 	}
-	return object;
-    }
 
-    void push(Object object) {
-	// checkOverflow();
-	stack.push(object);
-	if (object instanceof ZPrologTerm) {
-	    ZPrologTerm variable = (ZPrologTerm) object;
-	    if (!variable.isAnonymous()) {
-		maxVarNumber++;
-	    }
+	Object pop() {
+		Object object = stack.pop();
+		if (object instanceof ZPrologTerm) {
+			ZPrologTerm variable = (ZPrologTerm) object;
+			if (!variable.isAnonymous()) {
+				maxVarNumber--;
+			}
+		}
+		return object;
 	}
-    }
 
-    Object get(int index) {
-	return stack.get(index);
-    }
+	void push(Object object) {
+		// checkOverflow();
+		stack.push(object);
+		if (object instanceof ZPrologTerm) {
+			ZPrologTerm variable = (ZPrologTerm) object;
+			if (!variable.isAnonymous()) {
+				maxVarNumber++;
+			}
+		}
+	}
 
-    int size() {
-	return stack.size();
-    }
+	Object get(int index) {
+		return stack.get(index);
+	}
 
-    void clear() {
-	stack.clear();
-    }
+	int size() {
+		return stack.size();
+	}
 
-    boolean empty() {
-	return stack.empty();
-    }
+	void clear() {
+		stack.clear();
+	}
 
-    Object remove(int poistion) {
-	return stack.remove(poistion);
-    }
+	boolean empty() {
+		return stack.empty();
+	}
 
-    boolean remove(Object object) {
-	return stack.remove(object);
-    }
+	Object remove(int poistion) {
+		return stack.remove(poistion);
+	}
 
-    boolean contains(Object object) {
-	return stack.contains(object);
-    }
+	boolean remove(Object object) {
+		return stack.remove(object);
+	}
 
-    int getMaxVarNumber() {
-	return maxVarNumber;
-    }
+	boolean contains(Object object) {
+		return stack.contains(object);
+	}
+
+	int getMaxVarNumber() {
+		return maxVarNumber;
+	}
 
 }
