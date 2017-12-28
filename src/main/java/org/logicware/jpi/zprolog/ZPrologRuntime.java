@@ -98,9 +98,9 @@ import java.io.PrintWriter;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
@@ -807,7 +807,7 @@ abstract class ZPrologRuntime extends ZPrologMachine {
 		return op != null && priority == op.priority && specifier.equals(op.getSpecifier());
 	}
 
-	public Enumeration<PrologClause> getProgramClauses() {
+	public Iterator<PrologClause> getProgramIterator() {
 		Collection<PrologClauses> list = program.getClauses().values();
 		Collection<PrologClause> clauses = new LinkedList<PrologClause>();
 		for (PrologClauses prologClauses : list) {
@@ -815,7 +815,7 @@ abstract class ZPrologRuntime extends ZPrologMachine {
 				clauses.add(prologClause);
 			}
 		}
-		return new ZPrologClauseEnum(clauses);
+		return new PrologProgramIterator(clauses);
 	}
 
 }
