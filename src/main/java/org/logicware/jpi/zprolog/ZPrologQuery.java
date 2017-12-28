@@ -93,11 +93,9 @@ public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 		for (int i = 0; i < stack.size(); i++) {
 			if (stack.get(i) instanceof ZPrologTerm) {
 				ZPrologTerm v = (ZPrologTerm) stack.get(i);
-				if (!v.isAnonymous()) {
-					if (index < result.length) {
-						PrologTerm vValue = v.dereference();
-						result[index++] = vValue;
-					}
+				if (!v.isAnonymous() && index < result.length) {
+					PrologTerm vValue = v.dereference();
+					result[index++] = vValue;
 				}
 			}
 		}
@@ -121,7 +119,7 @@ public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 	}
 
 	public final PrologTerm[] nextSolution() {
-		hasSolution = hasSolution ? false : false;
+		hasSolution = false;
 		PrologTerm[] solution = oneSolution();
 		ZPrologEngine e = engine.unwrap(ZPrologEngine.class);
 		hasMoreSolution = (e.backtrack()) ? e.solve() : false;
@@ -129,7 +127,7 @@ public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 	}
 
 	public final Map<String, PrologTerm> nextVariablesSolution() {
-		hasSolution = hasSolution ? false : false;
+		hasSolution = false;
 		Map<String, PrologTerm> solution = oneVariablesSolution();
 		ZPrologEngine e = engine.unwrap(ZPrologEngine.class);
 		hasMoreSolution = e.backtrack() ? e.solve() : false;
@@ -139,9 +137,10 @@ public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 	public final PrologTerm[][] nSolutions(int n) {
 		if (n > 0) {
 			// m:solutionSize
-			int m = 0, index = 0;
+			int m = 0;
+			int index = 0;
 			ArrayList<PrologTerm[]> all = new ArrayList<PrologTerm[]>();
-			while (hasMoreElements() && index < n) {
+			while (hasMoreSolutions() && index < n) {
 				PrologTerm[] solution = nextSolution();
 				m = solution.length > m ? solution.length : m;
 				index++;
@@ -176,7 +175,8 @@ public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 
 	public final PrologTerm[][] allSolutions() {
 		// n:solutionCount, m:solutionSize
-		int n = 0, m = 0;
+		int n = 0;
+		int m = 0;
 		ArrayList<PrologTerm[]> all = new ArrayList<PrologTerm[]>();
 		while (hasMoreSolutions()) {
 			PrologTerm[] solution = nextSolution();

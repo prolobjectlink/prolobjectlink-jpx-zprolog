@@ -19,6 +19,20 @@
  */
 package org.logicware.jpi.zprolog;
 
+import static org.logicware.jpi.PrologTermType.ATOM_TYPE;
+import static org.logicware.jpi.PrologTermType.CUT_TYPE;
+import static org.logicware.jpi.PrologTermType.DOUBLE_TYPE;
+import static org.logicware.jpi.PrologTermType.EMPTY_TYPE;
+import static org.logicware.jpi.PrologTermType.FAIL_TYPE;
+import static org.logicware.jpi.PrologTermType.FALSE_TYPE;
+import static org.logicware.jpi.PrologTermType.FLOAT_TYPE;
+import static org.logicware.jpi.PrologTermType.INTEGER_TYPE;
+import static org.logicware.jpi.PrologTermType.LIST_TYPE;
+import static org.logicware.jpi.PrologTermType.LONG_TYPE;
+import static org.logicware.jpi.PrologTermType.NIL_TYPE;
+import static org.logicware.jpi.PrologTermType.STRUCTURE_TYPE;
+import static org.logicware.jpi.PrologTermType.TRUE_TYPE;
+import static org.logicware.jpi.PrologTermType.VARIABLE_TYPE;
 import static org.logicware.jpi.zprolog.ZPrologTerm.CUT_TERM;
 import static org.logicware.jpi.zprolog.ZPrologTerm.EMPTY_TERM;
 import static org.logicware.jpi.zprolog.ZPrologTerm.FAIL_TERM;
@@ -46,29 +60,29 @@ public class ZPrologConverter extends AbstractConverter<ZPrologTerm> implements 
 
 	public ZPrologTerm fromTerm(PrologTerm term) {
 		switch (term.getType()) {
-		case PrologTerm.NIL_TYPE:
+		case NIL_TYPE:
 			return NIL_TERM;
-		case PrologTerm.CUT_TYPE:
+		case CUT_TYPE:
 			return CUT_TERM;
-		case PrologTerm.FAIL_TYPE:
+		case FAIL_TYPE:
 			return FAIL_TERM;
-		case PrologTerm.TRUE_TYPE:
+		case TRUE_TYPE:
 			return TRUE_TERM;
-		case PrologTerm.FALSE_TYPE:
+		case FALSE_TYPE:
 			return FALSE_TERM;
-		case PrologTerm.EMPTY_TYPE:
+		case EMPTY_TYPE:
 			return EMPTY_TERM;
-		case PrologTerm.ATOM_TYPE:
+		case ATOM_TYPE:
 			return new ZPrologTerm(provider, ((PrologAtom) term).getStringValue());
-		case PrologTerm.FLOAT_TYPE:
+		case FLOAT_TYPE:
 			return new ZPrologTerm(provider, ((PrologFloat) term).getFloatValue());
-		case PrologTerm.INTEGER_TYPE:
+		case INTEGER_TYPE:
 			return new ZPrologTerm(provider, ((PrologInteger) term).getIntValue());
-		case PrologTerm.DOUBLE_TYPE:
+		case DOUBLE_TYPE:
 			return new ZPrologTerm(provider, ((PrologDouble) term).getDoubleValue());
-		case PrologTerm.LONG_TYPE:
+		case LONG_TYPE:
 			return new ZPrologTerm(provider, ((PrologLong) term).getLongValue());
-		case PrologTerm.VARIABLE_TYPE:
+		case VARIABLE_TYPE:
 			PrologVariable v = (PrologVariable) term;
 			String name = v.getName();
 			ZPrologTerm variable = sharedPrologVariables.get(name);
@@ -77,9 +91,9 @@ public class ZPrologConverter extends AbstractConverter<ZPrologTerm> implements 
 				sharedPrologVariables.put(name, variable);
 			}
 			return variable;
-		case PrologTerm.LIST_TYPE:
+		case LIST_TYPE:
 			return new ZPrologTerm(provider, term.getArguments());
-		case PrologTerm.STRUCTURE_TYPE:
+		case STRUCTURE_TYPE:
 			String functor = term.getFunctor();
 			return new ZPrologTerm(provider, functor, term.getArguments());
 		default:
@@ -100,9 +114,9 @@ public class ZPrologConverter extends AbstractConverter<ZPrologTerm> implements 
 		if (body != null && body.length > 0) {
 			ZPrologTerm clauseBody = fromTerm(body[body.length - 1]);
 			for (int i = body.length - 2; i >= 0; --i) {
-				clauseBody = new ZPrologTerm(provider, ",", new ZPrologTerm[] { fromTerm(body[i]), clauseBody });
+				clauseBody = new ZPrologTerm(provider, ",", fromTerm(body[i]), clauseBody);
 			}
-			return new ZPrologTerm(provider, ":-", new ZPrologTerm[] { clauseHead, clauseBody });
+			return new ZPrologTerm(provider, ":-", clauseHead, clauseBody);
 		}
 		return clauseHead;
 	}

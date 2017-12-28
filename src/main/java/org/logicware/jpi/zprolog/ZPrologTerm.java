@@ -19,6 +19,20 @@
  */
 package org.logicware.jpi.zprolog;
 
+import static org.logicware.jpi.PrologTermType.ATOM_TYPE;
+import static org.logicware.jpi.PrologTermType.CUT_TYPE;
+import static org.logicware.jpi.PrologTermType.DOUBLE_TYPE;
+import static org.logicware.jpi.PrologTermType.EMPTY_TYPE;
+import static org.logicware.jpi.PrologTermType.FAIL_TYPE;
+import static org.logicware.jpi.PrologTermType.FALSE_TYPE;
+import static org.logicware.jpi.PrologTermType.FLOAT_TYPE;
+import static org.logicware.jpi.PrologTermType.INTEGER_TYPE;
+import static org.logicware.jpi.PrologTermType.LIST_TYPE;
+import static org.logicware.jpi.PrologTermType.LONG_TYPE;
+import static org.logicware.jpi.PrologTermType.NIL_TYPE;
+import static org.logicware.jpi.PrologTermType.STRUCTURE_TYPE;
+import static org.logicware.jpi.PrologTermType.TRUE_TYPE;
+import static org.logicware.jpi.PrologTermType.VARIABLE_TYPE;
 import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_DIV;
 import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_MINUS;
 import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_PLUS;

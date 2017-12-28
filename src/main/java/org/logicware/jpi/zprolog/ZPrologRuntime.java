@@ -19,8 +19,8 @@
  */
 package org.logicware.jpi.zprolog;
 
-import static org.logicware.jpi.PrologTerm.ATOM_TYPE;
-import static org.logicware.jpi.PrologTerm.STRUCTURE_TYPE;
+import static org.logicware.jpi.PrologTermType.ATOM_TYPE;
+import static org.logicware.jpi.PrologTermType.STRUCTURE_TYPE;
 import static org.logicware.jpi.zprolog.ZPrologOperator.AFTER;
 import static org.logicware.jpi.zprolog.ZPrologOperator.AFTER_EQUALS;
 import static org.logicware.jpi.zprolog.ZPrologOperator.BEFORE;

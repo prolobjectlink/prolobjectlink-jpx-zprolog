@@ -19,6 +19,9 @@
  */
 package org.logicware.jpi.zprolog;
 
+import static org.logicware.jpi.PrologTermType.FALSE_TYPE;
+import static org.logicware.jpi.PrologTermType.TRUE_TYPE;
+
 import org.logicware.jpi.PrologProvider;
 import org.logicware.jpi.PrologTerm;
 
@@ -29,9 +32,8 @@ final class ZPrologFlag {
 
 	static final PrologProvider provider = new ZPrologProvider();
 
-	static PrologTerm TRUE = new ZPrologTerm(ZPrologToken.TOKEN_TRUE, PrologTerm.TRUE_TYPE, provider,
-			ZPrologBuiltin.TRUE_FUNCTOR);
-	static PrologTerm FALSE = new ZPrologTerm(ZPrologToken.TOKEN_FALSE, PrologTerm.FALSE_TYPE, provider,
+	static PrologTerm TRUE = new ZPrologTerm(ZPrologToken.TOKEN_TRUE, TRUE_TYPE, provider, ZPrologBuiltin.TRUE_FUNCTOR);
+	static PrologTerm FALSE = new ZPrologTerm(ZPrologToken.TOKEN_FALSE, FALSE_TYPE, provider,
 			ZPrologBuiltin.FALSE_FUNCTOR);
 
 	static PrologTerm ON = new ZPrologTerm(provider, "on");

@@ -21,6 +21,7 @@ package org.logicware.jpi.zprolog;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
+import static org.logicware.jpi.PrologTermType.EMPTY_TYPE;
 import static org.logicware.jpi.zprolog.ZPrologOperator.HIGH;
 import static org.logicware.jpi.zprolog.ZPrologOperator.LOW;
 
@@ -366,8 +367,7 @@ final class ZPrologParser extends ZPrologEngine {
 		else if (current.isLeftBracket()) {
 			advance();
 			if (current.isRightBracket()) {
-				term = new ZPrologTerm(ZPrologToken.TOKEN_EMPTY, ZPrologTerm.EMPTY_TYPE, provider,
-						ZPrologBuiltin.EMPTY_FUNCTOR);
+				term = new ZPrologTerm(ZPrologToken.TOKEN_EMPTY, EMPTY_TYPE, provider, ZPrologBuiltin.EMPTY_FUNCTOR);
 				advance();
 			} else {
 				ZPrologTerm[] arguments = exprs(HIGH);

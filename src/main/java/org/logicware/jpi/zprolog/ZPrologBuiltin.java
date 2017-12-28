@@ -19,7 +19,7 @@
  */
 package org.logicware.jpi.zprolog;
 
-import static org.logicware.jpi.PrologTerm.STRUCTURE_TYPE;
+import static org.logicware.jpi.PrologTermType.STRUCTURE_TYPE;
 import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_ENSURE_LOADED_BUILTIN;
 import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_INCLUDE_BUILTIN;
 import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_INITIALIZATION_BUILTIN;
@@ -192,6 +192,9 @@ public class ZPrologBuiltin {
 	// runtime statistics
 	static final String STATISTICS = "statistics";
 	static final String CURRENT_TIME = "current_time";
+
+	private ZPrologBuiltin() {
+	}
 
 	static PrologClauses include_1(PrologProvider provider) {
 		return new ZPrologClauses("include/1", new ZPrologClause(new ZPrologTerm(TOKEN_INCLUDE_BUILTIN, STRUCTURE_TYPE,

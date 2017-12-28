@@ -19,6 +19,8 @@
  */
 package org.logicware.jpi.zprolog;
 
+import static org.logicware.jpi.PrologTermType.EMPTY_TYPE;
+
 import org.logicware.jpi.AbstractProvider;
 import org.logicware.jpi.PrologAtom;
 import org.logicware.jpi.PrologConverter;
@@ -120,14 +122,14 @@ public final class ZPrologProvider extends AbstractProvider implements PrologPro
 	}
 
 	public PrologList newList() {
-		return new ZPrologTerm(ZPrologToken.TOKEN_EMPTY, ZPrologTerm.EMPTY_TYPE, this, ZPrologBuiltin.EMPTY_FUNCTOR);
+		return new ZPrologTerm(ZPrologToken.TOKEN_EMPTY, EMPTY_TYPE, this, ZPrologBuiltin.EMPTY_FUNCTOR);
 	}
 
 	public PrologList newList(PrologTerm[] arguments) {
 		if (arguments.length > 0) {
 			return new ZPrologTerm(this, arguments);
 		}
-		return new ZPrologTerm(ZPrologToken.TOKEN_EMPTY, ZPrologTerm.EMPTY_TYPE, this, ZPrologBuiltin.EMPTY_FUNCTOR);
+		return new ZPrologTerm(ZPrologToken.TOKEN_EMPTY, EMPTY_TYPE, this, ZPrologBuiltin.EMPTY_FUNCTOR);
 	}
 
 	public PrologList newList(PrologTerm head, PrologTerm tail) {
@@ -143,7 +145,7 @@ public final class ZPrologProvider extends AbstractProvider implements PrologPro
 		return new ZPrologTerm(this, functor, arguments);
 	}
 
-	public PrologTerm newExpression(PrologTerm left, String operator, PrologTerm right) {
+	public PrologTerm newStructure(PrologTerm left, String operator, PrologTerm right) {
 		return new ZPrologTerm(this, left, operator, right);
 	}
 
