@@ -807,7 +807,7 @@ abstract class ZPrologRuntime extends ZPrologMachine {
 		return op != null && priority == op.priority && specifier.equals(op.getSpecifier());
 	}
 
-	public Iterator<PrologClause> getProgramIterator() {
+	public Iterator<PrologClause> iterator() {
 		Collection<PrologClauses> list = program.getClauses().values();
 		Collection<PrologClause> clauses = new LinkedList<PrologClause>();
 		for (PrologClauses prologClauses : list) {

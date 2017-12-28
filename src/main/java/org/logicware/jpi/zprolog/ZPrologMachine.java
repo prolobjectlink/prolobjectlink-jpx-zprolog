@@ -22,11 +22,11 @@ package org.logicware.jpi.zprolog;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.logicware.jpi.JavaEngine;
+import org.logicware.jpi.AbstractEngine;
 import org.logicware.jpi.PrologProvider;
 import org.logicware.jpi.PrologTerm;
 
-abstract class ZPrologMachine extends JavaEngine {
+abstract class ZPrologMachine extends AbstractEngine {
 
 	// prolog flags container
 	private final Map<String, ZPrologFlag> flags;
