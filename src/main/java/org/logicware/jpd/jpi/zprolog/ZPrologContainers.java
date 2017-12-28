@@ -19,32 +19,26 @@
  */
 package org.logicware.jpd.jpi.zprolog;
 
-import org.logicware.jpd.Cache;
 import org.logicware.jpd.ContainerFactory;
-import org.logicware.jpd.Documents;
+import org.logicware.jpd.Containers;
 import org.logicware.jpd.Properties;
-import org.logicware.jpd.jpi.JPICache;
-import org.logicware.jpd.jpi.JPIDocuments;
+import org.logicware.jpd.jpi.PrologContainers;
 import org.logicware.jpi.zprolog.ZPrologProvider;
 
-public final class JPIZPrologDocuments extends JPIDocuments {
+public final class ZPrologContainers extends PrologContainers {
 
-	static final Documents instance = new JPIZPrologDocuments();
+	static final Containers instance = new ZPrologContainers();
 
-	protected JPIZPrologDocuments() {
+	protected ZPrologContainers() {
 		super(new Properties(), new ZPrologProvider());
 	}
 
-	public Documents getInstance() {
+	public Containers getInstance() {
 		return instance;
 	}
 
-	public Cache createCache() {
-		return new JPICache(getProvider());
-	}
-
 	public ContainerFactory createContainerFactory() {
-		return new JPIZPrologContainerFactory(getProperties(), getProvider());
+		return new ZPrologContainerFactory(getProperties(), getProvider());
 	}
 
 }
