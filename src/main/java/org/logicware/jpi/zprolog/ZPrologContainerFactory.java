@@ -17,13 +17,12 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpd.jpi.zprolog;
+package org.logicware.jpi.zprolog;
 
-import org.logicware.jpd.ContainerFactory;
-import org.logicware.jpd.Properties;
-import org.logicware.jpd.jpi.PrologContainerFactory;
+import org.logicware.ContainerFactory;
+import org.logicware.Properties;
+import org.logicware.jpi.PrologContainerFactory;
 import org.logicware.jpi.PrologProvider;
-import org.logicware.jpi.zprolog.ZPrologProvider;
 
 public final class ZPrologContainerFactory extends PrologContainerFactory {
 

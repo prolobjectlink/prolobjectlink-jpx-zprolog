@@ -19,7 +19,14 @@
  */
 package org.logicware.jpi.zprolog;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+import org.logicware.jpi.PredicateIndicator;
 import org.logicware.jpi.PrologClause;
+import org.logicware.jpi.PrologIndicator;
 import org.logicware.jpi.PrologTerm;
 
 public class ZPrologClause /* extends AbstractClause */ implements PrologClause {
@@ -62,6 +69,14 @@ public class ZPrologClause /* extends AbstractClause */ implements PrologClause 
 		}
 	}
 
+	public int getArity() {
+		return term.getArity();
+	}
+
+	public String getFunctor() {
+		return term.getFunctor();
+	}
+
 	public PrologTerm getTerm() {
 		return term;
 	}
@@ -72,14 +87,6 @@ public class ZPrologClause /* extends AbstractClause */ implements PrologClause 
 
 	public PrologTerm getBody() {
 		return next;
-	}
-
-	public String getFunctor() {
-		return term.getFunctor();
-	}
-
-	public int getArity() {
-		return term.getArity();
 	}
 
 	public String getIndicator() {
@@ -138,6 +145,27 @@ public class ZPrologClause /* extends AbstractClause */ implements PrologClause 
 		return term.unify(clause.getTerm());
 	}
 
+	public PrologTerm[] getBodyArray() {
+		PrologTerm ptr = getBody();
+		List<PrologTerm> terms = new ArrayList<PrologTerm>();
+		while (ptr.isCompound() && ptr.hasIndicator(",", 2)) {
+			terms.add(ptr.getArgument(0));
+			ptr = ptr.getArgument(1);
+		}
+		terms.add(ptr);
+		return terms.toArray(new PrologTerm[0]);
+	}
+
+	public PrologIndicator getPrologIndicator() {
+		int arity = getArity();
+		String functor = getFunctor();
+		return new PredicateIndicator(functor, arity);
+	}
+
+	public final Iterator<PrologTerm> getBodyIterator() {
+		return new BodyIterator(getBodyArray());
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -182,25 +210,58 @@ public class ZPrologClause /* extends AbstractClause */ implements PrologClause 
 	public String toString() {
 		if (isDirective()) {
 			PrologTerm b = next;
-			String clause = ":-";
+			StringBuilder buffer = new StringBuilder();
+			buffer.append(":-");
 			while (b.hasIndicator(",", 2)) {
-				clause += b.getArguments()[0];
-				clause += ",\n\t";
+				buffer.append(b.getArguments()[0]);
+				buffer.append(",\n\t");
 				b = b.getArguments()[1];
 			}
-			return clause + b + ".\n";
+			buffer.append(b);
+			buffer.append(".\n");
+			return "" + buffer + "";
 		} else if (isRule()) {
 			PrologTerm h = term;
 			PrologTerm b = next;
-			String clause = "" + h + " :- \n\t";
+			StringBuilder buffer = new StringBuilder();
+			buffer.append(h);
+			buffer.append(" :- \n\t");
 			while (b.hasIndicator(",", 2)) {
-				clause += b.getArguments()[0];
-				clause += ",\n\t";
+				buffer.append(b.getArguments()[0]);
+				buffer.append(",\n\t");
 				b = b.getArguments()[1];
 			}
-			return clause + b + ".\n";
+			buffer.append(b);
+			buffer.append(".\n");
+			return "" + buffer + "";
 		}
 		return "" + term + ".";
+	}
+
+	private class BodyIterator implements Iterator<PrologTerm> {
+
+		private int nextIndex;
+
+		private final PrologTerm[] elements;
+
+		protected BodyIterator(PrologTerm[] elements) {
+			this.elements = elements;
+		}
+
+		public boolean hasNext() {
+			return nextIndex < elements.length;
+		}
+
+		public PrologTerm next() {
+			if (!hasNext()) {
+				throw new NoSuchElementException();
+			}
+			return elements[nextIndex++];
+		}
+
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
 	}
 
 }

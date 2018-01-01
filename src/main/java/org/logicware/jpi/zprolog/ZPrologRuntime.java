@@ -106,6 +106,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.logicware.FileNotFoundError;
 import org.logicware.jpi.PredicateIndicator;
 import org.logicware.jpi.PrologClause;
 import org.logicware.jpi.PrologClauses;
@@ -114,7 +115,6 @@ import org.logicware.jpi.PrologOperator;
 import org.logicware.jpi.PrologProgram;
 import org.logicware.jpi.PrologProvider;
 import org.logicware.jpi.PrologTerm;
-import org.logicware.jpp.FileNotFoundError;
 
 abstract class ZPrologRuntime extends ZPrologMachine {
 
