@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,13 +17,13 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
-import static org.logicware.jpi.PrologTermType.EMPTY_TYPE;
-import static org.logicware.jpi.zprolog.ZPrologOperator.HIGH;
-import static org.logicware.jpi.zprolog.ZPrologOperator.LOW;
+import static org.logicware.prolog.PrologTermType.EMPTY_TYPE;
+import static org.logicware.prolog.zprolog.ZPrologOperator.HIGH;
+import static org.logicware.prolog.zprolog.ZPrologOperator.LOW;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,11 +36,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.logicware.jpi.PrologClause;
-import org.logicware.jpi.PrologGoal;
-import org.logicware.jpi.PrologProvider;
-import org.logicware.jpi.PrologTerm;
-import org.logicware.jpi.SyntaxError;
+import org.logicware.prolog.PrologClause;
+import org.logicware.prolog.PrologGoal;
+import org.logicware.prolog.PrologProvider;
+import org.logicware.prolog.PrologTerm;
+import org.logicware.prolog.SyntaxError;
 
 final class ZPrologParser extends ZPrologEngine {
 

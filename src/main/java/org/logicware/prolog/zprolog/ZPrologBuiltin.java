@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,15 +17,15 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
-import static org.logicware.jpi.PrologTermType.STRUCTURE_TYPE;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_ENSURE_LOADED_BUILTIN;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_INCLUDE_BUILTIN;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_INITIALIZATION_BUILTIN;
+import static org.logicware.prolog.PrologTermType.STRUCTURE_TYPE;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_ENSURE_LOADED_BUILTIN;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_INCLUDE_BUILTIN;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_INITIALIZATION_BUILTIN;
 
-import org.logicware.jpi.PrologClauses;
-import org.logicware.jpi.PrologProvider;
+import org.logicware.prolog.PrologClauses;
+import org.logicware.prolog.PrologProvider;
 
 public class ZPrologBuiltin {
 

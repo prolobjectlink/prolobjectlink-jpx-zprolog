@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.logicware</groupId>
-	<artifactId>prolobjectlink-zprolog</artifactId>
+	<artifactId>prolobjectlink-db-zprolog</artifactId>
 	<version>1.0.0</version>
-	<name>prolobjectlink-zprolog</name>
+	<name>prolobjectlink-db-zprolog</name>
 	<description>prolobjectlink-zprolog</description>
 
 	<url>http://www.logicware.org</url>
@@ -51,15 +51,11 @@
 		<downloadUrl>http://www.logicware.org/download</downloadUrl>
 	</distributionManagement>
 
-	<properties>
-		<project.version>1.0.0</project.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.logicware</groupId>
-			<artifactId>prolobjectlink</artifactId>
-			<version>${project.version}</version>
+			<artifactId>prolobjectlink-db</artifactId>
+			<version>[1.0.0, )</version>
 		</dependency>
 	</dependencies>
 
@@ -163,18 +159,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.codehaus.mojo</groupId> -->
-			<!-- <artifactId>appassembler-maven-plugin</artifactId> -->
-			<!-- <configuration> -->
-			<!-- <programs> -->
-			<!-- <program> -->
-			<!-- <mainClass>${project.groupId}.tuprolog.TuPrologEntryPoint</mainClass> -->
-			<!-- <name>jpi-2pl</name> -->
-			<!-- </program> -->
-			<!-- </programs> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
 		</plugins>
 	</build>
 
@@ -221,19 +205,6 @@
 					<targetJdk>1.5</targetJdk>
 				</configuration>
 			</plugin>
-
-			<!-- <plugin> -->
-			<!-- <groupId>org.codehaus.mojo</groupId> -->
-			<!-- <artifactId>cobertura-maven-plugin</artifactId> -->
-			<!-- <configuration> -->
-			<!-- <formats> -->
-			<!-- <format>html</format> -->
-			<!-- <format>xml</format> -->
-			<!-- </formats> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
-
-
 		</plugins>
 	</reporting>
 

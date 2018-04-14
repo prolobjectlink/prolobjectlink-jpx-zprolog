@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
 /**
  * A choice point is a block information that essentially characterize a

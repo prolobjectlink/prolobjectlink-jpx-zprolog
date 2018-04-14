@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,13 +17,13 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
-import static org.logicware.jpi.PrologTermType.FALSE_TYPE;
-import static org.logicware.jpi.PrologTermType.TRUE_TYPE;
+import static org.logicware.prolog.PrologTermType.FALSE_TYPE;
+import static org.logicware.prolog.PrologTermType.TRUE_TYPE;
 
-import org.logicware.jpi.PrologProvider;
-import org.logicware.jpi.PrologTerm;
+import org.logicware.prolog.PrologProvider;
+import org.logicware.prolog.PrologTerm;
 
 final class ZPrologFlag {
 

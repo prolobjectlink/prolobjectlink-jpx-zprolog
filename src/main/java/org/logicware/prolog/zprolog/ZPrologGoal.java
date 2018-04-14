@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,16 +17,16 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
 import java.util.Iterator;
 import java.util.Map;
 
-import org.logicware.jpi.PrologClause;
-import org.logicware.jpi.PrologClauses;
-import org.logicware.jpi.PrologGoal;
-import org.logicware.jpi.PrologProgram;
-import org.logicware.jpi.PrologTerm;
+import org.logicware.prolog.PrologClause;
+import org.logicware.prolog.PrologClauses;
+import org.logicware.prolog.PrologGoal;
+import org.logicware.prolog.PrologProgram;
+import org.logicware.prolog.PrologTerm;
 
 final class ZPrologGoal extends ZPrologClause implements PrologGoal {
 

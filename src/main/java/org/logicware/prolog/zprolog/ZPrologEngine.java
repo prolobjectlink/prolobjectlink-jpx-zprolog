@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,18 +17,18 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
 import java.util.Calendar;
 import java.util.List;
 
-import org.logicware.jpi.Licenses;
-import org.logicware.jpi.PrologClause;
-import org.logicware.jpi.PrologEngine;
-import org.logicware.jpi.PrologProgram;
-import org.logicware.jpi.PrologProvider;
-import org.logicware.jpi.PrologQuery;
-import org.logicware.jpi.PrologTerm;
+import org.logicware.prolog.Licenses;
+import org.logicware.prolog.PrologClause;
+import org.logicware.prolog.PrologEngine;
+import org.logicware.prolog.PrologProgram;
+import org.logicware.prolog.PrologProvider;
+import org.logicware.prolog.PrologQuery;
+import org.logicware.prolog.PrologTerm;
 
 public class ZPrologEngine extends ZPrologRuntime implements PrologEngine {
 

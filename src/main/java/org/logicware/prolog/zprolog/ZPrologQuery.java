@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,18 +17,19 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.logicware.RuntimeError;
-import org.logicware.jpi.AbstractQuery;
-import org.logicware.jpi.PrologEngine;
-import org.logicware.jpi.PrologProvider;
-import org.logicware.jpi.PrologQuery;
-import org.logicware.jpi.PrologTerm;
+import org.logicware.prolog.AbstractQuery;
+import org.logicware.prolog.PrologEngine;
+import org.logicware.prolog.PrologProvider;
+import org.logicware.prolog.PrologQuery;
+import org.logicware.prolog.PrologTerm;
 
 public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 
@@ -139,7 +140,7 @@ public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 			// m:solutionSize
 			int m = 0;
 			int index = 0;
-			ArrayList<PrologTerm[]> all = new ArrayList<PrologTerm[]>();
+			List<PrologTerm[]> all = new ArrayList<PrologTerm[]>();
 			while (hasMoreSolutions() && index < n) {
 				PrologTerm[] solution = nextSolution();
 				m = solution.length > m ? solution.length : m;
@@ -177,7 +178,7 @@ public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 		// n:solutionCount, m:solutionSize
 		int n = 0;
 		int m = 0;
-		ArrayList<PrologTerm[]> all = new ArrayList<PrologTerm[]>();
+		List<PrologTerm[]> all = new ArrayList<PrologTerm[]>();
 		while (hasMoreSolutions()) {
 			PrologTerm[] solution = nextSolution();
 			m = solution.length > m ? solution.length : m;
@@ -196,7 +197,7 @@ public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 	}
 
 	public final Map<String, PrologTerm>[] allVariablesSolutions() {
-		ArrayList<Map<String, PrologTerm>> allVariables = new ArrayList<Map<String, PrologTerm>>();
+		List<Map<String, PrologTerm>> allVariables = new ArrayList<Map<String, PrologTerm>>();
 		while (hasMoreSolutions()) {
 			Map<String, PrologTerm> variables = nextVariablesSolution();
 			allVariables.add(variables);

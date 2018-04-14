@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,23 +17,23 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
-import static org.logicware.jpi.PrologTermType.EMPTY_TYPE;
+import static org.logicware.prolog.PrologTermType.EMPTY_TYPE;
 
-import org.logicware.jpi.AbstractProvider;
-import org.logicware.jpi.PrologAtom;
-import org.logicware.jpi.PrologConverter;
-import org.logicware.jpi.PrologDouble;
-import org.logicware.jpi.PrologEngine;
-import org.logicware.jpi.PrologFloat;
-import org.logicware.jpi.PrologInteger;
-import org.logicware.jpi.PrologList;
-import org.logicware.jpi.PrologLong;
-import org.logicware.jpi.PrologProvider;
-import org.logicware.jpi.PrologStructure;
-import org.logicware.jpi.PrologTerm;
-import org.logicware.jpi.PrologVariable;
+import org.logicware.prolog.AbstractProvider;
+import org.logicware.prolog.PrologAtom;
+import org.logicware.prolog.PrologConverter;
+import org.logicware.prolog.PrologDouble;
+import org.logicware.prolog.PrologEngine;
+import org.logicware.prolog.PrologFloat;
+import org.logicware.prolog.PrologInteger;
+import org.logicware.prolog.PrologList;
+import org.logicware.prolog.PrologLong;
+import org.logicware.prolog.PrologProvider;
+import org.logicware.prolog.PrologStructure;
+import org.logicware.prolog.PrologTerm;
+import org.logicware.prolog.PrologVariable;
 
 public final class ZPrologProvider extends AbstractProvider implements PrologProvider {
 

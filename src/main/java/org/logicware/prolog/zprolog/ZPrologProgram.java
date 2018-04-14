@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
 import java.util.AbstractSet;
 import java.util.Iterator;
@@ -27,10 +27,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.logicware.jpi.PrologClause;
-import org.logicware.jpi.PrologClauses;
-import org.logicware.jpi.PrologGoal;
-import org.logicware.jpi.PrologProgram;
+import org.logicware.prolog.PrologClause;
+import org.logicware.prolog.PrologClauses;
+import org.logicware.prolog.PrologGoal;
+import org.logicware.prolog.PrologProgram;
 
 public final class ZPrologProgram extends AbstractSet<PrologClauses> implements PrologProgram {
 

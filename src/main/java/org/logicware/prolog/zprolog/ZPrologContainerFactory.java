@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,29 +17,15 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
-import org.logicware.ContainerFactory;
-import org.logicware.Properties;
-import org.logicware.jpi.PrologContainerFactory;
-import org.logicware.jpi.PrologProvider;
+import org.logicware.Settings;
+import org.logicware.prolog.PrologContainerFactory;
 
 public final class ZPrologContainerFactory extends PrologContainerFactory {
 
-	public ZPrologContainerFactory() {
-		this(new Properties());
-	}
-
-	public ZPrologContainerFactory(Properties properties) {
-		super(properties, new ZPrologProvider());
-	}
-
-	public ZPrologContainerFactory(Properties properties, PrologProvider provider) {
-		super(properties, provider);
-	}
-
-	public ContainerFactory createContainerFactory() {
-		return this;
+	public ZPrologContainerFactory(Settings settings) {
+		super(settings, new ZPrologProvider());
 	}
 
 }

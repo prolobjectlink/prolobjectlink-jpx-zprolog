@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,17 +17,17 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.logicware.jpi.PredicateIndicator;
-import org.logicware.jpi.PrologClause;
-import org.logicware.jpi.PrologIndicator;
-import org.logicware.jpi.PrologTerm;
+import org.logicware.prolog.PredicateIndicator;
+import org.logicware.prolog.PrologClause;
+import org.logicware.prolog.PrologIndicator;
+import org.logicware.prolog.PrologTerm;
 
 public class ZPrologClause /* extends AbstractClause */ implements PrologClause {
 

@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,10 +17,10 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
-import org.logicware.jpi.PrologOperator;
-import org.logicware.jpi.PrologProvider;
+import org.logicware.prolog.PrologOperator;
+import org.logicware.prolog.PrologProvider;
 
 public final class ZPrologOperator extends ZPrologToken implements PrologOperator {
 

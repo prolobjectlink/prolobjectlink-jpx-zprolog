@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,79 +17,79 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
-import static org.logicware.jpi.PrologTermType.ATOM_TYPE;
-import static org.logicware.jpi.PrologTermType.STRUCTURE_TYPE;
-import static org.logicware.jpi.zprolog.ZPrologOperator.AFTER;
-import static org.logicware.jpi.zprolog.ZPrologOperator.AFTER_EQUALS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.BEFORE;
-import static org.logicware.jpi.zprolog.ZPrologOperator.BEFORE_EQUALS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.BITWISE_AND;
-import static org.logicware.jpi.zprolog.ZPrologOperator.BITWISE_COMPLEMENT;
-import static org.logicware.jpi.zprolog.ZPrologOperator.BITWISE_OR;
-import static org.logicware.jpi.zprolog.ZPrologOperator.BITWISE_SHIFT_LEFT;
-import static org.logicware.jpi.zprolog.ZPrologOperator.BITWISE_SHIFT_RIGHT;
-import static org.logicware.jpi.zprolog.ZPrologOperator.BITWISE_XOR;
-import static org.logicware.jpi.zprolog.ZPrologOperator.COMMA;
-import static org.logicware.jpi.zprolog.ZPrologOperator.DIV;
-import static org.logicware.jpi.zprolog.ZPrologOperator.EQUAL;
-import static org.logicware.jpi.zprolog.ZPrologOperator.EQUIVALENT;
-import static org.logicware.jpi.zprolog.ZPrologOperator.FLOAT_POW;
-import static org.logicware.jpi.zprolog.ZPrologOperator.GREATER;
-import static org.logicware.jpi.zprolog.ZPrologOperator.GREATER_EQUAL;
-import static org.logicware.jpi.zprolog.ZPrologOperator.IF_THEN;
-import static org.logicware.jpi.zprolog.ZPrologOperator.INTEGER_DIV;
-import static org.logicware.jpi.zprolog.ZPrologOperator.INT_FLOAT_POW;
-import static org.logicware.jpi.zprolog.ZPrologOperator.IS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.LESS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.LESS_EQUAL;
-import static org.logicware.jpi.zprolog.ZPrologOperator.MINUS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.MOD;
-import static org.logicware.jpi.zprolog.ZPrologOperator.NECK;
-import static org.logicware.jpi.zprolog.ZPrologOperator.NOT;
-import static org.logicware.jpi.zprolog.ZPrologOperator.NOT_EQUAL;
-import static org.logicware.jpi.zprolog.ZPrologOperator.NOT_EQUIVALENT;
-import static org.logicware.jpi.zprolog.ZPrologOperator.NOT_UNIFY;
-import static org.logicware.jpi.zprolog.ZPrologOperator.PLUS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.QUERY;
-import static org.logicware.jpi.zprolog.ZPrologOperator.REM;
-import static org.logicware.jpi.zprolog.ZPrologOperator.SEMICOLON;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TIMES;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_DIV;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_EQUAL;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_GREATER;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_GREATER_EQUAL;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_IS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_LESS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_LESS_EQUAL;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_MINUS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_MOD;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_NOT_EQUAL;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_NOT_UNIFY;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_PLUS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_TIMES;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_UNIFY;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_USER_DEFINED;
-import static org.logicware.jpi.zprolog.ZPrologOperator.UNIFY;
-import static org.logicware.jpi.zprolog.ZPrologOperator.UNIV;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_CALL;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_COMMA;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_CURRENT_TIME;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_CUT;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_E;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_ENSURE_LOADED_BUILTIN;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_FAIL;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_FALSE;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_HALT_BUILTIN;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_IF_THEN;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_INITIALIZATION_BUILTIN;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_NL;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_SEMICOLON;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_THROW_BUILTIN;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_TRUE;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_UNIFY_WITH_OCCURS_CHECK_BUILTIN;
-import static org.logicware.jpi.zprolog.ZPrologToken.TOKEN_WRITE;
+import static org.logicware.prolog.PrologTermType.ATOM_TYPE;
+import static org.logicware.prolog.PrologTermType.STRUCTURE_TYPE;
+import static org.logicware.prolog.zprolog.ZPrologOperator.AFTER;
+import static org.logicware.prolog.zprolog.ZPrologOperator.AFTER_EQUALS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.BEFORE;
+import static org.logicware.prolog.zprolog.ZPrologOperator.BEFORE_EQUALS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.BITWISE_AND;
+import static org.logicware.prolog.zprolog.ZPrologOperator.BITWISE_COMPLEMENT;
+import static org.logicware.prolog.zprolog.ZPrologOperator.BITWISE_OR;
+import static org.logicware.prolog.zprolog.ZPrologOperator.BITWISE_SHIFT_LEFT;
+import static org.logicware.prolog.zprolog.ZPrologOperator.BITWISE_SHIFT_RIGHT;
+import static org.logicware.prolog.zprolog.ZPrologOperator.BITWISE_XOR;
+import static org.logicware.prolog.zprolog.ZPrologOperator.COMMA;
+import static org.logicware.prolog.zprolog.ZPrologOperator.DIV;
+import static org.logicware.prolog.zprolog.ZPrologOperator.EQUAL;
+import static org.logicware.prolog.zprolog.ZPrologOperator.EQUIVALENT;
+import static org.logicware.prolog.zprolog.ZPrologOperator.FLOAT_POW;
+import static org.logicware.prolog.zprolog.ZPrologOperator.GREATER;
+import static org.logicware.prolog.zprolog.ZPrologOperator.GREATER_EQUAL;
+import static org.logicware.prolog.zprolog.ZPrologOperator.IF_THEN;
+import static org.logicware.prolog.zprolog.ZPrologOperator.INTEGER_DIV;
+import static org.logicware.prolog.zprolog.ZPrologOperator.INT_FLOAT_POW;
+import static org.logicware.prolog.zprolog.ZPrologOperator.IS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.LESS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.LESS_EQUAL;
+import static org.logicware.prolog.zprolog.ZPrologOperator.MINUS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.MOD;
+import static org.logicware.prolog.zprolog.ZPrologOperator.NECK;
+import static org.logicware.prolog.zprolog.ZPrologOperator.NOT;
+import static org.logicware.prolog.zprolog.ZPrologOperator.NOT_EQUAL;
+import static org.logicware.prolog.zprolog.ZPrologOperator.NOT_EQUIVALENT;
+import static org.logicware.prolog.zprolog.ZPrologOperator.NOT_UNIFY;
+import static org.logicware.prolog.zprolog.ZPrologOperator.PLUS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.QUERY;
+import static org.logicware.prolog.zprolog.ZPrologOperator.REM;
+import static org.logicware.prolog.zprolog.ZPrologOperator.SEMICOLON;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TIMES;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_DIV;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_EQUAL;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_GREATER;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_GREATER_EQUAL;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_IS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_LESS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_LESS_EQUAL;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_MINUS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_MOD;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_NOT_EQUAL;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_NOT_UNIFY;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_PLUS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_TIMES;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_UNIFY;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_USER_DEFINED;
+import static org.logicware.prolog.zprolog.ZPrologOperator.UNIFY;
+import static org.logicware.prolog.zprolog.ZPrologOperator.UNIV;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_CALL;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_COMMA;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_CURRENT_TIME;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_CUT;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_E;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_ENSURE_LOADED_BUILTIN;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_FAIL;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_FALSE;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_HALT_BUILTIN;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_IF_THEN;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_INITIALIZATION_BUILTIN;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_NL;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_SEMICOLON;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_THROW_BUILTIN;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_TRUE;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_UNIFY_WITH_OCCURS_CHECK_BUILTIN;
+import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_WRITE;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -107,14 +107,14 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import org.logicware.FileNotFoundError;
-import org.logicware.jpi.PredicateIndicator;
-import org.logicware.jpi.PrologClause;
-import org.logicware.jpi.PrologClauses;
-import org.logicware.jpi.PrologIndicator;
-import org.logicware.jpi.PrologOperator;
-import org.logicware.jpi.PrologProgram;
-import org.logicware.jpi.PrologProvider;
-import org.logicware.jpi.PrologTerm;
+import org.logicware.prolog.PredicateIndicator;
+import org.logicware.prolog.PrologClause;
+import org.logicware.prolog.PrologClauses;
+import org.logicware.prolog.PrologIndicator;
+import org.logicware.prolog.PrologOperator;
+import org.logicware.prolog.PrologProgram;
+import org.logicware.prolog.PrologProvider;
+import org.logicware.prolog.PrologTerm;
 
 abstract class ZPrologRuntime extends ZPrologMachine {
 

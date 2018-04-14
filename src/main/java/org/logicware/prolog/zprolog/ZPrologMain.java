@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,10 +25,10 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.Map;
 
-import org.logicware.jpi.PrologEngine;
-import org.logicware.jpi.PrologProvider;
-import org.logicware.jpi.PrologQuery;
-import org.logicware.jpi.PrologTerm;
+import org.logicware.prolog.PrologEngine;
+import org.logicware.prolog.PrologProvider;
+import org.logicware.prolog.PrologQuery;
+import org.logicware.prolog.PrologTerm;
 
 class ZPrologMain {
 

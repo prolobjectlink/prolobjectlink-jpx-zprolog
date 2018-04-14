@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-zprolog
+ * prolobjectlink-db-zprolog
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -17,45 +17,45 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.jpi.zprolog;
+package org.logicware.prolog.zprolog;
 
-import static org.logicware.jpi.PrologTermType.ATOM_TYPE;
-import static org.logicware.jpi.PrologTermType.CUT_TYPE;
-import static org.logicware.jpi.PrologTermType.DOUBLE_TYPE;
-import static org.logicware.jpi.PrologTermType.EMPTY_TYPE;
-import static org.logicware.jpi.PrologTermType.FAIL_TYPE;
-import static org.logicware.jpi.PrologTermType.FALSE_TYPE;
-import static org.logicware.jpi.PrologTermType.FLOAT_TYPE;
-import static org.logicware.jpi.PrologTermType.INTEGER_TYPE;
-import static org.logicware.jpi.PrologTermType.LIST_TYPE;
-import static org.logicware.jpi.PrologTermType.LONG_TYPE;
-import static org.logicware.jpi.PrologTermType.NIL_TYPE;
-import static org.logicware.jpi.PrologTermType.STRUCTURE_TYPE;
-import static org.logicware.jpi.PrologTermType.TRUE_TYPE;
-import static org.logicware.jpi.PrologTermType.VARIABLE_TYPE;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_DIV;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_MINUS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_PLUS;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_REM;
-import static org.logicware.jpi.zprolog.ZPrologOperator.TOKEN_TIMES;
+import static org.logicware.prolog.PrologTermType.ATOM_TYPE;
+import static org.logicware.prolog.PrologTermType.CUT_TYPE;
+import static org.logicware.prolog.PrologTermType.DOUBLE_TYPE;
+import static org.logicware.prolog.PrologTermType.EMPTY_TYPE;
+import static org.logicware.prolog.PrologTermType.FAIL_TYPE;
+import static org.logicware.prolog.PrologTermType.FALSE_TYPE;
+import static org.logicware.prolog.PrologTermType.FLOAT_TYPE;
+import static org.logicware.prolog.PrologTermType.INTEGER_TYPE;
+import static org.logicware.prolog.PrologTermType.LIST_TYPE;
+import static org.logicware.prolog.PrologTermType.LONG_TYPE;
+import static org.logicware.prolog.PrologTermType.NIL_TYPE;
+import static org.logicware.prolog.PrologTermType.STRUCTURE_TYPE;
+import static org.logicware.prolog.PrologTermType.TRUE_TYPE;
+import static org.logicware.prolog.PrologTermType.VARIABLE_TYPE;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_DIV;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_MINUS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_PLUS;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_REM;
+import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_TIMES;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.logicware.jpi.AbstractTerm;
-import org.logicware.jpi.CompoundExpectedError;
-import org.logicware.jpi.IndicatorError;
-import org.logicware.jpi.PrologAtom;
-import org.logicware.jpi.PrologDouble;
-import org.logicware.jpi.PrologFloat;
-import org.logicware.jpi.PrologInteger;
-import org.logicware.jpi.PrologList;
-import org.logicware.jpi.PrologLong;
-import org.logicware.jpi.PrologProvider;
-import org.logicware.jpi.PrologStructure;
-import org.logicware.jpi.PrologTerm;
-import org.logicware.jpi.PrologVariable;
+import org.logicware.prolog.AbstractTerm;
+import org.logicware.prolog.CompoundExpectedError;
+import org.logicware.prolog.IndicatorError;
+import org.logicware.prolog.PrologAtom;
+import org.logicware.prolog.PrologDouble;
+import org.logicware.prolog.PrologFloat;
+import org.logicware.prolog.PrologInteger;
+import org.logicware.prolog.PrologList;
+import org.logicware.prolog.PrologLong;
+import org.logicware.prolog.PrologProvider;
+import org.logicware.prolog.PrologStructure;
+import org.logicware.prolog.PrologTerm;
+import org.logicware.prolog.PrologVariable;
 
 public class ZPrologTerm extends AbstractTerm implements PrologTerm, PrologAtom, PrologStructure, PrologList,
 		PrologVariable, PrologInteger, PrologLong, PrologFloat, PrologDouble {
@@ -740,6 +740,13 @@ public class ZPrologTerm extends AbstractTerm implements PrologTerm, PrologAtom,
 			return new PrologListIterator(this);
 		}
 		throw new CompoundExpectedError(this);
+	}
+
+	public final PrologTerm getTerm() {
+		if (isVariableBound()) {
+			return dereference();
+		}
+		return this;
 	}
 
 	/**
