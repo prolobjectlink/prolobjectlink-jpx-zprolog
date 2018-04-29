@@ -257,4 +257,13 @@ public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 		this.hasMoreSolution = false;
 	}
 
+	public final List<Map<String, PrologTerm>> all() {
+		List<Map<String, PrologTerm>> allVariables = new ArrayList<Map<String, PrologTerm>>();
+		while (hasMoreSolutions()) {
+			Map<String, PrologTerm> variables = nextVariablesSolution();
+			allVariables.add(variables);
+		}
+		return allVariables;
+	}
+
 }
