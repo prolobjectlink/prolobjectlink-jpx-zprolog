@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.logicware.RuntimeError;
+import org.logicware.prolog.AbstractEngine;
 import org.logicware.prolog.AbstractQuery;
-import org.logicware.prolog.PrologEngine;
 import org.logicware.prolog.PrologProvider;
 import org.logicware.prolog.PrologQuery;
 import org.logicware.prolog.PrologTerm;
@@ -45,7 +45,7 @@ public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 	// flag that indicate if more solutions are possible
 	private boolean hasMoreSolution;
 
-	ZPrologQuery(PrologEngine engine, String query) {
+	ZPrologQuery(AbstractEngine engine, String query) {
 		super(engine);
 		this.query = query;
 		PrologProvider provider = engine.getProvider();
@@ -53,7 +53,7 @@ public final class ZPrologQuery extends AbstractQuery implements PrologQuery {
 		hasSolution = engine.unwrap(ZPrologEngine.class).run(goal);
 	}
 
-	ZPrologQuery(PrologEngine engine, PrologTerm... goals) {
+	ZPrologQuery(AbstractEngine engine, PrologTerm... goals) {
 		super(engine);
 		goal = new ZPrologGoal(goals);
 		this.query = "" + goal + "";
