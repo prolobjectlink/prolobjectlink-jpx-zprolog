@@ -22,9 +22,9 @@ package org.logicware.prolog.zprolog;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.logicware.prolog.AbstractEngine;
-import org.logicware.prolog.PrologProvider;
-import org.logicware.prolog.PrologTerm;
+import org.logicware.pdb.prolog.AbstractEngine;
+import org.logicware.pdb.prolog.PrologProvider;
+import org.logicware.pdb.prolog.PrologTerm;
 
 abstract class ZPrologMachine extends AbstractEngine {
 

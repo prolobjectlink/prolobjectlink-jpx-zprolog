@@ -19,20 +19,20 @@
  */
 package org.logicware.prolog.zprolog;
 
-import static org.logicware.prolog.PrologTermType.ATOM_TYPE;
-import static org.logicware.prolog.PrologTermType.CUT_TYPE;
-import static org.logicware.prolog.PrologTermType.DOUBLE_TYPE;
-import static org.logicware.prolog.PrologTermType.EMPTY_TYPE;
-import static org.logicware.prolog.PrologTermType.FAIL_TYPE;
-import static org.logicware.prolog.PrologTermType.FALSE_TYPE;
-import static org.logicware.prolog.PrologTermType.FLOAT_TYPE;
-import static org.logicware.prolog.PrologTermType.INTEGER_TYPE;
-import static org.logicware.prolog.PrologTermType.LIST_TYPE;
-import static org.logicware.prolog.PrologTermType.LONG_TYPE;
-import static org.logicware.prolog.PrologTermType.NIL_TYPE;
-import static org.logicware.prolog.PrologTermType.STRUCTURE_TYPE;
-import static org.logicware.prolog.PrologTermType.TRUE_TYPE;
-import static org.logicware.prolog.PrologTermType.VARIABLE_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.ATOM_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.CUT_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.DOUBLE_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.EMPTY_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.FAIL_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.FALSE_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.FLOAT_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.INTEGER_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.LIST_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.LONG_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.NIL_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.STRUCTURE_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.TRUE_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.VARIABLE_TYPE;
 import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_DIV;
 import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_MINUS;
 import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_PLUS;
@@ -43,19 +43,19 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.logicware.prolog.AbstractTerm;
-import org.logicware.prolog.CompoundExpectedError;
-import org.logicware.prolog.IndicatorError;
-import org.logicware.prolog.PrologAtom;
-import org.logicware.prolog.PrologDouble;
-import org.logicware.prolog.PrologFloat;
-import org.logicware.prolog.PrologInteger;
-import org.logicware.prolog.PrologList;
-import org.logicware.prolog.PrologLong;
-import org.logicware.prolog.PrologProvider;
-import org.logicware.prolog.PrologStructure;
-import org.logicware.prolog.PrologTerm;
-import org.logicware.prolog.PrologVariable;
+import org.logicware.pdb.prolog.AbstractTerm;
+import org.logicware.pdb.prolog.CompoundExpectedError;
+import org.logicware.pdb.prolog.IndicatorError;
+import org.logicware.pdb.prolog.PrologAtom;
+import org.logicware.pdb.prolog.PrologDouble;
+import org.logicware.pdb.prolog.PrologFloat;
+import org.logicware.pdb.prolog.PrologInteger;
+import org.logicware.pdb.prolog.PrologList;
+import org.logicware.pdb.prolog.PrologLong;
+import org.logicware.pdb.prolog.PrologProvider;
+import org.logicware.pdb.prolog.PrologStructure;
+import org.logicware.pdb.prolog.PrologTerm;
+import org.logicware.pdb.prolog.PrologVariable;
 
 public class ZPrologTerm extends AbstractTerm implements PrologTerm, PrologAtom, PrologStructure, PrologList,
 		PrologVariable, PrologInteger, PrologLong, PrologFloat, PrologDouble {
@@ -540,17 +540,14 @@ public class ZPrologTerm extends AbstractTerm implements PrologTerm, PrologAtom,
 	}
 
 	public final int getArity() {
-		assertHasArity();
 		return arity;
 	}
 
 	public final String getFunctor() {
-		assertHasFunctor();
 		return functor;
 	}
 
 	public final PrologTerm[] getArguments() {
-		assertCompound();
 		int size = size();
 		PrologTerm[] a = new PrologTerm[size];
 		for (int i = 0; i < a.length; i++) {
@@ -560,7 +557,6 @@ public class ZPrologTerm extends AbstractTerm implements PrologTerm, PrologAtom,
 	}
 
 	public final PrologTerm getArgument(int index) {
-		assertCompound();
 		switch (type) {
 		case STRUCTURE_TYPE:
 			checkIndex(index, arity);
@@ -900,72 +896,58 @@ public class ZPrologTerm extends AbstractTerm implements PrologTerm, PrologAtom,
 	}
 
 	public final int getIntValue() {
-		assertNumber();
 		return number.intValue();
 	}
 
 	public final long getLongValue() {
-		assertNumber();
 		return number.longValue();
 	}
 
 	public final float getFloatValue() {
-		assertNumber();
 		return number.floatValue();
 	}
 
 	public final double getDoubleValue() {
-		assertNumber();
 		return number.doubleValue();
 	}
 
 	public final PrologFloat getPrologFloat() {
-		assertNumber();
 		return new ZPrologTerm(provider, getFloatValue());
 	}
 
 	public final PrologInteger getPrologInteger() {
-		assertNumber();
 		return new ZPrologTerm(provider, getIntValue());
 	}
 
 	public final PrologDouble getPrologDouble() {
-		assertNumber();
 		return new ZPrologTerm(provider, getDoubleValue());
 	}
 
 	public final PrologLong getPrologLong() {
-		assertNumber();
 		return new ZPrologTerm(provider, getLongValue());
 	}
 
 	public final String getStringValue() {
-		assertAtom();
 		return functor;
 	}
 
 	public final void setStringValue(String value) {
-		assertAtom();
 		functor = value;
 	}
 
 	public final boolean isAnonymous() {
-		assertVariable();
 		return vName.equals(ANONYMOUS);
 	}
 
 	public final String getName() {
-		assertVariable();
 		return vName;
 	}
 
 	public final void setName(String name) {
-		assertVariable();
 		vName = name;
 	}
 
 	public final int size() {
-		assertCompound();
 		int counter = 0;
 		switch (type) {
 		case STRUCTURE_TYPE:
@@ -985,7 +967,6 @@ public class ZPrologTerm extends AbstractTerm implements PrologTerm, PrologAtom,
 	}
 
 	public final void clear() {
-		assertList();
 		arity = 0;
 		type = EMPTY_TYPE;
 		id = ZPrologToken.TOKEN_EMPTY;
@@ -994,7 +975,6 @@ public class ZPrologTerm extends AbstractTerm implements PrologTerm, PrologAtom,
 	}
 
 	public final boolean isEmpty() {
-		assertList();
 		return type == EMPTY_TYPE;
 	}
 

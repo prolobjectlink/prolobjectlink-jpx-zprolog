@@ -19,13 +19,13 @@
  */
 package org.logicware.prolog.zprolog;
 
-import static org.logicware.prolog.PrologTermType.STRUCTURE_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.STRUCTURE_TYPE;
 import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_ENSURE_LOADED_BUILTIN;
 import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_INCLUDE_BUILTIN;
 import static org.logicware.prolog.zprolog.ZPrologToken.TOKEN_INITIALIZATION_BUILTIN;
 
-import org.logicware.prolog.PrologClauses;
-import org.logicware.prolog.PrologProvider;
+import org.logicware.pdb.prolog.PrologClauses;
+import org.logicware.pdb.prolog.PrologProvider;
 
 public class ZPrologBuiltin {
 

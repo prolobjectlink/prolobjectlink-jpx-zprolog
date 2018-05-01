@@ -19,8 +19,8 @@
  */
 package org.logicware.prolog.zprolog;
 
-import org.logicware.prolog.PrologOperator;
-import org.logicware.prolog.PrologProvider;
+import org.logicware.pdb.prolog.PrologOperator;
+import org.logicware.pdb.prolog.PrologProvider;
 
 public final class ZPrologOperator extends ZPrologToken implements PrologOperator {
 

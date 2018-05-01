@@ -19,13 +19,18 @@
  */
 package org.logicware.prolog.zprolog;
 
-import org.logicware.Settings;
-import org.logicware.prolog.PrologContainerFactory;
+import org.logicware.pdb.HierarchicalCache;
+import org.logicware.pdb.Settings;
+import org.logicware.pdb.prolog.PrologContainerFactory;
 
 public final class ZPrologContainerFactory extends PrologContainerFactory {
 
 	public ZPrologContainerFactory(Settings settings) {
 		super(settings, new ZPrologProvider());
+	}
+
+	public HierarchicalCache createHierarchicalCache() {
+		return new ZPrologHierarchicalCache(getProvider(), getSettings(), this);
 	}
 
 }

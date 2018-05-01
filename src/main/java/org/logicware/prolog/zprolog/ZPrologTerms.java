@@ -19,7 +19,7 @@
  */
 package org.logicware.prolog.zprolog;
 
-import org.logicware.prolog.PrologTerm;
+import org.logicware.pdb.prolog.PrologTerm;
 
 class ZPrologTerms {
 

@@ -19,8 +19,8 @@
  */
 package org.logicware.prolog.zprolog;
 
-import static org.logicware.prolog.PrologTermType.ATOM_TYPE;
-import static org.logicware.prolog.PrologTermType.STRUCTURE_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.ATOM_TYPE;
+import static org.logicware.pdb.prolog.PrologTermType.STRUCTURE_TYPE;
 import static org.logicware.prolog.zprolog.ZPrologOperator.AFTER;
 import static org.logicware.prolog.zprolog.ZPrologOperator.AFTER_EQUALS;
 import static org.logicware.prolog.zprolog.ZPrologOperator.BEFORE;
@@ -106,15 +106,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import org.logicware.FileNotFoundError;
-import org.logicware.prolog.PredicateIndicator;
-import org.logicware.prolog.PrologClause;
-import org.logicware.prolog.PrologClauses;
-import org.logicware.prolog.PrologIndicator;
-import org.logicware.prolog.PrologOperator;
-import org.logicware.prolog.PrologProgram;
-import org.logicware.prolog.PrologProvider;
-import org.logicware.prolog.PrologTerm;
+import org.logicware.pdb.logging.LoggerConstants;
+import org.logicware.pdb.logging.LoggerUtils;
+import org.logicware.pdb.prolog.PredicateIndicator;
+import org.logicware.pdb.prolog.PrologClause;
+import org.logicware.pdb.prolog.PrologClauses;
+import org.logicware.pdb.prolog.PrologIndicator;
+import org.logicware.pdb.prolog.PrologOperator;
+import org.logicware.pdb.prolog.PrologProgram;
+import org.logicware.pdb.prolog.PrologProvider;
+import org.logicware.pdb.prolog.PrologTerm;
 
 abstract class ZPrologRuntime extends ZPrologMachine {
 
@@ -203,10 +204,10 @@ abstract class ZPrologRuntime extends ZPrologMachine {
 		builtins.put("throw/1", new ZPrologClauses("throw/1", new ZPrologClause(new ZPrologTerm(TOKEN_THROW_BUILTIN,
 				STRUCTURE_TYPE, provider, ZPrologBuiltin.THROW, new ZPrologTerm(provider, "X", 0)))));
 		/*
-		 * builtins.put("catch/3", new ZPrologClauses("catch/3", new
-		 * ZPrologClause(new ZPrologTerm(TOKEN_CATCH, STRUCTURE_TYPE, provider,
-		 * "catch", new ZPrologTerm(provider, "X", 0), new ZPrologTerm(provider,
-		 * "Y", 1), new ZPrologTerm(provider, "Z", 2)))));
+		 * builtins.put("catch/3", new ZPrologClauses("catch/3", new ZPrologClause(new
+		 * ZPrologTerm(TOKEN_CATCH, STRUCTURE_TYPE, provider, "catch", new
+		 * ZPrologTerm(provider, "X", 0), new ZPrologTerm(provider, "Y", 1), new
+		 * ZPrologTerm(provider, "Z", 2)))));
 		 */
 
 		builtins.put(",/2", new ZPrologClauses(",/2", new ZPrologClause(new ZPrologTerm(TOKEN_COMMA, STRUCTURE_TYPE,
@@ -376,13 +377,12 @@ abstract class ZPrologRuntime extends ZPrologMachine {
 	}
 
 	/**
-	 * ensure_loaded logic load and execute all directives and the
-	 * initializations if exists.
+	 * ensure_loaded logic load and execute all directives and the initializations
+	 * if exists.
 	 */
 	protected final void load(String path) {
 		long startTime = System.currentTimeMillis();
 		ZPrologParser parser = new ZPrologParser(provider);
-		// String message = "The source file " + path + " not found.";
 		String message = "The source file " + path + " not created.";
 		try {
 
@@ -410,17 +410,15 @@ abstract class ZPrologRuntime extends ZPrologMachine {
 			}
 
 			// set default extension if was omitted
-			int lastExtensionIndex = path.lastIndexOf(".");
-			int lastSeparatorIndex = path.lastIndexOf("/");
+			int lastExtensionIndex = path.lastIndexOf('.');
+			int lastSeparatorIndex = path.lastIndexOf('/');
 			if (lastExtensionIndex < lastSeparatorIndex) {
 				path = path + PROLOG_FILE_TYPE;
 			}
 
 			File file = new File(path);
-			if (!file.exists()) {
-				if (!file.createNewFile()) {
-					throw new FileNotFoundError(getClass(), message);
-				}
+			if (!file.exists() && !file.createNewFile()) {
+				LoggerUtils.error(getClass(), message);
 			}
 
 			if (systemPath.isEmpty()) {
@@ -461,13 +459,12 @@ abstract class ZPrologRuntime extends ZPrologMachine {
 
 	protected final void save(String path) {
 		long startTime = System.currentTimeMillis();
-		String message = "The source file " + path + " not found.";
 		try {
 			PrintWriter writer = new PrintWriter(path);
 			writer.print(program);
 			writer.close();
 		} catch (FileNotFoundException e) {
-			throw new FileNotFoundError(getClass(), message);
+			LoggerUtils.error(getClass(), LoggerConstants.FILE_NOT_FOUND, e);
 		} finally {
 			long endTime = System.currentTimeMillis();
 			cputime = (endTime - startTime) / 1000F;
