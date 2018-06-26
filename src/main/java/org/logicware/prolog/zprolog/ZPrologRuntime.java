@@ -95,9 +95,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayDeque;
 import java.util.Collection;
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -106,6 +104,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.logicware.pdb.Stack;
+import org.logicware.pdb.TypedArrayStack;
 import org.logicware.pdb.logging.LoggerConstants;
 import org.logicware.pdb.logging.LoggerUtils;
 import org.logicware.pdb.prolog.PredicateIndicator;
@@ -156,7 +156,7 @@ abstract class ZPrologRuntime extends ZPrologMachine {
 	protected boolean hasMoreSolution;
 
 	// key of dynamics predicates
-	protected final Deque<File> systemPath = new ArrayDeque<File>();
+	protected final Stack<File> systemPath = new TypedArrayStack<File>();
 
 	// statistics collector map
 	protected final Map<PrologTerm, PrologTerm> statistics = new HashMap<PrologTerm, PrologTerm>();
@@ -392,7 +392,7 @@ abstract class ZPrologRuntime extends ZPrologMachine {
 			}
 
 			// getting the current work file
-			File currentFile = systemPath.getFirst();
+			File currentFile = systemPath.peek();
 
 			// resolve in current path
 			if (path.startsWith(".")) {
