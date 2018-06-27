@@ -17,13 +17,13 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.prolog.zprolog;
+package org.logicware.prolog.wamkel;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
 import static org.logicware.pdb.prolog.PrologTermType.EMPTY_TYPE;
-import static org.logicware.prolog.zprolog.ZPrologOperator.HIGH;
-import static org.logicware.prolog.zprolog.ZPrologOperator.LOW;
+import static org.logicware.prolog.wamkel.ZPrologOperator.HIGH;
+import static org.logicware.prolog.wamkel.ZPrologOperator.LOW;
 
 import java.io.File;
 import java.io.FileNotFoundException;

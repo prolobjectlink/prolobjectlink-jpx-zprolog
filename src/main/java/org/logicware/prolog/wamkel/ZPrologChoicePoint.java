@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.prolog.zprolog;
+package org.logicware.prolog.wamkel;
 
 /**
  * A choice point is a block information that essentially characterize a

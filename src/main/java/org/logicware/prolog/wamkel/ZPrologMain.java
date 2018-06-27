@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.prolog.zprolog;
+package org.logicware.prolog.wamkel;
 
 import java.io.BufferedReader;
 import java.io.IOException;

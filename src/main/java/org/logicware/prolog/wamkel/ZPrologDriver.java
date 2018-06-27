@@ -2,7 +2,7 @@
  * #%L
  * prolobjectlink-db-zprolog
  * %%
- * Copyright (C) 2012 - 2017 Logicware Project
+ * Copyright (C) 2012 - 2018 Logicware Project
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,20 +17,25 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.prolog.zprolog;
+package org.logicware.prolog.wamkel;
 
-import org.logicware.pdb.HierarchicalCache;
-import org.logicware.pdb.Settings;
-import org.logicware.pdb.prolog.PrologContainerFactory;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Properties;
 
-public final class ZPrologContainerFactory extends PrologContainerFactory {
+import org.logicware.pdb.jdbc.AbstractDriver;
+import org.logicware.pdb.prolog.PrologConverter;
+import org.logicware.pdb.prolog.PrologDriver;
 
-	public ZPrologContainerFactory(Settings settings) {
-		super(settings, new ZPrologProvider());
+public class ZPrologDriver extends AbstractDriver implements PrologDriver {
+
+	public ZPrologDriver(PrologConverter<?> converter) {
+		super(converter);
 	}
 
-	public HierarchicalCache createHierarchicalCache() {
-		return new ZPrologHierarchicalCache(getProvider(), getSettings(), this);
+	public Connection connect(String url, Properties info) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.prolog.zprolog;
+package org.logicware.prolog.wamkel;
 
 import static org.logicware.pdb.prolog.PrologTermType.EMPTY_TYPE;
 

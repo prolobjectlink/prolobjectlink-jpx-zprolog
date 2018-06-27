@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.prolog.zprolog;
+package org.logicware.prolog.wamkel;
 
 import static org.logicware.pdb.prolog.PrologTermType.ATOM_TYPE;
 import static org.logicware.pdb.prolog.PrologTermType.CUT_TYPE;
@@ -33,12 +33,12 @@ import static org.logicware.pdb.prolog.PrologTermType.NIL_TYPE;
 import static org.logicware.pdb.prolog.PrologTermType.STRUCTURE_TYPE;
 import static org.logicware.pdb.prolog.PrologTermType.TRUE_TYPE;
 import static org.logicware.pdb.prolog.PrologTermType.VARIABLE_TYPE;
-import static org.logicware.prolog.zprolog.ZPrologTerm.CUT_TERM;
-import static org.logicware.prolog.zprolog.ZPrologTerm.EMPTY_TERM;
-import static org.logicware.prolog.zprolog.ZPrologTerm.FAIL_TERM;
-import static org.logicware.prolog.zprolog.ZPrologTerm.FALSE_TERM;
-import static org.logicware.prolog.zprolog.ZPrologTerm.NIL_TERM;
-import static org.logicware.prolog.zprolog.ZPrologTerm.TRUE_TERM;
+import static org.logicware.prolog.wamkel.ZPrologTerm.CUT_TERM;
+import static org.logicware.prolog.wamkel.ZPrologTerm.EMPTY_TERM;
+import static org.logicware.prolog.wamkel.ZPrologTerm.FAIL_TERM;
+import static org.logicware.prolog.wamkel.ZPrologTerm.FALSE_TERM;
+import static org.logicware.prolog.wamkel.ZPrologTerm.NIL_TERM;
+import static org.logicware.prolog.wamkel.ZPrologTerm.TRUE_TERM;
 
 import org.logicware.pdb.prolog.AbstractConverter;
 import org.logicware.pdb.prolog.PrologAtom;

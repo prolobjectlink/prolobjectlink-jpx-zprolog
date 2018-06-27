@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.prolog.zprolog;
+package org.logicware.prolog.wamkel;
 
 import static org.logicware.pdb.prolog.PrologTermType.ATOM_TYPE;
 import static org.logicware.pdb.prolog.PrologTermType.CUT_TYPE;
@@ -33,11 +33,11 @@ import static org.logicware.pdb.prolog.PrologTermType.NIL_TYPE;
 import static org.logicware.pdb.prolog.PrologTermType.STRUCTURE_TYPE;
 import static org.logicware.pdb.prolog.PrologTermType.TRUE_TYPE;
 import static org.logicware.pdb.prolog.PrologTermType.VARIABLE_TYPE;
-import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_DIV;
-import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_MINUS;
-import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_PLUS;
-import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_REM;
-import static org.logicware.prolog.zprolog.ZPrologOperator.TOKEN_TIMES;
+import static org.logicware.prolog.wamkel.ZPrologOperator.TOKEN_DIV;
+import static org.logicware.prolog.wamkel.ZPrologOperator.TOKEN_MINUS;
+import static org.logicware.prolog.wamkel.ZPrologOperator.TOKEN_PLUS;
+import static org.logicware.prolog.wamkel.ZPrologOperator.TOKEN_REM;
+import static org.logicware.prolog.wamkel.ZPrologOperator.TOKEN_TIMES;
 
 import java.util.Arrays;
 import java.util.Iterator;
