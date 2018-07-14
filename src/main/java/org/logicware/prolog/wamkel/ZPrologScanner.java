@@ -1,6 +1,6 @@
 /*
  * #%L
- * prolobjectlink-db-zprolog
+ * prolobjectlink-db-wamkel
  * %%
  * Copyright (C) 2012 - 2017 Logicware Project
  * %%
@@ -95,6 +95,7 @@ import java.util.Map;
  * <tt>${basedir}/src/main/jflex/ZPrologScanner.flex</tt>
  */
 
+@SuppressWarnings("all")
 class ZPrologScanner {
 
 	/** This character denotes the end of file */
@@ -288,8 +289,8 @@ class ZPrologScanner {
 	private int zzLexicalState = YYINITIAL;
 
 	/**
-	 * this buffer contains the current text to be matched and is the source of
-	 * the yytext() string
+	 * this buffer contains the current text to be matched and is the source of the
+	 * yytext() string
 	 */
 	private char zzBuffer[] = new char[ZZ_BUFFERSIZE];
 
@@ -303,8 +304,7 @@ class ZPrologScanner {
 	private int zzStartRead;
 
 	/**
-	 * endRead marks the last character in the buffer, that has been read from
-	 * input
+	 * endRead marks the last character in the buffer, that has been read from input
 	 */
 	private int zzEndRead;
 
@@ -315,8 +315,8 @@ class ZPrologScanner {
 	private int yychar;
 
 	/**
-	 * the number of characters from the last newline up to the start of the
-	 * matched text
+	 * the number of characters from the last newline up to the start of the matched
+	 * text
 	 */
 	private int yycolumn;
 
@@ -511,8 +511,7 @@ class ZPrologScanner {
 	 * Creates a new scanner There is also a java.io.InputStream version of this
 	 * constructor.
 	 *
-	 * @param in
-	 *            the java.io.Reader to read input from.
+	 * @param in the java.io.Reader to read input from.
 	 */
 	ZPrologScanner(java.io.Reader in) {
 		yybegin(NORMALSTATE);
@@ -523,8 +522,7 @@ class ZPrologScanner {
 	 * Creates a new scanner. There is also java.io.Reader version of this
 	 * constructor.
 	 *
-	 * @param in
-	 *            the java.io.Inputstream to read input from.
+	 * @param in the java.io.Inputstream to read input from.
 	 */
 	ZPrologScanner(java.io.InputStream in) {
 		this(new java.io.InputStreamReader(in, java.nio.charset.Charset.forName("UTF-8")));
@@ -533,8 +531,7 @@ class ZPrologScanner {
 	/**
 	 * Unpacks the compressed character translation table.
 	 *
-	 * @param packed
-	 *            the packed character translation table
+	 * @param packed the packed character translation table
 	 * @return the unpacked character translation table
 	 */
 	private static char[] zzUnpackCMap(String packed) {
@@ -556,8 +553,7 @@ class ZPrologScanner {
 	 *
 	 * @return <code>false</code>, iff there was new input.
 	 * 
-	 * @exception java.io.IOException
-	 *                if any I/O-Error occurs
+	 * @exception java.io.IOException if any I/O-Error occurs
 	 */
 	private boolean zzRefill() throws java.io.IOException {
 
@@ -622,18 +618,16 @@ class ZPrologScanner {
 	}
 
 	/**
-	 * Resets the scanner to read from a new input stream. Does not close the
-	 * old reader.
+	 * Resets the scanner to read from a new input stream. Does not close the old
+	 * reader.
 	 *
 	 * All internal variables are reset, the old input stream <b>cannot</b> be
 	 * reused (internal buffer is discarded and lost). Lexical state is set to
 	 * <tt>ZZ_INITIAL</tt>.
 	 *
-	 * Internal scan buffer is resized down to its initial length, if it has
-	 * grown.
+	 * Internal scan buffer is resized down to its initial length, if it has grown.
 	 *
-	 * @param reader
-	 *            the new input stream
+	 * @param reader the new input stream
 	 */
 	public final void yyreset(java.io.Reader reader) {
 		zzReader = reader;
@@ -659,8 +653,7 @@ class ZPrologScanner {
 	/**
 	 * Enters a new lexical state
 	 *
-	 * @param newState
-	 *            the new lexical state
+	 * @param newState the new lexical state
 	 */
 	public final void yybegin(int newState) {
 		zzLexicalState = newState;
@@ -678,8 +671,7 @@ class ZPrologScanner {
 	 * 
 	 * It is equivalent to yytext().charAt(pos), but faster
 	 *
-	 * @param pos
-	 *            the position of the character to fetch. A value from 0 to
+	 * @param pos the position of the character to fetch. A value from 0 to
 	 *            yylength()-1.
 	 *
 	 * @return the character at position pos
@@ -698,16 +690,15 @@ class ZPrologScanner {
 	/**
 	 * Reports an error that occured while scanning.
 	 *
-	 * In a wellformed scanner (no or only correct usage of yypushback(int) and
-	 * a match-all fallback rule) this method will only be called with things
-	 * that "Can't Possibly Happen". If this method is called, something is
-	 * seriously wrong (e.g. a JFlex bug producing a faulty scanner etc.).
+	 * In a wellformed scanner (no or only correct usage of yypushback(int) and a
+	 * match-all fallback rule) this method will only be called with things that
+	 * "Can't Possibly Happen". If this method is called, something is seriously
+	 * wrong (e.g. a JFlex bug producing a faulty scanner etc.).
 	 *
-	 * Usual syntax/scanner level error handling should be done in error
-	 * fallback rules.
+	 * Usual syntax/scanner level error handling should be done in error fallback
+	 * rules.
 	 *
-	 * @param errorCode
-	 *            the code of the errormessage to display
+	 * @param errorCode the code of the errormessage to display
 	 */
 	private void zzScanError(int errorCode) {
 		String message;
@@ -725,9 +716,8 @@ class ZPrologScanner {
 	 *
 	 * They will be read again by then next call of the scanning method
 	 *
-	 * @param number
-	 *            the number of characters to be read again. This number must
-	 *            not be greater than yylength()!
+	 * @param number the number of characters to be read again. This number must not
+	 *               be greater than yylength()!
 	 */
 	public void yypushback(int number) {
 		if (number > yylength())
@@ -741,8 +731,7 @@ class ZPrologScanner {
 	 * input is encountered or an I/O-Error occurs.
 	 *
 	 * @return the next token
-	 * @exception java.io.IOException
-	 *                if any I/O-Error occurs
+	 * @exception java.io.IOException if any I/O-Error occurs
 	 */
 	public ZPrologToken getNextToken() throws java.io.IOException {
 		int zzInput;
