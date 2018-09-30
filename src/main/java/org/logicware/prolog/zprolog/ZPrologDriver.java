@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.prolog.wamkel;
+package org.logicware.prolog.zprolog;
 
 import java.sql.Connection;
 import java.sql.SQLException;

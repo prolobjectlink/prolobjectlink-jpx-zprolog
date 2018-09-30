@@ -17,11 +17,12 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.prolog.wamkel;
+package org.logicware.prolog.zprolog;
 
 import org.logicware.pdb.HierarchicalCache;
 import org.logicware.pdb.Settings;
 import org.logicware.pdb.prolog.PrologContainerFactory;
+import org.logicware.prolog.wamkel.ZPrologProvider;
 
 public final class ZPrologContainerFactory extends PrologContainerFactory {
 
