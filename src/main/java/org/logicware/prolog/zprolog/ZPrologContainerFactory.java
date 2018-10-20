@@ -22,7 +22,7 @@ package org.logicware.prolog.zprolog;
 import org.logicware.pdb.HierarchicalCache;
 import org.logicware.pdb.Settings;
 import org.logicware.pdb.prolog.PrologContainerFactory;
-import org.logicware.prolog.wamkel.ZPrologProvider;
+import org.logicware.prolog.zprolog.ZPrologProvider;
 
 public final class ZPrologContainerFactory extends PrologContainerFactory {
 
