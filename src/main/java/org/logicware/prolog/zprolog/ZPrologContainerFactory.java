@@ -26,7 +26,7 @@ import org.logicware.pdb.prolog.PrologContainerFactory;
 public final class ZPrologContainerFactory extends PrologContainerFactory {
 
 	public ZPrologContainerFactory(Settings settings) {
-		super(settings, new ZPrologProvider());
+		super(settings, new ZProlog());
 	}
 
 	public HierarchicalCache createHierarchicalCache() {
