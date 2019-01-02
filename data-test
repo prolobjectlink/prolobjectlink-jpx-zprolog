@@ -1,0 +1,9 @@
+'org.logicware.jpi.util.TreeMap'( !, !, !, ! ).
+
+'org.logicware.jpi.util.TreeSet'( !, !, ! ).
+
+'org.logicware.util.TreeMap'( nil, nil, nil, nil ).
+
+'org.logicware.util.TreeSet'( nil, nil, nil ).
+
+
