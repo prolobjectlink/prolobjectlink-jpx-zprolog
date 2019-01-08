@@ -296,10 +296,10 @@ public class StoragePoolTest extends BaseTest {
 
 		// create new update objects
 
-		Point newA = new Point("a", 7.6F, 9.4F);
-		Point newB = new Point("b", 7.6F, 9.4F);
-		Point newC = new Point("c", 7.6F, 9.4F);
-		Point newD = new Point("d", 7.6F, 9.4F);
+		Point newA = new Point("a", 6,28);
+		Point newB = new Point("b", 6,28);
+		Point newC = new Point("c", 6,28);
+		Point newD = new Point("d", 6,28);
 
 		Segment newAB = new Segment("ab", newA, newB);
 		Segment newBC = new Segment("bc", newB, newC);
@@ -565,7 +565,7 @@ public class StoragePoolTest extends BaseTest {
 		assertEquals(Arrays.asList(a, b, c, d), createList(objects));
 
 		// point query restricted to specifics x and y points
-		objects = storagePool.createQuery("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3.5, Y =:= 10.14")
+		objects = storagePool.createQuery("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3, Y =:= 14")
 				.getSolutions();
 		assertEquals(Arrays.asList(a, b, c, d), createList(objects));
 
@@ -576,7 +576,7 @@ public class StoragePoolTest extends BaseTest {
 		objects = storagePool
 				.createQuery(
 						"'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '" + Point.class.getName()
-								+ "'(a, 3.5, 10.14), Point1 == '" + Point.class.getName() + "'(b, 3.5, 10.14)")
+								+ "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)")
 				.getSolutions();
 		assertEquals(Arrays.asList(ab), createList(objects));
 
@@ -669,7 +669,7 @@ public class StoragePoolTest extends BaseTest {
 
 		assertEquals(triangle, storagePool.createQuery(triangle).getSolution());
 
-		assertEquals(Arrays.asList(a, b, c, d), storagePool.createQuery(new Point(3.5, 10.14)).getSolutions());
+		assertEquals(Arrays.asList(a, b, c, d), storagePool.createQuery(new Point(3,14)).getSolutions());
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da), storagePool.createQuery(new Segment()).getSolutions());
 		assertEquals(Arrays.asList(triangle), storagePool.createQuery(new Polygon()).getSolutions());
 
@@ -783,56 +783,56 @@ public class StoragePoolTest extends BaseTest {
 		assertTrue(object instanceof Object[]);
 		Object[] objects = (Object[]) object;
 		assertEquals("a", objects[0]);
-		assertEquals(3.5, objects[1]);
-		assertEquals(10.14, objects[2]);
+		assertEquals(3, objects[1]);
+		assertEquals(14, objects[2]);
 		assertEquals("a", query.getArgumentValue(0));
-		assertEquals(3.5, query.getArgumentValue(1));
-		assertEquals(10.14, query.getArgumentValue(2));
+		assertEquals(3, query.getArgumentValue(1));
+		assertEquals(14, query.getArgumentValue(2));
 		assertEquals("a", query.getArgumentValue("Idp"));
-		assertEquals(3.5, query.getArgumentValue("X"));
-		assertEquals(10.14, query.getArgumentValue("Y"));
+		assertEquals(3, query.getArgumentValue("X"));
+		assertEquals(14, query.getArgumentValue("Y"));
 
 		assertTrue(query.hasNext());
 		object = query.next();
 		assertTrue(object instanceof Object[]);
 		objects = (Object[]) object;
 		assertEquals("b", objects[0]);
-		assertEquals(3.5, objects[1]);
-		assertEquals(10.14, objects[2]);
+		assertEquals(3, objects[1]);
+		assertEquals(14, objects[2]);
 		assertEquals("b", query.getArgumentValue(0));
-		assertEquals(3.5, query.getArgumentValue(1));
-		assertEquals(10.14, query.getArgumentValue(2));
+		assertEquals(3, query.getArgumentValue(1));
+		assertEquals(14, query.getArgumentValue(2));
 		assertEquals("b", query.getArgumentValue("Idp"));
-		assertEquals(3.5, query.getArgumentValue("X"));
-		assertEquals(10.14, query.getArgumentValue("Y"));
+		assertEquals(3, query.getArgumentValue("X"));
+		assertEquals(14, query.getArgumentValue("Y"));
 
 		assertTrue(query.hasNext());
 		object = query.next();
 		assertTrue(object instanceof Object[]);
 		objects = (Object[]) object;
 		assertEquals("c", objects[0]);
-		assertEquals(3.5, objects[1]);
-		assertEquals(10.14, objects[2]);
+		assertEquals(3, objects[1]);
+		assertEquals(14, objects[2]);
 		assertEquals("c", query.getArgumentValue(0));
-		assertEquals(3.5, query.getArgumentValue(1));
-		assertEquals(10.14, query.getArgumentValue(2));
+		assertEquals(3, query.getArgumentValue(1));
+		assertEquals(14, query.getArgumentValue(2));
 		assertEquals("c", query.getArgumentValue("Idp"));
-		assertEquals(3.5, query.getArgumentValue("X"));
-		assertEquals(10.14, query.getArgumentValue("Y"));
+		assertEquals(3, query.getArgumentValue("X"));
+		assertEquals(14, query.getArgumentValue("Y"));
 
 		assertTrue(query.hasNext());
 		object = query.next();
 		assertTrue(object instanceof Object[]);
 		objects = (Object[]) object;
 		assertEquals("d", objects[0]);
-		assertEquals(3.5, objects[1]);
-		assertEquals(10.14, objects[2]);
+		assertEquals(3, objects[1]);
+		assertEquals(14, objects[2]);
 		assertEquals("d", query.getArgumentValue(0));
-		assertEquals(3.5, query.getArgumentValue(1));
-		assertEquals(10.14, query.getArgumentValue(2));
+		assertEquals(3, query.getArgumentValue(1));
+		assertEquals(14, query.getArgumentValue(2));
 		assertEquals("d", query.getArgumentValue("Idp"));
-		assertEquals(3.5, query.getArgumentValue("X"));
-		assertEquals(10.14, query.getArgumentValue("Y"));
+		assertEquals(3, query.getArgumentValue("X"));
+		assertEquals(14, query.getArgumentValue("Y"));
 
 		assertFalse(query.hasNext());
 
@@ -910,14 +910,14 @@ public class StoragePoolTest extends BaseTest {
 
 		// point query restricted to specifics x and y points
 		assertArrayEquals(new Object[] { a },
-				(Object[]) storagePool.find("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3.5, Y =:= 10.14"));
+				(Object[]) storagePool.find("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3, Y =:= 14"));
 
 		assertArrayEquals(new Object[] { ab },
 				(Object[]) storagePool.find("'" + Segment.class.getName() + "'(Ids, Point0, Point1)"));
 
 		// segment query restricted to specifics points initial and finals
 		Object solution = storagePool.find("'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '"
-				+ Point.class.getName() + "'(a, 3.5, 10.14), Point1 == '" + Point.class.getName() + "'(b, 3.5, 10.14)");
+				+ Point.class.getName() + "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)");
 		storagePool.close();
 
 		if (solution instanceof Object[]) {
@@ -981,7 +981,7 @@ public class StoragePoolTest extends BaseTest {
 
 		storagePool.getTransaction().commit();
 
-		assertEquals(a, storagePool.find("'" + Point.class.getName() + "'", null, 3.5, 10.14));
+		assertEquals(a, storagePool.find("'" + Point.class.getName() + "'", null, 3,14));
 		assertEquals(ab, storagePool.find("'" + Segment.class.getName() + "'", null, null, null));
 		assertEquals(triangle, storagePool.find("'" + Polygon.class.getName() + "'", null, null, null, null));
 
@@ -1042,7 +1042,7 @@ public class StoragePoolTest extends BaseTest {
 		assertEquals(ca, storagePool.find(ca));
 		assertEquals(triangle, storagePool.find(triangle));
 
-		assertEquals(a, storagePool.find(new Point(3.5, 10.14)));
+		assertEquals(a, storagePool.find(new Point(3,14)));
 		assertEquals(ab, storagePool.find(new Segment()));
 		assertEquals(triangle, storagePool.find(new Polygon()));
 
@@ -1202,7 +1202,7 @@ public class StoragePoolTest extends BaseTest {
 		assertEquals(Arrays.asList(a, b, c, d), createList(solutions));
 
 		// point query restricted to specifics x and y points
-		solutions = storagePool.findAll("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3.5, Y =:= 10.14");
+		solutions = storagePool.findAll("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3, Y =:= 14");
 		assertEquals(Arrays.asList(a, b, c, d), createList(solutions));
 
 		solutions = storagePool.findAll("'" + Segment.class.getName() + "'(Ids, Point0, Point1)");
@@ -1210,7 +1210,7 @@ public class StoragePoolTest extends BaseTest {
 
 		// segment query restricted to specifics points initial and finals
 		solutions = storagePool.findAll("'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '"
-				+ Point.class.getName() + "'(a, 3.5, 10.14), Point1 == '" + Point.class.getName() + "'(b, 3.5, 10.14)");
+				+ Point.class.getName() + "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)");
 		assertEquals(Arrays.asList(ab), createList(solutions));
 
 		// predicate projection
@@ -1291,7 +1291,7 @@ public class StoragePoolTest extends BaseTest {
 		assertTrue(storagePool.contains(triangle));
 
 		assertEquals(Arrays.asList(a, b, c, d),
-				storagePool.findAll("'" + Point.class.getName() + "'", null, 3.5, 10.14));
+				storagePool.findAll("'" + Point.class.getName() + "'", null, 3,14));
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da),
 				storagePool.findAll("'" + Segment.class.getName() + "'", null, null, null));
 		assertEquals(Arrays.asList(triangle),
@@ -1345,7 +1345,7 @@ public class StoragePoolTest extends BaseTest {
 		assertTrue(storagePool.contains(da));
 		assertTrue(storagePool.contains(triangle));
 
-		assertEquals(Arrays.asList(a, b, c, d), storagePool.findAll(new Point(3.5, 10.14)));
+		assertEquals(Arrays.asList(a, b, c, d), storagePool.findAll(new Point(3,14)));
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da), storagePool.findAll(new Segment()));
 		assertEquals(Arrays.asList(triangle), storagePool.findAll(new Polygon()));
 
@@ -1556,25 +1556,25 @@ public class StoragePoolTest extends BaseTest {
 		assertTrue(storagePool.contains(triangle));
 
 		assertTrue(storagePool.contains("'" + Point.class.getName() + "'(Idp, X, Y)"));
-		assertTrue(storagePool.contains("'" + Point.class.getName() + "'( a, 3.5, 10.14 )"));
-		assertTrue(storagePool.contains("'" + Point.class.getName() + "'( b, 3.5, 10.14 )"));
-		assertTrue(storagePool.contains("'" + Point.class.getName() + "'( c, 3.5, 10.14 )"));
+		assertTrue(storagePool.contains("'" + Point.class.getName() + "'( a, 3,14 )"));
+		assertTrue(storagePool.contains("'" + Point.class.getName() + "'( b, 3,14 )"));
+		assertTrue(storagePool.contains("'" + Point.class.getName() + "'( c, 3,14 )"));
 
 		assertTrue(storagePool.contains("'" + Segment.class.getName() + "'(Ids, Point0, Point1)"));
 		assertTrue(storagePool.contains("'" + Segment.class.getName() + "'( ab, '" + Point.class.getName()
-				+ "'( a, 3.5, 10.14 ), '" + Point.class.getName() + "'( b, 3.5, 10.14 ) )"));
+				+ "'( a, 3,14 ), '" + Point.class.getName() + "'( b, 3,14 ) )"));
 		assertTrue(storagePool.contains("'" + Segment.class.getName() + "'( bc, '" + Point.class.getName()
-				+ "'( b, 3.5, 10.14 ), '" + Point.class.getName() + "'( c, 3.5, 10.14 ) )"));
+				+ "'( b, 3,14 ), '" + Point.class.getName() + "'( c, 3,14 ) )"));
 		assertTrue(storagePool.contains("'" + Segment.class.getName() + "'( ca, '" + Point.class.getName()
-				+ "'( c, 3.5, 10.14 ), '" + Point.class.getName() + "'( a, 3.5, 10.14 ) )"));
+				+ "'( c, 3,14 ), '" + Point.class.getName() + "'( a, 3,14 ) )"));
 
 		assertTrue(storagePool.contains("'" + Polygon.class.getName() + "'( triangle, Segment0, Segment1, Segment2 )"));
 		assertTrue(storagePool.contains("'" + Polygon.class.getName() + "'( triangle, '" + Segment.class.getName()
-				+ "'( ab, '" + Point.class.getName() + "'( a, 3.5, 10.14 ), '" + Point.class.getName()
-				+ "'( b, 3.5, 10.14 ) ), '" + Segment.class.getName() + "'( bc, '" + Point.class.getName()
-				+ "'( b, 3.5, 10.14 ), '" + Point.class.getName() + "'( c, 3.5, 10.14 ) ), '" + Segment.class.getName()
-				+ "'( ca, '" + Point.class.getName() + "'( c, 3.5, 10.14 ), '" + Point.class.getName()
-				+ "'( a, 3.5, 10.14 ) ) )"));
+				+ "'( ab, '" + Point.class.getName() + "'( a, 3,14 ), '" + Point.class.getName()
+				+ "'( b, 3,14 ) ), '" + Segment.class.getName() + "'( bc, '" + Point.class.getName()
+				+ "'( b, 3,14 ), '" + Point.class.getName() + "'( c, 3,14 ) ), '" + Segment.class.getName()
+				+ "'( ca, '" + Point.class.getName() + "'( c, 3,14 ), '" + Point.class.getName()
+				+ "'( a, 3,14 ) ) )"));
 
 		assertTrue(storagePool.contains(
 				"'" + Segment.class.getName() + "'(Ids, Point0, Point1), '" + Point.class.getName() + "'(Idp, X, Y)"));

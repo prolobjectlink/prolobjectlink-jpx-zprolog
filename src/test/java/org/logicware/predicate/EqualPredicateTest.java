@@ -38,7 +38,7 @@ public class EqualPredicateTest extends BasePredicateTest {
 		assertFalse(new EqualPredicate<Segment>(ab), bc);
 		assertFalse(new EqualPredicate<Polygon>(triangle), tetragon);
 
-		assertTrue(new EqualPredicate<Point>(a), new Point("a", 3.5, 10.14));
+		assertTrue(new EqualPredicate<Point>(a), new Point("a", 3,14));
 		assertTrue(new EqualPredicate<Segment>(ab), new Segment("ab", a, b));
 		assertTrue(new EqualPredicate<Polygon>(triangle), new Polygon(new String("triangle"), ab, bc, ca));
 

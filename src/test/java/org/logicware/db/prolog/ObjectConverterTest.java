@@ -82,79 +82,79 @@ public class ObjectConverterTest extends BaseTest {
 				converter.toObject(provider.parseTerm("'" + PrologTreeSet.class.getName() + "'(nil,nil,nil)")));
 
 		// Prolog Structure
-		assertEquals(new Point("a", 3.14, 10.35),
+		assertEquals(new Point("a", 3,14),
 				converter.toObject(provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-						provider.newDouble(3.14), provider.newDouble(10.35))));
+						provider.newInteger(3), provider.newInteger(14))));
 
 		// Prolog Structure Composition
-		assertEquals(new Segment("ab", new Point("a", 3.14, 10.35), new Point("b", 3.14, 10.35)),
+		assertEquals(new Segment("ab", new Point("a", 3,14), new Point("b", 3,14)),
 				converter.toObject(provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("ab"),
 						provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-								provider.newDouble(3.14), provider.newDouble(10.35)),
+								provider.newInteger(3), provider.newInteger(14)),
 						provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("b"),
-								provider.newDouble(3.14), provider.newDouble(10.35)))));
+								provider.newInteger(3), provider.newInteger(14)))));
 
 		// Prolog Structure Composition and Inheritance
 		assertEquals(
-				new Polygon("triangle", new Segment("ab", new Point("a", 3.14, 10.35), new Point("b", 3.14, 10.35)),
-						new Segment("bc", new Point("b", 3.14, 10.35), new Point("c", 3.14, 10.35)),
-						new Segment("ca", new Point("c", 3.14, 10.35), new Point("a", 3.14, 10.35))),
+				new Polygon("triangle", new Segment("ab", new Point("a", 3,14), new Point("b", 3,14)),
+						new Segment("bc", new Point("b", 3,14), new Point("c", 3,14)),
+						new Segment("ca", new Point("c", 3,14), new Point("a", 3,14))),
 
 				converter.toObject(
 						provider.newStructure("'" + Polygon.class.getName() + "'", provider.newAtom("triangle"),
 
 								provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("ab"),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-												provider.newDouble(3.14), provider.newDouble(10.35)),
+												provider.newInteger(3), provider.newInteger(14)),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("b"),
-												provider.newDouble(3.14), provider.newDouble(10.35))),
+												provider.newInteger(3), provider.newInteger(14))),
 
 								provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("bc"),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("b"),
-												provider.newDouble(3.14), provider.newDouble(10.35)),
+												provider.newInteger(3), provider.newInteger(14)),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("c"),
-												provider.newDouble(3.14), provider.newDouble(10.35))),
+												provider.newInteger(3), provider.newInteger(14))),
 
 								provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("ca"),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("c"),
-												provider.newDouble(3.14), provider.newDouble(10.35)),
+												provider.newInteger(3), provider.newInteger(14)),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-												provider.newDouble(3.14), provider.newDouble(10.35)))
+												provider.newInteger(3), provider.newInteger(14)))
 
 						)));
 
 		assertEquals(
-				new Tetragon("tetragon", new Segment("ab", new Point("a", 3.14, 10.35), new Point("b", 3.14, 10.35)),
-						new Segment("bc", new Point("b", 3.14, 10.35), new Point("c", 3.14, 10.35)),
-						new Segment("cd", new Point("c", 3.14, 10.35), new Point("d", 3.14, 10.35)),
-						new Segment("da", new Point("d", 3.14, 10.35), new Point("a", 3.14, 10.35))),
+				new Tetragon("tetragon", new Segment("ab", new Point("a", 3,14), new Point("b", 3,14)),
+						new Segment("bc", new Point("b", 3,14), new Point("c", 3,14)),
+						new Segment("cd", new Point("c", 3,14), new Point("d", 3,14)),
+						new Segment("da", new Point("d", 3,14), new Point("a", 3,14))),
 
 				converter.toObject(
 						provider.newStructure("'" + Tetragon.class.getName() + "'", provider.newAtom("tetragon"),
 
 								provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("ab"),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-												provider.newDouble(3.14), provider.newDouble(10.35)),
+												provider.newInteger(3), provider.newInteger(14)),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("b"),
-												provider.newDouble(3.14), provider.newDouble(10.35))),
+												provider.newInteger(3), provider.newInteger(14))),
 
 								provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("bc"),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("b"),
-												provider.newDouble(3.14), provider.newDouble(10.35)),
+												provider.newInteger(3), provider.newInteger(14)),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("c"),
-												provider.newDouble(3.14), provider.newDouble(10.35))),
+												provider.newInteger(3), provider.newInteger(14))),
 
 								provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("cd"),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("c"),
-												provider.newDouble(3.14), provider.newDouble(10.35)),
+												provider.newInteger(3), provider.newInteger(14)),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("d"),
-												provider.newDouble(3.14), provider.newDouble(10.35))),
+												provider.newInteger(3), provider.newInteger(14))),
 
 								provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("da"),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("d"),
-												provider.newDouble(3.14), provider.newDouble(10.35)),
+												provider.newInteger(3), provider.newInteger(14)),
 										provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-												provider.newDouble(3.14), provider.newDouble(10.35)))
+												provider.newInteger(3), provider.newInteger(14)))
 
 						)));
 
@@ -203,17 +203,17 @@ public class ObjectConverterTest extends BaseTest {
 
 		assertEquals(
 				provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-						provider.newDouble(3.14), provider.newDouble(10.35)),
-				converter.toTerm(new Point("a", 3.14, 10.35)));
+						provider.newInteger(3), provider.newInteger(14)),
+				converter.toTerm(new Point("a", 3,14)));
 
 		// Prolog Structure Composition
 		assertEquals(
 				provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("ab"),
 						provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-								provider.newDouble(3.14), provider.newDouble(10.35)),
+								provider.newInteger(3), provider.newInteger(14)),
 						provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("b"),
-								provider.newDouble(3.14), provider.newDouble(10.35))),
-				converter.toTerm(new Segment("ab", new Point("a", 3.14, 10.35), new Point("b", 3.14, 10.35))));
+								provider.newInteger(3), provider.newInteger(14))),
+				converter.toTerm(new Segment("ab", new Point("a", 3,14), new Point("b", 3,14))));
 
 		// Prolog Structure Composition and Inheritance
 		assertEquals(
@@ -222,30 +222,30 @@ public class ObjectConverterTest extends BaseTest {
 
 						provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("ab"),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-										provider.newDouble(3.14), provider.newDouble(10.35)),
+										provider.newInteger(3), provider.newInteger(14)),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("b"),
-										provider.newDouble(3.14), provider.newDouble(10.35))),
+										provider.newInteger(3), provider.newInteger(14))),
 
 						provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("bc"),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("b"),
-										provider.newDouble(3.14), provider.newDouble(10.35)),
+										provider.newInteger(3), provider.newInteger(14)),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("c"),
-										provider.newDouble(3.14), provider.newDouble(10.35))),
+										provider.newInteger(3), provider.newInteger(14))),
 
 						provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("ca"),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("c"),
-										provider.newDouble(3.14), provider.newDouble(10.35)),
+										provider.newInteger(3), provider.newInteger(14)),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-										provider.newDouble(3.14), provider.newDouble(10.35)))
+										provider.newInteger(3), provider.newInteger(14)))
 
 				)
 
 				,
 
 				converter.toTerm(new Polygon("triangle",
-						new Segment("ab", new Point("a", 3.14, 10.35), new Point("b", 3.14, 10.35)),
-						new Segment("bc", new Point("b", 3.14, 10.35), new Point("c", 3.14, 10.35)),
-						new Segment("ca", new Point("c", 3.14, 10.35), new Point("a", 3.14, 10.35)))));
+						new Segment("ab", new Point("a", 3,14), new Point("b", 3,14)),
+						new Segment("bc", new Point("b", 3,14), new Point("c", 3,14)),
+						new Segment("ca", new Point("c", 3,14), new Point("a", 3,14)))));
 
 		assertEquals(
 
@@ -253,37 +253,37 @@ public class ObjectConverterTest extends BaseTest {
 
 						provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("ab"),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-										provider.newDouble(3.14), provider.newDouble(10.35)),
+										provider.newInteger(3), provider.newInteger(14)),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("b"),
-										provider.newDouble(3.14), provider.newDouble(10.35))),
+										provider.newInteger(3), provider.newInteger(14))),
 
 						provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("bc"),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("b"),
-										provider.newDouble(3.14), provider.newDouble(10.35)),
+										provider.newInteger(3), provider.newInteger(14)),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("c"),
-										provider.newDouble(3.14), provider.newDouble(10.35))),
+										provider.newInteger(3), provider.newInteger(14))),
 
 						provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("cd"),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("c"),
-										provider.newDouble(3.14), provider.newDouble(10.35)),
+										provider.newInteger(3), provider.newInteger(14)),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("d"),
-										provider.newDouble(3.14), provider.newDouble(10.35))),
+										provider.newInteger(3), provider.newInteger(14))),
 
 						provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("da"),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("d"),
-										provider.newDouble(3.14), provider.newDouble(10.35)),
+										provider.newInteger(3), provider.newInteger(14)),
 								provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-										provider.newDouble(3.14), provider.newDouble(10.35)))
+										provider.newInteger(3), provider.newInteger(14)))
 
 				)
 
 				,
 
 				converter.toTerm(new Tetragon("tetragon",
-						new Segment("ab", new Point("a", 3.14, 10.35), new Point("b", 3.14, 10.35)),
-						new Segment("bc", new Point("b", 3.14, 10.35), new Point("c", 3.14, 10.35)),
-						new Segment("cd", new Point("c", 3.14, 10.35), new Point("d", 3.14, 10.35)),
-						new Segment("da", new Point("d", 3.14, 10.35), new Point("a", 3.14, 10.35)))));
+						new Segment("ab", new Point("a", 3,14), new Point("b", 3,14)),
+						new Segment("bc", new Point("b", 3,14), new Point("c", 3,14)),
+						new Segment("cd", new Point("c", 3,14), new Point("d", 3,14)),
+						new Segment("da", new Point("d", 3,14), new Point("a", 3,14)))));
 
 		// Prolog Date Structure
 		assertEquals(provider.parseStructure("'" + PrologDate.class.getName() + "'(1000)"),

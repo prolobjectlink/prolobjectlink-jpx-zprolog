@@ -112,11 +112,11 @@ public class PredicateTest extends BaseTest {
 
 			public boolean evaluate(Segment s) {
 
-				return s.getPoint0().equals(new Point("a", 3.5, 10.14))
+				return s.getPoint0().equals(new Point("a", 3,14))
 
 						&&
 
-						s.getPoint1().equals(new Point("b", 3.5, 10.14));
+						s.getPoint1().equals(new Point("b", 3,14));
 
 			}
 		});

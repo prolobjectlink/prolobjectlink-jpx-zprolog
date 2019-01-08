@@ -21,25 +21,25 @@ public class ContainerTest extends BaseTest {
 		cache.add(triangle);
 
 		assertTrue(cache.contains("'" + Point.class.getName() + "'(Idp, X, Y)"));
-		assertTrue(cache.contains("'" + Point.class.getName() + "'( a, 3.5, 10.14 )"));
-		assertTrue(cache.contains("'" + Point.class.getName() + "'( b, 3.5, 10.14 )"));
-		assertTrue(cache.contains("'" + Point.class.getName() + "'( c, 3.5, 10.14 )"));
+		assertTrue(cache.contains("'" + Point.class.getName() + "'( a, 3,14 )"));
+		assertTrue(cache.contains("'" + Point.class.getName() + "'( b, 3,14 )"));
+		assertTrue(cache.contains("'" + Point.class.getName() + "'( c, 3,14 )"));
 
 		assertTrue(cache.contains("'" + Segment.class.getName() + "'(Ids, Point0, Point1)"));
 		assertTrue(cache.contains("'" + Segment.class.getName() + "'( ab, '" + Point.class.getName()
-				+ "'( a, 3.5, 10.14 ), '" + Point.class.getName() + "'( b, 3.5, 10.14 ) )"));
+				+ "'( a, 3,14 ), '" + Point.class.getName() + "'( b, 3,14 ) )"));
 		assertTrue(cache.contains("'" + Segment.class.getName() + "'( bc, '" + Point.class.getName()
-				+ "'( b, 3.5, 10.14 ), '" + Point.class.getName() + "'( c, 3.5, 10.14 ) )"));
+				+ "'( b, 3,14 ), '" + Point.class.getName() + "'( c, 3,14 ) )"));
 		assertTrue(cache.contains("'" + Segment.class.getName() + "'( ca, '" + Point.class.getName()
-				+ "'( c, 3.5, 10.14 ), '" + Point.class.getName() + "'( a, 3.5, 10.14 ) )"));
+				+ "'( c, 3,14 ), '" + Point.class.getName() + "'( a, 3,14 ) )"));
 
 		assertTrue(cache.contains("'" + Polygon.class.getName() + "'( triangle, Segment0, Segment1, Segment2 )"));
 		assertTrue(cache.contains("'" + Polygon.class.getName() + "'( triangle, '" + Segment.class.getName()
-				+ "'( ab, '" + Point.class.getName() + "'( a, 3.5, 10.14 ), '" + Point.class.getName()
-				+ "'( b, 3.5, 10.14 ) ), '" + Segment.class.getName() + "'( bc, '" + Point.class.getName()
-				+ "'( b, 3.5, 10.14 ), '" + Point.class.getName() + "'( c, 3.5, 10.14 ) ), '" + Segment.class.getName()
-				+ "'( ca, '" + Point.class.getName() + "'( c, 3.5, 10.14 ), '" + Point.class.getName()
-				+ "'( a, 3.5, 10.14 ) ) )"));
+				+ "'( ab, '" + Point.class.getName() + "'( a, 3,14 ), '" + Point.class.getName()
+				+ "'( b, 3,14 ) ), '" + Segment.class.getName() + "'( bc, '" + Point.class.getName()
+				+ "'( b, 3,14 ), '" + Point.class.getName() + "'( c, 3,14 ) ), '" + Segment.class.getName()
+				+ "'( ca, '" + Point.class.getName() + "'( c, 3,14 ), '" + Point.class.getName()
+				+ "'( a, 3,14 ) ) )"));
 
 		assertTrue(cache.contains(
 				"'" + Segment.class.getName() + "'(Ids, Point0, Point1), '" + Point.class.getName() + "'(Idp, X, Y)"));

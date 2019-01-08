@@ -42,7 +42,7 @@ public class TypedQueryTest extends BaseTest {
 		// assertEquals(a, query5.getSolution());
 		// query5.dispose();
 
-		TypedQuery<Point> query6 = storage.createQuery(new Point(3.5, 10.14));
+		TypedQuery<Point> query6 = storage.createQuery(new Point(3,14));
 		assertEquals(a, query6.getSolution());
 		query6.dispose();
 
@@ -92,7 +92,7 @@ public class TypedQueryTest extends BaseTest {
 
 		storage.getTransaction().begin();
 
-		TypedQuery<Point> query1 = storage.createQuery(new Point(3.5, 10.14));
+		TypedQuery<Point> query1 = storage.createQuery(new Point(3,14));
 		assertEquals(a, query1.getSolution());
 		query1.dispose();
 

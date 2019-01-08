@@ -98,7 +98,7 @@ public class QueryTest extends BaseTest {
 			}
 		}
 
-		query = storage.createQuery("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3.5, Y =:= 10.14");
+		query = storage.createQuery("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3, Y =:= 14");
 		solution = query.getSolution();
 		if (solution instanceof Object[]) {
 			Object[] objects = (Object[]) solution;
@@ -125,7 +125,7 @@ public class QueryTest extends BaseTest {
 		}
 
 		query = storage.createQuery("'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '"
-				+ Point.class.getName() + "'(a, 3.5, 10.14), Point1 == '" + Point.class.getName() + "'(b, 3.5, 10.14)");
+				+ Point.class.getName() + "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)");
 		solution = query.getSolution();
 		if (solution instanceof Object[]) {
 			Object[] objects = (Object[]) solution;
@@ -171,7 +171,7 @@ public class QueryTest extends BaseTest {
 		assertEquals(Arrays.asList(a, b, c, d), createList(solutions));
 
 		// point query restricted to specifics x and y points
-		query = storage.createQuery("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3.5, Y =:= 10.14");
+		query = storage.createQuery("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3, Y =:= 14");
 		solutions = query.getSolutions();
 		assertEquals(Arrays.asList(a, b, c, d), createList(solutions));
 
@@ -181,7 +181,7 @@ public class QueryTest extends BaseTest {
 
 		// segment query restricted to specifics points initial and finals
 		query = storage.createQuery("'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '"
-				+ Point.class.getName() + "'(a, 3.5, 10.14), Point1 == '" + Point.class.getName() + "'(b, 3.5, 10.14)");
+				+ Point.class.getName() + "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)");
 		solutions = query.getSolutions();
 		assertEquals(Arrays.asList(ab), createList(solutions));
 

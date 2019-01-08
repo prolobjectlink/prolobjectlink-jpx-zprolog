@@ -91,10 +91,10 @@ public abstract class BaseTest {
 	protected static final PrologInteger nine = provider.newInteger(9);
 	protected static final PrologInteger ten = provider.newInteger(10);
 
-	protected static final Point a = new Point("a", 3.5, 10.14);
-	protected static final Point b = new Point("b", 3.5, 10.14);
-	protected static final Point c = new Point("c", 3.5, 10.14);
-	protected static final Point d = new Point("d", 3.5, 10.14);
+	protected static final Point a = new Point("a", 3,14);
+	protected static final Point b = new Point("b", 3,14);
+	protected static final Point c = new Point("c", 3,14);
+	protected static final Point d = new Point("d", 3,14);
 
 	protected static final Segment ab = new Segment("ab", a, b);
 	protected static final Segment bc = new Segment("bc", b, c);

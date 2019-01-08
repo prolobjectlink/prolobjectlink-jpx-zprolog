@@ -68,9 +68,9 @@ public class HierarchicalCacheTest extends BaseTest {
 
 		// create new update objects
 
-		Point newA = new Point("a", 7.6F, 9.4F);
-		Point newB = new Point("b", 7.6F, 9.4F);
-		Point newC = new Point("c", 7.6F, 9.4F);
+		Point newA = new Point("a", 6,28);
+		Point newB = new Point("b", 6,28);
+		Point newC = new Point("c", 6,28);
 
 		Segment newAB = new Segment("ab", newA, newB);
 		Segment newBC = new Segment("bc", newB, newC);
@@ -198,14 +198,14 @@ public class HierarchicalCacheTest extends BaseTest {
 
 		// point query restricted to specifics x and y points
 		assertArrayEquals(new Object[] { a },
-				(Object[]) cache.find("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3.5, Y =:= 10.14"));
+				(Object[]) cache.find("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3, Y =:= 14"));
 
 		assertArrayEquals(new Object[] { ab },
 				(Object[]) cache.find("'" + Segment.class.getName() + "'(Ids, Point0, Point1)"));
 
 		// segment query restricted to specifics points initial and finals
 		Object solution = cache.find("'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '"
-				+ Point.class.getName() + "'(a, 3.5, 10.14), Point1 == '" + Point.class.getName() + "'(b, 3.5, 10.14)");
+				+ Point.class.getName() + "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)");
 
 		if (solution instanceof Object[]) {
 			Object[] objects = (Object[]) solution;
@@ -241,7 +241,7 @@ public class HierarchicalCacheTest extends BaseTest {
 		assertEquals(ca, cache.find(ca));
 		assertEquals(triangle, cache.find(triangle));
 
-		assertEquals(a, cache.find(new Point(3.5, 10.14)));
+		assertEquals(a, cache.find(new Point(3,14)));
 		assertEquals(ab, cache.find(new Segment()));
 		assertEquals(triangle, cache.find(new Polygon()));
 
@@ -335,7 +335,7 @@ public class HierarchicalCacheTest extends BaseTest {
 		assertEquals(Arrays.asList(a, b, c, d), createList(solutions));
 
 		// point query restricted to specifics x and y points
-		solutions = cache.findAll("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3.5, Y =:= 10.14");
+		solutions = cache.findAll("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3, Y =:= 14");
 		assertEquals(Arrays.asList(a, b, c, d), createList(solutions));
 
 		solutions = cache.findAll("'" + Segment.class.getName() + "'(Ids, Point0, Point1)");
@@ -343,7 +343,7 @@ public class HierarchicalCacheTest extends BaseTest {
 
 		// segment query restricted to specifics points initial and finals
 		solutions = cache.findAll("'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '"
-				+ Point.class.getName() + "'(a, 3.5, 10.14), Point1 == '" + Point.class.getName() + "'(b, 3.5, 10.14)");
+				+ Point.class.getName() + "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)");
 		assertEquals(Arrays.asList(ab), createList(solutions));
 
 		// predicate projection
@@ -391,7 +391,7 @@ public class HierarchicalCacheTest extends BaseTest {
 		cache.add(da);
 		cache.add(triangle);
 
-		assertEquals(Arrays.asList(a, b, c, d), cache.findAll("'" + Point.class.getName() + "'", null, 3.5, 10.14));
+		assertEquals(Arrays.asList(a, b, c, d), cache.findAll("'" + Point.class.getName() + "'", null, 3,14));
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da),
 				cache.findAll("'" + Segment.class.getName() + "'", null, null, null));
 		assertEquals(Arrays.asList(triangle),
@@ -413,7 +413,7 @@ public class HierarchicalCacheTest extends BaseTest {
 		cache.add(da);
 		cache.add(triangle);
 
-		assertEquals(Arrays.asList(a, b, c, d), cache.findAll(new Point(3.5, 10.14)));
+		assertEquals(Arrays.asList(a, b, c, d), cache.findAll(new Point(3,14)));
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da), cache.findAll(new Segment()));
 		assertEquals(Arrays.asList(triangle), cache.findAll(new Polygon()));
 

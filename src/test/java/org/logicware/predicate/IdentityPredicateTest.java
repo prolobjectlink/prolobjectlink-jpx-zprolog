@@ -38,7 +38,7 @@ public class IdentityPredicateTest extends BasePredicateTest {
 		assertFalse(new IdentityPredicate<Segment>(ab), bc);
 		assertFalse(new IdentityPredicate<Polygon>(triangle), tetragon);
 
-		assertFalse(new IdentityPredicate<Point>(a), new Point("a", 3.5, 10.15));
+		assertFalse(new IdentityPredicate<Point>(a), new Point("a", 3,14));
 		assertFalse(new IdentityPredicate<Segment>(ab), new Segment("ab", a, b));
 		assertFalse(new IdentityPredicate<Polygon>(triangle), new Polygon(new String("triangle"), ab, bc, ca));
 
