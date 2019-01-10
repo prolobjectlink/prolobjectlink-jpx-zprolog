@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 import org.logicware.BaseTest;
-import org.logicware.db.util.JavaLists;
+import org.worklogic.db.util.JavaLists;
 
 public class JavaListsTest extends BaseTest {
 

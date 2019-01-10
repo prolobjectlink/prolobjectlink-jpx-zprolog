@@ -6,10 +6,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.logicware.BaseTest;
-import org.logicware.db.generator.IncrementGenerator;
-import org.logicware.db.generator.TimestampGenerator;
-import org.logicware.db.generator.UUIDGenerator;
-import org.logicware.domain.geometry.Point;
+import org.worklogic.db.generator.IncrementGenerator;
+import org.worklogic.db.generator.TimestampGenerator;
+import org.worklogic.db.generator.UUIDGenerator;
+import org.worklogic.domain.geometry.Point;
 
 public class IdGeneratorPersistenceTest extends BaseTest {
 

@@ -20,10 +20,10 @@
 package org.logicware.predicate;
 
 import org.junit.Test;
-import org.logicware.db.predicate.InstanceOfPredicate;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.geometry.Polygon;
-import org.logicware.domain.geometry.Segment;
+import org.worklogic.db.predicate.InstanceOfPredicate;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.geometry.Polygon;
+import org.worklogic.domain.geometry.Segment;
 
 public class InstanceOfPredicateTest extends BasePredicateTest {
 

@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Calendar;
 
 import org.junit.Test;
-import org.logicware.db.prolog.PrologCalendar;
+import org.worklogic.db.prolog.PrologCalendar;
 
 public class CalendarTest {
 

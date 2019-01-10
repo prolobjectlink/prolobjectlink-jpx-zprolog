@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.junit.Test;
-import org.logicware.db.prolog.PrologTreeMap;
+import org.worklogic.db.prolog.PrologTreeMap;
 
 public class TreeMapTest extends CollectionTest {
 

@@ -29,7 +29,7 @@ import java.util.Iterator;
 import java.util.ListIterator;
 
 import org.junit.Test;
-import org.logicware.db.prolog.PrologArrayList;
+import org.worklogic.db.prolog.PrologArrayList;
 
 public class ArrayListTest extends CollectionTest {
 

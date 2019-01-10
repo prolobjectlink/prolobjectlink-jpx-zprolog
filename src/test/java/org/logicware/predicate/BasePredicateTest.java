@@ -21,10 +21,11 @@ package org.logicware.predicate;
 
 import org.junit.Assert;
 import org.logicware.BaseTest;
-import org.logicware.db.Predicate;
-import org.logicware.db.predicate.NotNullPredicate;
-import org.logicware.domain.geometry.Point;
+import org.worklogic.db.Predicate;
+import org.worklogic.db.predicate.NotNullPredicate;
+import org.worklogic.domain.geometry.Point;
 
+/** @author Jose Zalacain @since 1.0 */
 public abstract class BasePredicateTest extends BaseTest {
 
 	protected Predicate<Point> leftPredicate = new NotNullPredicate<Point>();

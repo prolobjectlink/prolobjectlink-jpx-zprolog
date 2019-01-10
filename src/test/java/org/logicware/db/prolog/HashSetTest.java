@@ -31,7 +31,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Test;
-import org.logicware.db.prolog.PrologHashSet;
+import org.worklogic.db.prolog.PrologHashSet;
 
 public class HashSetTest extends CollectionTest {
 

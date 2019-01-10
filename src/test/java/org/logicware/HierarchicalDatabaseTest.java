@@ -12,19 +12,19 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.logicware.db.ObjectConverter;
-import org.logicware.db.PersistentContainer;
-import org.logicware.db.Predicate;
-import org.logicware.db.ProcedureQuery;
-import org.logicware.db.engine.AbstractHierarchicalDatabase;
-import org.logicware.db.prolog.PrologHierarchicalDatabase;
-import org.logicware.db.prolog.PrologObjectConverter;
-import org.logicware.db.prolog.PrologStoragePool;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.geometry.Polygon;
-import org.logicware.domain.geometry.Segment;
 import org.logicware.prolog.PrologEngine;
 import org.logicware.prolog.PrologTerm;
+import org.worklogic.db.ObjectConverter;
+import org.worklogic.db.PersistentContainer;
+import org.worklogic.db.Predicate;
+import org.worklogic.db.ProcedureQuery;
+import org.worklogic.db.engine.AbstractHierarchicalDatabase;
+import org.worklogic.db.prolog.PrologHierarchicalDatabase;
+import org.worklogic.db.prolog.PrologObjectConverter;
+import org.worklogic.db.prolog.PrologStoragePool;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.geometry.Polygon;
+import org.worklogic.domain.geometry.Segment;
 
 public class HierarchicalDatabaseTest extends BaseTest {
 
@@ -55,12 +55,12 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		assertTrue(hdb.contains("'" + Point.class.getName() + "'( c, 3,14 )"));
 
 		assertTrue(hdb.contains("'" + Segment.class.getName() + "'(Ids, Point0, Point1)"));
-		assertTrue(hdb.contains("'" + Segment.class.getName() + "'( ab, '" + Point.class.getName()
-				+ "'( a, 3,14 ), '" + Point.class.getName() + "'( b, 3,14 ) )"));
-		assertTrue(hdb.contains("'" + Segment.class.getName() + "'( bc, '" + Point.class.getName()
-				+ "'( b, 3,14 ), '" + Point.class.getName() + "'( c, 3,14 ) )"));
-		assertTrue(hdb.contains("'" + Segment.class.getName() + "'( ca, '" + Point.class.getName()
-				+ "'( c, 3,14 ), '" + Point.class.getName() + "'( a, 3,14 ) )"));
+		assertTrue(hdb.contains("'" + Segment.class.getName() + "'( ab, '" + Point.class.getName() + "'( a, 3,14 ), '"
+				+ Point.class.getName() + "'( b, 3,14 ) )"));
+		assertTrue(hdb.contains("'" + Segment.class.getName() + "'( bc, '" + Point.class.getName() + "'( b, 3,14 ), '"
+				+ Point.class.getName() + "'( c, 3,14 ) )"));
+		assertTrue(hdb.contains("'" + Segment.class.getName() + "'( ca, '" + Point.class.getName() + "'( c, 3,14 ), '"
+				+ Point.class.getName() + "'( a, 3,14 ) )"));
 
 		assertTrue(hdb.contains("'" + Polygon.class.getName() + "'( triangle, Segment0, Segment1, Segment2 )"));
 		assertTrue(hdb.contains("'" + Polygon.class.getName() + "'( triangle, '" + Segment.class.getName() + "'( ab, '"
@@ -254,9 +254,9 @@ public class HierarchicalDatabaseTest extends BaseTest {
 
 		// create new update objects
 
-		Point newA = new Point("a", 6,28);
-		Point newB = new Point("b", 6,28);
-		Point newC = new Point("c", 6,28);
+		Point newA = new Point("a", 6, 28);
+		Point newB = new Point("b", 6, 28);
+		Point newC = new Point("c", 6, 28);
 
 		Segment newAB = new Segment("ab", newA, newB);
 		Segment newBC = new Segment("bc", newB, newC);
@@ -421,9 +421,8 @@ public class HierarchicalDatabaseTest extends BaseTest {
 
 		// segment query restricted to specifics points initial and finals
 		objects = hdb
-				.createQuery(
-						"'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '" + Point.class.getName()
-								+ "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)")
+				.createQuery("'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '"
+						+ Point.class.getName() + "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)")
 				.getSolutions();
 		assertEquals(Arrays.asList(ab), createList(objects));
 
@@ -491,7 +490,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 
 		assertEquals(triangle, hdb.createQuery(triangle).getSolution());
 
-		assertEquals(Arrays.asList(a, b, c, d), hdb.createQuery(new Point(3,14)).getSolutions());
+		assertEquals(Arrays.asList(a, b, c, d), hdb.createQuery(new Point(3, 14)).getSolutions());
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da), hdb.createQuery(new Segment()).getSolutions());
 		assertEquals(Arrays.asList(triangle), hdb.createQuery(new Polygon()).getSolutions());
 
@@ -1010,10 +1009,10 @@ public class HierarchicalDatabaseTest extends BaseTest {
 
 	@Test
 	public void testClassesOfString() {
-		assertArrayEquals(new Class[] { Segment.class, Point.class }, hdb
-				.classesOf("'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '" + Point.class.getName()
-						+ "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)")
-				.toArray());
+		assertArrayEquals(new Class[] { Segment.class, Point.class },
+				hdb.classesOf("'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '"
+						+ Point.class.getName() + "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)")
+						.toArray());
 	}
 
 	@Test

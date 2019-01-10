@@ -11,12 +11,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.logicware.db.Predicate;
-import org.logicware.db.ProcedureQuery;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.geometry.Polygon;
-import org.logicware.domain.geometry.Segment;
 import org.logicware.prolog.PrologEngine;
+import org.worklogic.db.Predicate;
+import org.worklogic.db.ProcedureQuery;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.geometry.Polygon;
+import org.worklogic.domain.geometry.Segment;
 
 public class StorageTest extends BaseTest {
 
@@ -76,10 +76,10 @@ public class StorageTest extends BaseTest {
 
 		// create new update objects
 
-		Point newA = new Point("a", 6,28);
-		Point newB = new Point("b", 6,28);
-		Point newC = new Point("c", 6,28);
-		Point newD = new Point("d", 6,28);
+		Point newA = new Point("a", 6, 28);
+		Point newB = new Point("b", 6, 28);
+		Point newC = new Point("c", 6, 28);
+		Point newD = new Point("d", 6, 28);
 
 		Segment newAB = new Segment("ab", newA, newB);
 		Segment newBC = new Segment("bc", newB, newC);
@@ -336,11 +336,10 @@ public class StorageTest extends BaseTest {
 
 		assertTrue(storage.contains("'" + Polygon.class.getName() + "'( triangle, Segment0, Segment1, Segment2 )"));
 		assertTrue(storage.contains("'" + Polygon.class.getName() + "'( triangle, '" + Segment.class.getName()
-				+ "'( ab, '" + Point.class.getName() + "'( a, 3,14 ), '" + Point.class.getName()
-				+ "'( b, 3,14 ) ), '" + Segment.class.getName() + "'( bc, '" + Point.class.getName()
-				+ "'( b, 3,14 ), '" + Point.class.getName() + "'( c, 3,14 ) ), '" + Segment.class.getName()
-				+ "'( ca, '" + Point.class.getName() + "'( c, 3,14 ), '" + Point.class.getName()
-				+ "'( a, 3,14 ) ) )"));
+				+ "'( ab, '" + Point.class.getName() + "'( a, 3,14 ), '" + Point.class.getName() + "'( b, 3,14 ) ), '"
+				+ Segment.class.getName() + "'( bc, '" + Point.class.getName() + "'( b, 3,14 ), '"
+				+ Point.class.getName() + "'( c, 3,14 ) ), '" + Segment.class.getName() + "'( ca, '"
+				+ Point.class.getName() + "'( c, 3,14 ), '" + Point.class.getName() + "'( a, 3,14 ) ) )"));
 
 		assertTrue(storage.contains(
 				"'" + Segment.class.getName() + "'(Ids, Point0, Point1), '" + Point.class.getName() + "'(Idp, X, Y)"));
@@ -557,7 +556,7 @@ public class StorageTest extends BaseTest {
 		assertEquals(ca, storage.find(ca));
 		assertEquals(triangle, storage.find(triangle));
 
-		assertEquals(a, storage.find(new Point(3,14)));
+		assertEquals(a, storage.find(new Point(3, 14)));
 		assertEquals(ab, storage.find(new Segment()));
 		assertEquals(triangle, storage.find(new Polygon()));
 		storage.getTransaction().commit();
@@ -804,7 +803,7 @@ public class StorageTest extends BaseTest {
 		assertTrue(storage.contains(da));
 		assertTrue(storage.contains(triangle));
 
-		assertEquals(Arrays.asList(a, b, c, d), storage.findAll("'" + Point.class.getName() + "'", null, 3,14));
+		assertEquals(Arrays.asList(a, b, c, d), storage.findAll("'" + Point.class.getName() + "'", null, 3, 14));
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da),
 				storage.findAll("'" + Segment.class.getName() + "'", null, null, null));
 		assertEquals(Arrays.asList(triangle),
@@ -855,7 +854,7 @@ public class StorageTest extends BaseTest {
 		assertTrue(storage.contains(da));
 		assertTrue(storage.contains(triangle));
 
-		assertEquals(Arrays.asList(a, b, c, d), storage.findAll(new Point(3,14)));
+		assertEquals(Arrays.asList(a, b, c, d), storage.findAll(new Point(3, 14)));
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da), storage.findAll(new Segment()));
 		assertEquals(Arrays.asList(triangle), storage.findAll(new Polygon()));
 
@@ -1046,8 +1045,7 @@ public class StorageTest extends BaseTest {
 		assertEquals(Arrays.asList(a, b, c, d), createList(objects));
 
 		// point query restricted to specifics x and y points
-		objects = storage.createQuery("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3, Y =:= 14")
-				.getSolutions();
+		objects = storage.createQuery("'" + Point.class.getName() + "'(Idp, X, Y), X =:= 3, Y =:= 14").getSolutions();
 		assertEquals(Arrays.asList(a, b, c, d), createList(objects));
 
 		objects = storage.createQuery("'" + Segment.class.getName() + "'(Ids, Point0, Point1)").getSolutions();
@@ -1055,9 +1053,8 @@ public class StorageTest extends BaseTest {
 
 		// segment query restricted to specifics points initial and finals
 		objects = storage
-				.createQuery(
-						"'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '" + Point.class.getName()
-								+ "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)")
+				.createQuery("'" + Segment.class.getName() + "'(Ids, Point0, Point1), Point0 == '"
+						+ Point.class.getName() + "'(a, 3,14), Point1 == '" + Point.class.getName() + "'(b, 3,14)")
 				.getSolutions();
 		assertEquals(Arrays.asList(ab), createList(objects));
 
@@ -1148,7 +1145,7 @@ public class StorageTest extends BaseTest {
 
 		assertEquals(triangle, storage.createQuery(triangle).getSolution());
 
-		assertEquals(Arrays.asList(a, b, c, d), storage.createQuery(new Point(3,14)).getSolutions());
+		assertEquals(Arrays.asList(a, b, c, d), storage.createQuery(new Point(3, 14)).getSolutions());
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da), storage.createQuery(new Segment()).getSolutions());
 		assertEquals(Arrays.asList(triangle), storage.createQuery(new Polygon()).getSolutions());
 

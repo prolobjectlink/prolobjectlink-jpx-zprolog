@@ -1,13 +1,13 @@
 package org.logicware.performance;
 
-import org.logicware.db.ContainerFactory;
-import org.logicware.db.Storage;
-import org.logicware.db.etc.Settings;
-import org.logicware.domain.geometry.Point;
 import org.logicware.prolog.Prolog;
 import org.logicware.prolog.PrologProvider;
-import org.logicware.prolog.zprolog.ZPrologContainerFactory;
 import org.logicware.prolog.zprolog.ZProlog;
+import org.logicware.prolog.zprolog.ZPrologContainerFactory;
+import org.worklogic.db.ContainerFactory;
+import org.worklogic.db.Storage;
+import org.worklogic.db.etc.Settings;
+import org.worklogic.domain.geometry.Point;
 
 public class MainPerformanceTest {
 

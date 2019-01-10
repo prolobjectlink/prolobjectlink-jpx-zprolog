@@ -6,10 +6,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.logicware.BaseTest;
-import org.logicware.domain.classes.NonFieldClass;
-import org.logicware.domain.classes.StaticFieldClass;
-import org.logicware.domain.classes.StaticFinalFieldClass;
-import org.logicware.domain.classes.TransientFieldClass;
+import org.worklogic.domain.classes.NonFieldClass;
+import org.worklogic.domain.classes.StaticFieldClass;
+import org.worklogic.domain.classes.StaticFinalFieldClass;
+import org.worklogic.domain.classes.TransientFieldClass;
 
 public class FieldPersistenceTest extends BaseTest {
 

@@ -31,7 +31,7 @@ import java.util.Iterator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.logicware.db.prolog.PrologTreeSet;
+import org.worklogic.db.prolog.PrologTreeSet;
 
 public class TreeSetTest extends CollectionTest {
 

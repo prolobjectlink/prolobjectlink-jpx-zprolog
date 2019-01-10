@@ -20,10 +20,10 @@
 package org.logicware.predicate;
 
 import org.junit.Test;
-import org.logicware.db.predicate.IdentityPredicate;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.geometry.Polygon;
-import org.logicware.domain.geometry.Segment;
+import org.worklogic.db.predicate.IdentityPredicate;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.geometry.Polygon;
+import org.worklogic.domain.geometry.Segment;
 
 public class IdentityPredicateTest extends BasePredicateTest {
 
@@ -38,7 +38,7 @@ public class IdentityPredicateTest extends BasePredicateTest {
 		assertFalse(new IdentityPredicate<Segment>(ab), bc);
 		assertFalse(new IdentityPredicate<Polygon>(triangle), tetragon);
 
-		assertFalse(new IdentityPredicate<Point>(a), new Point("a", 3,14));
+		assertFalse(new IdentityPredicate<Point>(a), new Point("a", 3, 14));
 		assertFalse(new IdentityPredicate<Segment>(ab), new Segment("ab", a, b));
 		assertFalse(new IdentityPredicate<Polygon>(triangle), new Polygon(new String("triangle"), ab, bc, ca));
 

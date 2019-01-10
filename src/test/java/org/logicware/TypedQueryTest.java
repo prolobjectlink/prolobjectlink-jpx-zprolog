@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 import org.junit.Test;
-import org.logicware.db.TypedQuery;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.geometry.Polygon;
-import org.logicware.domain.geometry.Segment;
+import org.worklogic.db.TypedQuery;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.geometry.Polygon;
+import org.worklogic.domain.geometry.Segment;
 
 public class TypedQueryTest extends BaseTest {
 
@@ -42,7 +42,7 @@ public class TypedQueryTest extends BaseTest {
 		// assertEquals(a, query5.getSolution());
 		// query5.dispose();
 
-		TypedQuery<Point> query6 = storage.createQuery(new Point(3,14));
+		TypedQuery<Point> query6 = storage.createQuery(new Point(3, 14));
 		assertEquals(a, query6.getSolution());
 		query6.dispose();
 
@@ -92,7 +92,7 @@ public class TypedQueryTest extends BaseTest {
 
 		storage.getTransaction().begin();
 
-		TypedQuery<Point> query1 = storage.createQuery(new Point(3,14));
+		TypedQuery<Point> query1 = storage.createQuery(new Point(3, 14));
 		assertEquals(a, query1.getSolution());
 		query1.dispose();
 

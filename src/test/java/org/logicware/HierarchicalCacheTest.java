@@ -10,10 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.logicware.db.Predicate;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.geometry.Polygon;
-import org.logicware.domain.geometry.Segment;
+import org.worklogic.db.Predicate;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.geometry.Polygon;
+import org.worklogic.domain.geometry.Segment;
 
 public class HierarchicalCacheTest extends BaseTest {
 
@@ -68,9 +68,9 @@ public class HierarchicalCacheTest extends BaseTest {
 
 		// create new update objects
 
-		Point newA = new Point("a", 6,28);
-		Point newB = new Point("b", 6,28);
-		Point newC = new Point("c", 6,28);
+		Point newA = new Point("a", 6, 28);
+		Point newB = new Point("b", 6, 28);
+		Point newC = new Point("c", 6, 28);
 
 		Segment newAB = new Segment("ab", newA, newB);
 		Segment newBC = new Segment("bc", newB, newC);
@@ -241,7 +241,7 @@ public class HierarchicalCacheTest extends BaseTest {
 		assertEquals(ca, cache.find(ca));
 		assertEquals(triangle, cache.find(triangle));
 
-		assertEquals(a, cache.find(new Point(3,14)));
+		assertEquals(a, cache.find(new Point(3, 14)));
 		assertEquals(ab, cache.find(new Segment()));
 		assertEquals(triangle, cache.find(new Polygon()));
 
@@ -391,7 +391,7 @@ public class HierarchicalCacheTest extends BaseTest {
 		cache.add(da);
 		cache.add(triangle);
 
-		assertEquals(Arrays.asList(a, b, c, d), cache.findAll("'" + Point.class.getName() + "'", null, 3,14));
+		assertEquals(Arrays.asList(a, b, c, d), cache.findAll("'" + Point.class.getName() + "'", null, 3, 14));
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da),
 				cache.findAll("'" + Segment.class.getName() + "'", null, null, null));
 		assertEquals(Arrays.asList(triangle),
@@ -413,7 +413,7 @@ public class HierarchicalCacheTest extends BaseTest {
 		cache.add(da);
 		cache.add(triangle);
 
-		assertEquals(Arrays.asList(a, b, c, d), cache.findAll(new Point(3,14)));
+		assertEquals(Arrays.asList(a, b, c, d), cache.findAll(new Point(3, 14)));
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da), cache.findAll(new Segment()));
 		assertEquals(Arrays.asList(triangle), cache.findAll(new Polygon()));
 

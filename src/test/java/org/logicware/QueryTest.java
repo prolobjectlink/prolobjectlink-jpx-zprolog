@@ -11,10 +11,10 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.junit.Test;
-import org.logicware.db.Query;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.geometry.Polygon;
-import org.logicware.domain.geometry.Segment;
+import org.worklogic.db.Query;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.geometry.Polygon;
+import org.worklogic.domain.geometry.Segment;
 
 public class QueryTest extends BaseTest {
 

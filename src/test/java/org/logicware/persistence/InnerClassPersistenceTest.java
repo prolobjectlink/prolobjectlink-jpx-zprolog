@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.logicware.BaseTest;
-import org.logicware.domain.classes.OuterInnerClass;
+import org.worklogic.domain.classes.OuterInnerClass;
 
 public class InnerClassPersistenceTest extends BaseTest {
 

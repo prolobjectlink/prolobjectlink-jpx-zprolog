@@ -7,9 +7,9 @@ import java.lang.reflect.Field;
 
 import org.junit.Test;
 import org.logicware.BaseTest;
-import org.logicware.db.prolog.PrologRenamer;
-import org.logicware.domain.geometry.Point;
 import org.logicware.prolog.PrologVariable;
+import org.worklogic.db.prolog.PrologRenamer;
+import org.worklogic.domain.geometry.Point;
 
 public class RenamerTest extends BaseTest {
 

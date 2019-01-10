@@ -20,12 +20,12 @@
 package org.logicware.predicate;
 
 import org.junit.Test;
-import org.logicware.db.predicate.FalsePredicate;
-import org.logicware.db.predicate.NotNullPredicate;
-import org.logicware.db.predicate.NotPredicate;
-import org.logicware.db.predicate.NullPredicate;
-import org.logicware.db.predicate.TruePredicate;
-import org.logicware.domain.geometry.Point;
+import org.worklogic.db.predicate.FalsePredicate;
+import org.worklogic.db.predicate.NotNullPredicate;
+import org.worklogic.db.predicate.NotPredicate;
+import org.worklogic.db.predicate.NullPredicate;
+import org.worklogic.db.predicate.TruePredicate;
+import org.worklogic.domain.geometry.Point;
 
 public class NotPredicateTest extends BasePredicateTest {
 

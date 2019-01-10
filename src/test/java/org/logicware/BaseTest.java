@@ -10,34 +10,35 @@ import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
-import org.logicware.db.ContainerFactory;
-import org.logicware.db.DatabaseClass;
-import org.logicware.db.DatabaseUser;
-import org.logicware.db.HierarchicalCache;
-import org.logicware.db.HierarchicalDatabase;
-import org.logicware.db.RelationalDatabase;
-import org.logicware.db.Schema;
-import org.logicware.db.Storage;
-import org.logicware.db.StorageManager;
-import org.logicware.db.StorageMode;
-import org.logicware.db.StoragePool;
-import org.logicware.db.etc.Settings;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.geometry.Polygon;
-import org.logicware.domain.geometry.Segment;
-import org.logicware.domain.geometry.Tetragon;
-import org.logicware.domain.geometry.view.SamePoint;
-import org.logicware.domain.model.Address;
-import org.logicware.domain.model.Department;
-import org.logicware.domain.model.Employee;
-import org.logicware.domain.model.Person;
-import org.logicware.domain.model.view.AnEmployeeView;
 import org.logicware.prolog.Prolog;
 import org.logicware.prolog.PrologInteger;
 import org.logicware.prolog.PrologProvider;
-import org.logicware.prolog.zprolog.ZPrologContainerFactory;
 import org.logicware.prolog.zprolog.ZProlog;
+import org.logicware.prolog.zprolog.ZPrologContainerFactory;
+import org.worklogic.db.ContainerFactory;
+import org.worklogic.db.DatabaseClass;
+import org.worklogic.db.DatabaseUser;
+import org.worklogic.db.HierarchicalCache;
+import org.worklogic.db.HierarchicalDatabase;
+import org.worklogic.db.RelationalDatabase;
+import org.worklogic.db.Schema;
+import org.worklogic.db.Storage;
+import org.worklogic.db.StorageManager;
+import org.worklogic.db.StorageMode;
+import org.worklogic.db.StoragePool;
+import org.worklogic.db.etc.Settings;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.geometry.Polygon;
+import org.worklogic.domain.geometry.Segment;
+import org.worklogic.domain.geometry.Tetragon;
+import org.worklogic.domain.geometry.view.SamePoint;
+import org.worklogic.domain.model.Address;
+import org.worklogic.domain.model.Department;
+import org.worklogic.domain.model.Employee;
+import org.worklogic.domain.model.Person;
+import org.worklogic.domain.model.view.AnEmployeeView;
 
+/** @author Jose Zalacain @since 1.0 */
 public abstract class BaseTest {
 
 	protected Settings settings;
@@ -91,10 +92,10 @@ public abstract class BaseTest {
 	protected static final PrologInteger nine = provider.newInteger(9);
 	protected static final PrologInteger ten = provider.newInteger(10);
 
-	protected static final Point a = new Point("a", 3,14);
-	protected static final Point b = new Point("b", 3,14);
-	protected static final Point c = new Point("c", 3,14);
-	protected static final Point d = new Point("d", 3,14);
+	protected static final Point a = new Point("a", 3, 14);
+	protected static final Point b = new Point("b", 3, 14);
+	protected static final Point c = new Point("c", 3, 14);
+	protected static final Point d = new Point("d", 3, 14);
 
 	protected static final Segment ab = new Segment("ab", a, b);
 	protected static final Segment bc = new Segment("bc", b, c);

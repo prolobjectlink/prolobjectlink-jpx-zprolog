@@ -9,8 +9,8 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 
 import org.junit.Test;
-import org.logicware.db.StorageMode;
-import org.logicware.db.etc.Settings;
+import org.worklogic.db.StorageMode;
+import org.worklogic.db.etc.Settings;
 
 public class SettingsTest extends BaseTest {
 

@@ -20,8 +20,8 @@
 package org.logicware.predicate;
 
 import org.junit.Test;
-import org.logicware.db.predicate.OrPredicate;
-import org.logicware.domain.geometry.Point;
+import org.worklogic.db.predicate.OrPredicate;
+import org.worklogic.domain.geometry.Point;
 
 public class OrPredicateTest extends BasePredicateTest {
 

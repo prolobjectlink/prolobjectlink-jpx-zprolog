@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.TreeSet;
 
 import org.junit.Test;
-import org.logicware.db.util.JavaSets;
+import org.worklogic.db.util.JavaSets;
 
 public class JavaSetsTest {
 

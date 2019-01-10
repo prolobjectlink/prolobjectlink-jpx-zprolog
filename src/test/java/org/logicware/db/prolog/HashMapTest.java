@@ -29,7 +29,7 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.junit.Test;
-import org.logicware.db.prolog.PrologHashMap;
+import org.worklogic.db.prolog.PrologHashMap;
 
 public class HashMapTest extends CollectionTest {
 

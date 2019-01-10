@@ -19,9 +19,9 @@
  */
 package org.logicware.prolog.zprolog;
 
-import org.logicware.db.HierarchicalCache;
-import org.logicware.db.etc.Settings;
-import org.logicware.db.prolog.PrologContainerFactory;
+import org.worklogic.db.HierarchicalCache;
+import org.worklogic.db.etc.Settings;
+import org.worklogic.db.prolog.PrologContainerFactory;
 
 public final class ZPrologContainerFactory extends PrologContainerFactory {
 

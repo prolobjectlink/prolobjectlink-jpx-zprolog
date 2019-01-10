@@ -6,7 +6,7 @@ import java.util.Locale;
 
 import org.junit.Test;
 import org.logicware.BaseTest;
-import org.logicware.db.prolog.PrologLocale;
+import org.worklogic.db.prolog.PrologLocale;
 
 public class LocaleTest extends BaseTest {
 

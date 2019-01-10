@@ -6,9 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.logicware.db.Predicate;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.geometry.Segment;
+import org.worklogic.db.Predicate;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.geometry.Segment;
 
 public class PredicateTest extends BaseTest {
 
@@ -112,11 +112,11 @@ public class PredicateTest extends BaseTest {
 
 			public boolean evaluate(Segment s) {
 
-				return s.getPoint0().equals(new Point("a", 3,14))
+				return s.getPoint0().equals(new Point("a", 3, 14))
 
 						&&
 
-						s.getPoint1().equals(new Point("b", 3,14));
+						s.getPoint1().equals(new Point("b", 3, 14));
 
 			}
 		});

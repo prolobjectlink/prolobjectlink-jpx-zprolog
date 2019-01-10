@@ -4,10 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.logicware.db.DatabaseClass;
-import org.logicware.db.DatabaseField;
-import org.logicware.domain.model.Address;
-import org.logicware.domain.model.link.PersonAddress;
+import org.worklogic.db.DatabaseClass;
+import org.worklogic.db.DatabaseField;
+import org.worklogic.domain.model.Address;
+import org.worklogic.domain.model.link.PersonAddress;
 
 public class DatabaseFieldTest extends BaseTest {
 

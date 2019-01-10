@@ -8,16 +8,16 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 
 import org.junit.Test;
-import org.logicware.GraphEdge;
-import org.logicware.db.DatabaseClass;
-import org.logicware.db.DatabaseFunction;
-import org.logicware.db.DatabaseSequence;
-import org.logicware.db.DatabaseUser;
-import org.logicware.db.RelationalGraph;
-import org.logicware.domain.model.Address;
-import org.logicware.domain.model.Department;
-import org.logicware.domain.model.Employee;
-import org.logicware.domain.model.Person;
+import org.worklogic.GraphEdge;
+import org.worklogic.db.DatabaseClass;
+import org.worklogic.db.DatabaseFunction;
+import org.worklogic.db.DatabaseSequence;
+import org.worklogic.db.DatabaseUser;
+import org.worklogic.db.RelationalGraph;
+import org.worklogic.domain.model.Address;
+import org.worklogic.domain.model.Department;
+import org.worklogic.domain.model.Employee;
+import org.worklogic.domain.model.Person;
 
 public class DatabaseSchemaTest extends BaseTest {
 

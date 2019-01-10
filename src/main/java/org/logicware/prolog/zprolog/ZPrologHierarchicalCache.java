@@ -19,13 +19,13 @@
  */
 package org.logicware.prolog.zprolog;
 
-import org.logicware.db.ContainerFactory;
-import org.logicware.db.HierarchicalCache;
-import org.logicware.db.ObjectConverter;
-import org.logicware.db.etc.Settings;
-import org.logicware.db.prolog.PrologHierarchicalCache;
 import org.logicware.prolog.PrologProvider;
 import org.logicware.prolog.PrologTerm;
+import org.worklogic.db.ContainerFactory;
+import org.worklogic.db.HierarchicalCache;
+import org.worklogic.db.ObjectConverter;
+import org.worklogic.db.etc.Settings;
+import org.worklogic.db.prolog.PrologHierarchicalCache;
 
 public class ZPrologHierarchicalCache extends PrologHierarchicalCache implements HierarchicalCache {
 

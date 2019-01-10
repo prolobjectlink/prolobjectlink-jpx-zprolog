@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
 import org.junit.Test;
-import org.logicware.db.util.JavaMaps;
+import org.worklogic.db.util.JavaMaps;
 
 public class JavaMapsTest {
 

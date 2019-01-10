@@ -27,7 +27,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import org.junit.Test;
-import org.logicware.db.prolog.PrologArrayList;
+import org.worklogic.db.prolog.PrologArrayList;
 
 public class ArrayListIterTest extends CollectionTest {
 

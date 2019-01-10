@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 
 import org.junit.Test;
-import org.logicware.db.DatabaseFunction;
+import org.worklogic.db.DatabaseFunction;
 
 public class DatabaseFunctionTest extends BaseTest {
 

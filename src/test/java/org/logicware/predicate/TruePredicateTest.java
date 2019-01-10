@@ -20,8 +20,8 @@
 package org.logicware.predicate;
 
 import org.junit.Test;
-import org.logicware.db.predicate.TruePredicate;
-import org.logicware.domain.geometry.Point;
+import org.worklogic.db.predicate.TruePredicate;
+import org.worklogic.domain.geometry.Point;
 
 public class TruePredicateTest extends BasePredicateTest {
 

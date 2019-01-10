@@ -20,7 +20,7 @@
 package org.logicware.predicate;
 
 import org.junit.Test;
-import org.logicware.db.predicate.NullPredicate;
+import org.worklogic.db.predicate.NullPredicate;
 
 public class NullPredicateTest extends BasePredicateTest {
 

@@ -12,22 +12,22 @@ import java.util.TreeSet;
 
 import org.junit.Test;
 import org.logicware.BaseTest;
-import org.logicware.db.ObjectConverter;
-import org.logicware.db.prolog.PrologArrayList;
-import org.logicware.db.prolog.PrologDate;
-import org.logicware.db.prolog.PrologHashMap;
-import org.logicware.db.prolog.PrologHashSet;
-import org.logicware.db.prolog.PrologObjectConverter;
-import org.logicware.db.prolog.PrologTreeMap;
-import org.logicware.db.prolog.PrologTreeSet;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.geometry.Polygon;
-import org.logicware.domain.geometry.Segment;
-import org.logicware.domain.geometry.Tetragon;
 import org.logicware.prolog.Prolog;
 import org.logicware.prolog.PrologProvider;
 import org.logicware.prolog.PrologTerm;
 import org.logicware.prolog.zprolog.ZProlog;
+import org.worklogic.db.ObjectConverter;
+import org.worklogic.db.prolog.PrologArrayList;
+import org.worklogic.db.prolog.PrologDate;
+import org.worklogic.db.prolog.PrologHashMap;
+import org.worklogic.db.prolog.PrologHashSet;
+import org.worklogic.db.prolog.PrologObjectConverter;
+import org.worklogic.db.prolog.PrologTreeMap;
+import org.worklogic.db.prolog.PrologTreeSet;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.geometry.Polygon;
+import org.worklogic.domain.geometry.Segment;
+import org.worklogic.domain.geometry.Tetragon;
 
 public class ObjectConverterTest extends BaseTest {
 
@@ -70,24 +70,23 @@ public class ObjectConverterTest extends BaseTest {
 				converter.toObject(provider.parseTerm("'" + PrologDate.class.getName() + "'(1000)")));
 
 		// Collections
-		assertEquals(new ArrayList<Integer>(), converter.toObject(provider.parseTerm(
-				"'" + PrologArrayList.class.getName() + "'(0,[nil,nil,nil,nil,nil,nil,nil,nil,nil,nil])")));
-		assertEquals(new HashMap<Integer, Integer>(), converter.toObject(provider.parseTerm(
-				"'" + PrologHashMap.class.getName() + "'(0,[nil,nil,nil,nil,nil,nil,nil,nil,nil,nil])")));
-		assertEquals(new HashSet<Integer>(), converter.toObject(provider.parseTerm(
-				"'" + PrologHashSet.class.getName() + "'(0,[nil,nil,nil,nil,nil,nil,nil,nil,nil,nil])")));
-		assertEquals(new TreeMap<Integer, Integer>(), converter
-				.toObject(provider.parseTerm("'" + PrologTreeMap.class.getName() + "'(nil,nil,nil,nil)")));
+		assertEquals(new ArrayList<Integer>(), converter.toObject(provider
+				.parseTerm("'" + PrologArrayList.class.getName() + "'(0,[nil,nil,nil,nil,nil,nil,nil,nil,nil,nil])")));
+		assertEquals(new HashMap<Integer, Integer>(), converter.toObject(provider
+				.parseTerm("'" + PrologHashMap.class.getName() + "'(0,[nil,nil,nil,nil,nil,nil,nil,nil,nil,nil])")));
+		assertEquals(new HashSet<Integer>(), converter.toObject(provider
+				.parseTerm("'" + PrologHashSet.class.getName() + "'(0,[nil,nil,nil,nil,nil,nil,nil,nil,nil,nil])")));
+		assertEquals(new TreeMap<Integer, Integer>(),
+				converter.toObject(provider.parseTerm("'" + PrologTreeMap.class.getName() + "'(nil,nil,nil,nil)")));
 		assertEquals(new TreeSet<Integer>(),
 				converter.toObject(provider.parseTerm("'" + PrologTreeSet.class.getName() + "'(nil,nil,nil)")));
 
 		// Prolog Structure
-		assertEquals(new Point("a", 3,14),
-				converter.toObject(provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-						provider.newInteger(3), provider.newInteger(14))));
+		assertEquals(new Point("a", 3, 14), converter.toObject(provider.newStructure("'" + Point.class.getName() + "'",
+				provider.newAtom("a"), provider.newInteger(3), provider.newInteger(14))));
 
 		// Prolog Structure Composition
-		assertEquals(new Segment("ab", new Point("a", 3,14), new Point("b", 3,14)),
+		assertEquals(new Segment("ab", new Point("a", 3, 14), new Point("b", 3, 14)),
 				converter.toObject(provider.newStructure("'" + Segment.class.getName() + "'", provider.newAtom("ab"),
 						provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
 								provider.newInteger(3), provider.newInteger(14)),
@@ -96,9 +95,9 @@ public class ObjectConverterTest extends BaseTest {
 
 		// Prolog Structure Composition and Inheritance
 		assertEquals(
-				new Polygon("triangle", new Segment("ab", new Point("a", 3,14), new Point("b", 3,14)),
-						new Segment("bc", new Point("b", 3,14), new Point("c", 3,14)),
-						new Segment("ca", new Point("c", 3,14), new Point("a", 3,14))),
+				new Polygon("triangle", new Segment("ab", new Point("a", 3, 14), new Point("b", 3, 14)),
+						new Segment("bc", new Point("b", 3, 14), new Point("c", 3, 14)),
+						new Segment("ca", new Point("c", 3, 14), new Point("a", 3, 14))),
 
 				converter.toObject(
 						provider.newStructure("'" + Polygon.class.getName() + "'", provider.newAtom("triangle"),
@@ -124,10 +123,10 @@ public class ObjectConverterTest extends BaseTest {
 						)));
 
 		assertEquals(
-				new Tetragon("tetragon", new Segment("ab", new Point("a", 3,14), new Point("b", 3,14)),
-						new Segment("bc", new Point("b", 3,14), new Point("c", 3,14)),
-						new Segment("cd", new Point("c", 3,14), new Point("d", 3,14)),
-						new Segment("da", new Point("d", 3,14), new Point("a", 3,14))),
+				new Tetragon("tetragon", new Segment("ab", new Point("a", 3, 14), new Point("b", 3, 14)),
+						new Segment("bc", new Point("b", 3, 14), new Point("c", 3, 14)),
+						new Segment("cd", new Point("c", 3, 14), new Point("d", 3, 14)),
+						new Segment("da", new Point("d", 3, 14), new Point("a", 3, 14))),
 
 				converter.toObject(
 						provider.newStructure("'" + Tetragon.class.getName() + "'", provider.newAtom("tetragon"),
@@ -201,10 +200,8 @@ public class ObjectConverterTest extends BaseTest {
 		assertEquals(provider.newStructure("'" + Point.class.getName() + "'", provider.newVariable("Idp", 0),
 				provider.newVariable("X", 1), provider.newVariable("Y", 2)), converter.toTerm(Point.class));
 
-		assertEquals(
-				provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
-						provider.newInteger(3), provider.newInteger(14)),
-				converter.toTerm(new Point("a", 3,14)));
+		assertEquals(provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("a"),
+				provider.newInteger(3), provider.newInteger(14)), converter.toTerm(new Point("a", 3, 14)));
 
 		// Prolog Structure Composition
 		assertEquals(
@@ -213,7 +210,7 @@ public class ObjectConverterTest extends BaseTest {
 								provider.newInteger(3), provider.newInteger(14)),
 						provider.newStructure("'" + Point.class.getName() + "'", provider.newAtom("b"),
 								provider.newInteger(3), provider.newInteger(14))),
-				converter.toTerm(new Segment("ab", new Point("a", 3,14), new Point("b", 3,14))));
+				converter.toTerm(new Segment("ab", new Point("a", 3, 14), new Point("b", 3, 14))));
 
 		// Prolog Structure Composition and Inheritance
 		assertEquals(
@@ -242,10 +239,10 @@ public class ObjectConverterTest extends BaseTest {
 
 				,
 
-				converter.toTerm(new Polygon("triangle",
-						new Segment("ab", new Point("a", 3,14), new Point("b", 3,14)),
-						new Segment("bc", new Point("b", 3,14), new Point("c", 3,14)),
-						new Segment("ca", new Point("c", 3,14), new Point("a", 3,14)))));
+				converter
+						.toTerm(new Polygon("triangle", new Segment("ab", new Point("a", 3, 14), new Point("b", 3, 14)),
+								new Segment("bc", new Point("b", 3, 14), new Point("c", 3, 14)),
+								new Segment("ca", new Point("c", 3, 14), new Point("a", 3, 14)))));
 
 		assertEquals(
 
@@ -279,11 +276,11 @@ public class ObjectConverterTest extends BaseTest {
 
 				,
 
-				converter.toTerm(new Tetragon("tetragon",
-						new Segment("ab", new Point("a", 3,14), new Point("b", 3,14)),
-						new Segment("bc", new Point("b", 3,14), new Point("c", 3,14)),
-						new Segment("cd", new Point("c", 3,14), new Point("d", 3,14)),
-						new Segment("da", new Point("d", 3,14), new Point("a", 3,14)))));
+				converter.toTerm(
+						new Tetragon("tetragon", new Segment("ab", new Point("a", 3, 14), new Point("b", 3, 14)),
+								new Segment("bc", new Point("b", 3, 14), new Point("c", 3, 14)),
+								new Segment("cd", new Point("c", 3, 14), new Point("d", 3, 14)),
+								new Segment("da", new Point("d", 3, 14), new Point("a", 3, 14)))));
 
 		// Prolog Date Structure
 		assertEquals(provider.parseStructure("'" + PrologDate.class.getName() + "'(1000)"),

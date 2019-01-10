@@ -6,7 +6,7 @@ import java.util.Currency;
 import java.util.Locale;
 
 import org.junit.Test;
-import org.logicware.db.prolog.PrologCurrency;
+import org.worklogic.db.prolog.PrologCurrency;
 
 public class CurrencyTest {
 

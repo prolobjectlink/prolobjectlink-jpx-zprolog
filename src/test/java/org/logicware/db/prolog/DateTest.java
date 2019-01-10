@@ -27,7 +27,7 @@ import java.util.Date;
 
 import org.junit.Test;
 import org.logicware.BaseTest;
-import org.logicware.db.prolog.PrologDate;
+import org.worklogic.db.prolog.PrologDate;
 
 public class DateTest extends BaseTest {
 

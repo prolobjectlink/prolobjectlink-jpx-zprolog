@@ -9,10 +9,10 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.logicware.db.ProcedureQuery;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.geometry.Polygon;
-import org.logicware.domain.geometry.Segment;
+import org.worklogic.db.ProcedureQuery;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.geometry.Polygon;
+import org.worklogic.domain.geometry.Segment;
 
 public class ProcedureQueryTest extends BaseTest {
 
@@ -123,8 +123,7 @@ public class ProcedureQueryTest extends BaseTest {
 
 		query = storage.createProcedureQuery("'" + Point.class.getName() + "'", "Idp", "X", "Y").setMaxSolution(2)
 				.execute();
-		List<Object[]> expectedObjectsArrays = Arrays.asList(new Object[] { "a", 3,14 },
-				new Object[] { "b", 3,14 });
+		List<Object[]> expectedObjectsArrays = Arrays.asList(new Object[] { "a", 3, 14 }, new Object[] { "b", 3, 14 });
 		List<Object> actualObjectsArrays = query.getSolutions();
 
 		assertEquals(2, actualObjectsArrays.size());
@@ -160,8 +159,8 @@ public class ProcedureQueryTest extends BaseTest {
 
 		query = storage.createProcedureQuery("'" + Point.class.getName() + "'", "Idp", "X", "Y").setFirstSolution(0)
 				.execute();
-		List<Object[]> expectedObjectsArrays = Arrays.asList(new Object[] { "a", 3,14 },
-				new Object[] { "b", 3,14 }, new Object[] { "c", 3,14 }, new Object[] { "d", 3,14 });
+		List<Object[]> expectedObjectsArrays = Arrays.asList(new Object[] { "a", 3, 14 }, new Object[] { "b", 3, 14 },
+				new Object[] { "c", 3, 14 }, new Object[] { "d", 3, 14 });
 		List<Object> actualObjectsArrays = query.getSolutions();
 
 		assertEquals(0, query.getFirstSolution());
@@ -174,8 +173,8 @@ public class ProcedureQueryTest extends BaseTest {
 
 		query = storage.createProcedureQuery("'" + Point.class.getName() + "'", "Idp", "X", "Y").setFirstSolution(1)
 				.execute();
-		expectedObjectsArrays = Arrays.asList(new Object[] { "b", 3,14 }, new Object[] { "c", 3,14 },
-				new Object[] { "d", 3,14 });
+		expectedObjectsArrays = Arrays.asList(new Object[] { "b", 3, 14 }, new Object[] { "c", 3, 14 },
+				new Object[] { "d", 3, 14 });
 		actualObjectsArrays = query.getSolutions();
 
 		assertEquals(1, query.getFirstSolution());
@@ -188,7 +187,7 @@ public class ProcedureQueryTest extends BaseTest {
 
 		query = storage.createProcedureQuery("'" + Point.class.getName() + "'", "Idp", "X", "Y").setFirstSolution(2)
 				.execute();
-		expectedObjectsArrays = Arrays.asList(new Object[] { "c", 3,14 }, new Object[] { "d", 3,14 });
+		expectedObjectsArrays = Arrays.asList(new Object[] { "c", 3, 14 }, new Object[] { "d", 3, 14 });
 		actualObjectsArrays = query.getSolutions();
 
 		assertEquals(2, query.getFirstSolution());
@@ -201,7 +200,7 @@ public class ProcedureQueryTest extends BaseTest {
 
 		query = storage.createProcedureQuery("'" + Point.class.getName() + "'", "Idp", "X", "Y").setFirstSolution(3)
 				.execute();
-		Object[] objectArray = new Object[] { "d", 3,14 };
+		Object[] objectArray = new Object[] { "d", 3, 14 };
 		actualObjectsArrays = query.getSolutions();
 
 		assertEquals(3, query.getFirstSolution());
@@ -250,8 +249,8 @@ public class ProcedureQueryTest extends BaseTest {
 	public final void testGetSolutions() {
 
 		query = storage.createProcedureQuery("'" + Point.class.getName() + "'", "Idp", "X", "Y").execute();
-		List<Object[]> expectedObjectsArrays = Arrays.asList(new Object[] { "a", 3,14 },
-				new Object[] { "b", 3,14 }, new Object[] { "c", 3,14 }, new Object[] { "d", 3,14 });
+		List<Object[]> expectedObjectsArrays = Arrays.asList(new Object[] { "a", 3, 14 }, new Object[] { "b", 3, 14 },
+				new Object[] { "c", 3, 14 }, new Object[] { "d", 3, 14 });
 		List<Object> actualObjectsArrays = query.getSolutions();
 
 		for (int i = 0; i < actualObjectsArrays.size(); i++) {

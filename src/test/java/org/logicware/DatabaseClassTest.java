@@ -9,14 +9,14 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.junit.Test;
-import org.logicware.db.DatabaseClass;
-import org.logicware.db.DatabaseField;
-import org.logicware.domain.geometry.Point;
-import org.logicware.domain.model.Address;
-import org.logicware.domain.model.Employee;
-import org.logicware.domain.model.Person;
-import org.logicware.domain.model.link.AddressPerson;
-import org.logicware.domain.model.link.PersonAddress;
+import org.worklogic.db.DatabaseClass;
+import org.worklogic.db.DatabaseField;
+import org.worklogic.domain.geometry.Point;
+import org.worklogic.domain.model.Address;
+import org.worklogic.domain.model.Employee;
+import org.worklogic.domain.model.Person;
+import org.worklogic.domain.model.link.AddressPerson;
+import org.worklogic.domain.model.link.PersonAddress;
 
 public class DatabaseClassTest extends BaseTest {
 

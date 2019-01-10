@@ -9,13 +9,13 @@ import java.util.UUID;
 
 import org.junit.Test;
 import org.logicware.BaseTest;
-import org.logicware.db.prolog.PrologArrayList;
-import org.logicware.db.prolog.PrologDate;
-import org.logicware.db.prolog.PrologHashMap;
-import org.logicware.db.prolog.PrologHashSet;
-import org.logicware.db.prolog.PrologTreeMap;
-import org.logicware.db.prolog.PrologTreeSet;
-import org.logicware.domain.classes.MonsEnum;
+import org.worklogic.db.prolog.PrologArrayList;
+import org.worklogic.db.prolog.PrologDate;
+import org.worklogic.db.prolog.PrologHashMap;
+import org.worklogic.db.prolog.PrologHashSet;
+import org.worklogic.db.prolog.PrologTreeMap;
+import org.worklogic.db.prolog.PrologTreeSet;
+import org.worklogic.domain.classes.MonsEnum;
 
 public class PersistenceTest extends BaseTest {
 

@@ -6,9 +6,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.logicware.db.DatabaseSequence;
-import org.logicware.domain.model.Address;
-import org.logicware.domain.model.Person;
+import org.worklogic.db.DatabaseSequence;
+import org.worklogic.domain.model.Address;
+import org.worklogic.domain.model.Person;
 
 public class DatabaseSequenceTest extends BaseTest {
 
