@@ -84,12 +84,12 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.worklogic</groupId>
+			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpp</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
-			<groupId>org.worklogic</groupId>
+			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpi-zprolog</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
