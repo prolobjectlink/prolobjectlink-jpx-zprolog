@@ -20,7 +20,7 @@ public class MainPerformanceTest {
 	// private static final String ROOT = "data" + File.separator + "test";
 
 	protected static final Class<? extends ContainerFactory> driver = ZPrologContainerFactory.class;
-	protected static final PrologProvider provider = Prolog.newProvider(ZProlog.class);
+	protected static final PrologProvider provider = Prolog.getProvider(ZProlog.class);
 
 	public MainPerformanceTest() {
 	}
