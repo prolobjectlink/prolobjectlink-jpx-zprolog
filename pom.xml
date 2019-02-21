@@ -5,7 +5,7 @@
 	<groupId>org.prolobjectlink</groupId>
 	<artifactId>prolobjectlink-jpx-zprolog</artifactId>
 	<version>1.0.0</version>
-	<name>prolobjectlink-jpp-zprolog</name>
+	<name>prolobjectlink-jpx-zprolog</name>
 	<description>prolobjectlink-zprolog</description>
 
 	<url>https://github.com/prolobjectlink/${project.name}</url>
@@ -44,7 +44,7 @@
 		<developerConnection>scm:git:https://github.com/prolobjectlink/${project.name}.git</developerConnection>
 		<connection>scm:git:https://github.com/prolobjectlink/${project.name}.git</connection>
 		<url>https://github.com/prolobjectlink/${project.name}</url>
-		
+
 	</scm>
 
 	<ciManagement>
@@ -85,12 +85,17 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
+			<artifactId>prolobjectlink-jpi-zprolog</artifactId>
+			<version>[1.0.0, )</version>
+		</dependency>
+		<dependency>
+			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpp</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
-			<artifactId>prolobjectlink-jpi-zprolog</artifactId>
+			<artifactId>prolobjectlink-jps-jetty</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
