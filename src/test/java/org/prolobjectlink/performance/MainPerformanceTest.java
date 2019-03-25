@@ -3,11 +3,11 @@ package org.prolobjectlink.performance;
 import org.prolobjectlink.db.ContainerFactory;
 import org.prolobjectlink.db.Storage;
 import org.prolobjectlink.db.etc.Settings;
+import org.prolobjectlink.db.prolog.zprolog.ZPrologContainerFactory;
 import org.prolobjectlink.domain.geometry.Point;
 import org.prolobjectlink.prolog.Prolog;
 import org.prolobjectlink.prolog.PrologProvider;
 import org.prolobjectlink.prolog.zprolog.ZProlog;
-import org.prolobjectlink.prolog.zprolog.ZPrologContainerFactory;
 
 public class MainPerformanceTest {
 

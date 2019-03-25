@@ -1,4 +1,4 @@
-package org.prolobjectlink.prolog.zprolog;
+package org.prolobjectlink.db.prolog.zprolog;
 
 import javax.persistence.spi.PersistenceProvider;
 

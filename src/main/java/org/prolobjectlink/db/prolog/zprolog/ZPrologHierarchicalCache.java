@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.prolobjectlink.prolog.zprolog;
+package org.prolobjectlink.db.prolog.zprolog;
 
 import org.prolobjectlink.db.ContainerFactory;
 import org.prolobjectlink.db.HierarchicalCache;

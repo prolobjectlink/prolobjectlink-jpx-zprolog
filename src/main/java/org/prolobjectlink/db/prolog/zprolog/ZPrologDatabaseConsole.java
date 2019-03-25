@@ -19,10 +19,11 @@
  * <http://www.gnu.org/licenses/gpl-2.0.html>.
  * #L%
  */
-package org.prolobjectlink.prolog.zprolog;
+package org.prolobjectlink.db.prolog.zprolog;
 
 import org.prolobjectlink.db.DatabaseConsole;
 import org.prolobjectlink.db.prolog.AbstractDatabaseConsole;
+import org.prolobjectlink.prolog.zprolog.ZProlog;
 
 /**
  * 
