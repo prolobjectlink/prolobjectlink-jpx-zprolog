@@ -6,7 +6,6 @@ import java.util.Locale;
 
 import org.junit.Test;
 import org.prolobjectlink.BaseTest;
-import org.prolobjectlink.db.prolog.PrologLocale;
 
 public class LocaleTest extends BaseTest {
 

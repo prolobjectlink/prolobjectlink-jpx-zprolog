@@ -8,7 +8,6 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 
 import org.junit.Test;
-import org.prolobjectlink.GraphEdge;
 import org.prolobjectlink.db.DatabaseClass;
 import org.prolobjectlink.db.DatabaseFunction;
 import org.prolobjectlink.db.DatabaseSequence;

@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.Calendar;
 
 import org.junit.Test;
-import org.prolobjectlink.db.prolog.PrologCalendar;
 
 public class CalendarTest {
 

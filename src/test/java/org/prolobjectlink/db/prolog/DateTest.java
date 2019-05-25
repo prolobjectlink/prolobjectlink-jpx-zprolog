@@ -27,7 +27,6 @@ import java.util.Date;
 
 import org.junit.Test;
 import org.prolobjectlink.BaseTest;
-import org.prolobjectlink.db.prolog.PrologDate;
 
 public class DateTest extends BaseTest {
 
