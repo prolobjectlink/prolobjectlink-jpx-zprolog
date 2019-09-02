@@ -40,7 +40,7 @@ public class SettingsTest extends BaseTest {
 	@Test
 	public void testSave() {
 		settings.save();
-		File file = new File("etc" + File.separator + "settings.xml");
+		File file = new File("etc" + File.separator + "prolobjectlink.xml");
 		assertTrue(file.exists());
 		assertTrue(file.length() > 0);
 	}

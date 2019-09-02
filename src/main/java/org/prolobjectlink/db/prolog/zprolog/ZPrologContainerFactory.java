@@ -22,12 +22,11 @@ package org.prolobjectlink.db.prolog.zprolog;
 import org.prolobjectlink.db.HierarchicalCache;
 import org.prolobjectlink.db.etc.Settings;
 import org.prolobjectlink.db.prolog.PrologContainerFactory;
-import org.prolobjectlink.prolog.zprolog.ZProlog;
 
 public final class ZPrologContainerFactory extends PrologContainerFactory {
 
 	public ZPrologContainerFactory(Settings settings) {
-		super(settings, new ZProlog());
+		super(settings, new ZPrologDatabaseProvider());
 	}
 
 	public HierarchicalCache createHierarchicalCache() {
