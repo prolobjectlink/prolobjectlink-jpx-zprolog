@@ -1,3 +1,22 @@
+/*-
+ * #%L
+ * prolobjectlink-jpx-jpl-swi
+ * %%
+ * Copyright (C) 2012 - 2019 Prolobjectlink Project
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
 package org.prolobjectlink;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -11,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.prolobjectlink.db.ObjectConverter;
 import org.prolobjectlink.db.PersistentContainer;
@@ -31,9 +51,11 @@ public class HierarchicalDatabaseTest extends BaseTest {
 	@Test
 	public void testContainsString() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -43,6 +65,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -72,14 +95,18 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		assertTrue(hdb.contains(
 				"'" + Segment.class.getName() + "'(Ids, Point0, Point1), '" + Point.class.getName() + "'(Idp, X, Y)"));
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
 	public void testContainsO() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -89,6 +116,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -99,14 +127,18 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		assertTrue(hdb.contains(ca));
 		assertTrue(hdb.contains(triangle));
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
 	public void testContainsClassOfO() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -116,6 +148,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -126,14 +159,18 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		assertTrue(hdb.contains(Segment.class));
 		assertTrue(hdb.contains(Polygon.class));
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
 	public void testContainsPredicateOfO() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -143,6 +180,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -179,14 +217,18 @@ public class HierarchicalDatabaseTest extends BaseTest {
 
 		}));
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
 	public void testContainsStringInt() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -196,10 +238,13 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains("'" + Point.class.getName() + "'", 3));
 		assertTrue(hdb.contains("'" + Segment.class.getName() + "'", 3));
 		assertTrue(hdb.contains("'" + Polygon.class.getName() + "'", 4));
+
+		hdb.getTransaction().close();
 
 	}
 
@@ -217,9 +262,11 @@ public class HierarchicalDatabaseTest extends BaseTest {
 	@Test
 	public void testInsert() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -229,6 +276,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -239,11 +287,14 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		assertTrue(hdb.contains(ca));
 		assertTrue(hdb.contains(triangle));
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
 	public void testUpdate() {
 
+		hdb.begin();
 		hdb.insert(a);
 		hdb.insert(b);
 		hdb.insert(c);
@@ -251,6 +302,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(bc);
 		hdb.insert(ca);
 		hdb.insert(triangle);
+		hdb.commit();
 
 		// create new update objects
 
@@ -289,6 +341,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.update(bc, newBC);
 		hdb.update(ca, newCA);
 		hdb.update(triangle, newTriangle);
+		hdb.commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -315,6 +368,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.update(newBC, bc);
 		hdb.update(newCA, ca);
 		hdb.update(newTriangle, triangle);
+		hdb.commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -337,22 +391,28 @@ public class HierarchicalDatabaseTest extends BaseTest {
 	@Test
 	public void testDeleteClassOfQ() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(Point.class));
 		assertFalse(hdb.contains(Segment.class));
 		assertFalse(hdb.contains(Polygon.class));
+
+		hdb.getTransaction().close();
 
 	}
 
 	@Test
 	public void testDeleteOArray() {
 
+		hdb.getTransaction().begin();
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -367,11 +427,14 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.delete(a, b, c, d);
 		hdb.delete(ab, bc, ca, cd, da);
 		hdb.delete(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
 		assertFalse(hdb.contains(c));
 		assertFalse(hdb.contains(d));
+
+		hdb.getTransaction().close();
 
 	}
 
@@ -389,9 +452,11 @@ public class HierarchicalDatabaseTest extends BaseTest {
 	@Test
 	public void testCreateQueryString() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -401,6 +466,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -455,14 +521,18 @@ public class HierarchicalDatabaseTest extends BaseTest {
 				segments);
 		assertEquals(Arrays.asList(a, b, c, d, a, b, c, d, a, b, c, d, a, b, c, d, a, b, c, d), points);
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
 	public void testCreateQueryO() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -472,6 +542,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -494,14 +565,18 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da), hdb.createQuery(new Segment()).getSolutions());
 		assertEquals(Arrays.asList(triangle), hdb.createQuery(new Polygon()).getSolutions());
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
 	public void testCreateQueryClassOfO() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -511,6 +586,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -521,14 +597,18 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		assertEquals(Arrays.asList(ab, bc, ca, cd, da), hdb.createQuery(Segment.class).getSolutions());
 		assertEquals(Arrays.asList(triangle), hdb.createQuery(Polygon.class).getSolutions());
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
 	public void testCreateQueryPredicateOfO() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -538,6 +618,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -580,14 +661,18 @@ public class HierarchicalDatabaseTest extends BaseTest {
 
 		assertEquals(triangle, polygon);
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
 	public void testCreateProcedureQuery() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -597,6 +682,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -666,6 +752,8 @@ public class HierarchicalDatabaseTest extends BaseTest {
 
 		assertFalse(query.hasNext());
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
@@ -680,17 +768,13 @@ public class HierarchicalDatabaseTest extends BaseTest {
 	@Test
 	public void testLocationOf() {
 
-		assertEquals(
-				"dat" + File.separator + "hierarchical" + File.separator + hdb.getName() + File.separator + "database"
-						+ File.separator + Point.class.getPackage().getName().replace('.', File.separatorChar),
-				hdb.locationOf(Point.class));
-		assertEquals(
-				"dat" + File.separator + "hierarchical" + File.separator + hdb.getName() + File.separator + "database"
-						+ File.separator + Segment.class.getPackage().getName().replace('.', File.separatorChar),
+		assertEquals("db/pdb" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database"
+				+ SEPARATOR + Point.class.getPackage().getName().replace('.', SEPARATOR), hdb.locationOf(Point.class));
+		assertEquals("db/pdb" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database"
+				+ SEPARATOR + Segment.class.getPackage().getName().replace('.', SEPARATOR),
 				hdb.locationOf(Segment.class));
-		assertEquals(
-				"dat" + File.separator + "hierarchical" + File.separator + hdb.getName() + File.separator + "database"
-						+ File.separator + Polygon.class.getPackage().getName().replace('.', File.separatorChar),
+		assertEquals("db/pdb" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database"
+				+ SEPARATOR + Polygon.class.getPackage().getName().replace('.', SEPARATOR),
 				hdb.locationOf(Polygon.class));
 
 	}
@@ -708,11 +792,11 @@ public class HierarchicalDatabaseTest extends BaseTest {
 	@Test
 	public void testFlush() {
 
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
-
-		hdb.flush();
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -738,6 +822,8 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		assertTrue(hdb.contains(ca));
 		assertTrue(hdb.contains(triangle));
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
@@ -752,9 +838,13 @@ public class HierarchicalDatabaseTest extends BaseTest {
 	@Test
 	public void testClear() {
 
+//		hdb.begin();
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
+		hdb.getTransaction().commit();
+//		hdb.commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -765,6 +855,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(b);
 		hdb.insert(c);
 		hdb.insert(d);
+		hdb.getTransaction().commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -772,6 +863,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		assertTrue(hdb.contains(d));
 
 		hdb.clear();
+		hdb.getTransaction().commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -788,6 +880,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 	@Test
 	public void testBackupAndRestore() {
 
+		hdb.begin();
 		hdb.insert(a);
 		hdb.insert(b);
 		hdb.insert(c);
@@ -798,6 +891,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		hdb.insert(cd);
 		hdb.insert(da);
 		hdb.insert(triangle);
+		hdb.commit();
 
 		// make backup
 		hdb.backup(BACKUP_DIRECTORY, BACKUP_ZIP_FILE_NAME_4);
@@ -840,8 +934,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 
 	@Test
 	public void testGetLocation() {
-		assertEquals(
-				"dat" + File.separator + "hierarchical" + File.separator + hdb.getName() + File.separator + "database",
+		assertEquals("db/pdb" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database",
 				hdb.getLocation());
 	}
 
@@ -857,11 +950,13 @@ public class HierarchicalDatabaseTest extends BaseTest {
 	@Test
 	public void testCommit() {
 
-		hdb.begin();
+//		hdb.begin();
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
-		hdb.commit();
+		hdb.getTransaction().commit();
+//		hdb.commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -872,11 +967,11 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		assertFalse(hdb.contains(ca));
 		assertFalse(hdb.contains(triangle));
 
-		hdb.begin();
 		hdb.insert(a, b, c, d);
 		hdb.insert(ab, bc, ca, cd, da);
 		hdb.insert(triangle, tetragon);
-		hdb.commit();
+		hdb.getTransaction().commit();
+//		hdb.commit();
 
 		assertTrue(hdb.contains(a));
 		assertTrue(hdb.contains(b));
@@ -887,18 +982,23 @@ public class HierarchicalDatabaseTest extends BaseTest {
 		assertTrue(hdb.contains(ca));
 		assertTrue(hdb.contains(triangle));
 
+		hdb.getTransaction().close();
+
 	}
 
 	@Test
+	@Ignore
 	public void testRollback() {
 
 		Point p = new Point("p");
 
-		hdb.begin();
+//		hdb.begin();
+		hdb.getTransaction().begin();
 		hdb.delete(Point.class);
 		hdb.delete(Segment.class);
 		hdb.delete(Polygon.class);
-		hdb.commit();
+		hdb.getTransaction().commit();
+//		hdb.commit();
 
 		assertFalse(hdb.contains(a));
 		assertFalse(hdb.contains(b));
@@ -921,14 +1021,6 @@ public class HierarchicalDatabaseTest extends BaseTest {
 
 	@Test
 	public void testIsOpen() {
-
-		hdb.insert(a);
-		hdb.insert(b);
-		hdb.insert(c);
-		hdb.insert(ab);
-		hdb.insert(bc);
-		hdb.insert(ca);
-		hdb.insert(triangle);
 
 		assertTrue(hdb.isOpen());
 
