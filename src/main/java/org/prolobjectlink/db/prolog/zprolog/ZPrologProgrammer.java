@@ -30,16 +30,16 @@ package org.prolobjectlink.db.prolog.zprolog;
 
 import java.io.PrintWriter;
 
-import org.prolobjectlink.db.prolog.AbstractProgrammer;
 import org.prolobjectlink.db.prolog.PrologProgrammer;
 import org.prolobjectlink.prolog.PrologProvider;
+import org.prolobjectlink.web.application.AbstractViewProgrammer;
 
 /**
  * 
  * @author Jose Zalacain
  * @since 1.0
  */
-public final class ZPrologProgrammer extends AbstractProgrammer implements PrologProgrammer {
+public final class ZPrologProgrammer extends AbstractViewProgrammer implements PrologProgrammer {
 
 	public ZPrologProgrammer(PrologProvider provider) {
 		super(provider);
