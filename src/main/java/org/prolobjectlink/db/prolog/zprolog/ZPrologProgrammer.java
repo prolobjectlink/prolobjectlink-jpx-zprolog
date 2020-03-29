@@ -31,8 +31,9 @@ package org.prolobjectlink.db.prolog.zprolog;
 import java.io.PrintWriter;
 
 import org.prolobjectlink.db.prolog.PrologProgrammer;
-import org.prolobjectlink.prolog.PrologProvider;
 import org.prolobjectlink.web.application.AbstractViewProgrammer;
+
+import io.github.prolobjectlink.prolog.PrologProvider;
 
 /**
  * 

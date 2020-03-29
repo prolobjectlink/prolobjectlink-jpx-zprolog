@@ -21,7 +21,8 @@ package org.prolobjectlink.db.prolog.zprolog;
 
 import org.prolobjectlink.db.prolog.PrologDatabaseEngine;
 import org.prolobjectlink.db.prolog.PrologDatabaseProvider;
-import org.prolobjectlink.prolog.zprolog.ZProlog;
+
+import io.github.prolobjectlink.prolog.zprolog.ZProlog;
 
 public class ZPrologDatabaseProvider extends ZProlog implements PrologDatabaseProvider {
 

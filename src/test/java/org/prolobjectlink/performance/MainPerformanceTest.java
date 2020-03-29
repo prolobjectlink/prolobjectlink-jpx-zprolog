@@ -5,9 +5,10 @@ import org.prolobjectlink.db.Storage;
 import org.prolobjectlink.db.etc.Settings;
 import org.prolobjectlink.db.prolog.zprolog.ZPrologContainerFactory;
 import org.prolobjectlink.domain.geometry.Point;
-import org.prolobjectlink.prolog.Prolog;
-import org.prolobjectlink.prolog.PrologProvider;
-import org.prolobjectlink.prolog.zprolog.ZProlog;
+
+import io.github.prolobjectlink.prolog.Prolog;
+import io.github.prolobjectlink.prolog.PrologProvider;
+import io.github.prolobjectlink.prolog.zprolog.ZProlog;
 
 public class MainPerformanceTest {
 
