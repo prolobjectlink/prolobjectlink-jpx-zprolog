@@ -9,7 +9,7 @@
 	<description>prolobjectlink-zprolog</description>
 
 	<url>https://prolobjectlink.github.io/${project.name}</url>
-	<inceptionYear>2012</inceptionYear>
+	<inceptionYear>2020</inceptionYear>
 
 	<organization>
 		<name>Prolobjectlink Project</name>
@@ -78,7 +78,7 @@
 		</snapshotRepository>
 		<repository>
 			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<url>https://oss.sonatype.org/content/repositories/release/</url>
 		</repository>
 		<site>
 			<id>website</id>
